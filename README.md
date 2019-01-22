@@ -1,4 +1,6 @@
-# jfdd11-ie
+# Mobile-first
+
+# Spis technologi według Can I Use
 
 # Nazewnictwo klas:
 użycie myślnika i małych liter np. xxxx-xxxx
