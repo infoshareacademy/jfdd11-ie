@@ -2,3 +2,45 @@
     box-sizing: border-box;
 }
 
+ol li{
+    list-style: number;
+}
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+    height: auto;
+}
+
+.global-settings {
+    padding: 0 20px;
+    min-height: 320px;
+}
+
+header {
+    background-color: yellow;
+}
+
+.about-steps {
+    background-color: white;
+}
+
+.benefits {
+    background-color: gray;
+}
+
+.subscribe {
+    background-color: yellow;
+}
+
+.team {
+    background-color: white;
+}
+
+footer {
+    background-color: black;
+}
+
+@media (min-width: 960px) {
+
+}
