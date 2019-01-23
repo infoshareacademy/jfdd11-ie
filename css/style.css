@@ -142,6 +142,10 @@ ol li{
     
 }
 @media(min-width: 650px) and (max-width: 959px){
+    .subscribe{   
+        background: #f8c512 url(/img/pic3.png) no-repeat right bottom;
+        background-size: 40% auto;         
+    }
     form{
         width: 60%;
     }
