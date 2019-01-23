@@ -29,46 +29,56 @@ ol li{
     justify-content: flex-end;
 }
 
+.expanded {
+   
+}
+
+.expanded a {
+    text-decoration: none;
+    color: #323232;
+}
+
 .logo {
     margin: 20px;
     width: 200px;
 }
 
 .hero-image {
-    background: linear-gradient(#f8c512, #edb60d);
+    background: linear-gradient(#ffcf28, #edb60d);
     height: auto;
     text-align: left;
     padding: 15px;
+    text-transform: uppercase;
+}
+
+.hero-text-white {
+    color: #fff;
+
 }
 
 .title-hero-image {
-    font-size: 30px;
+    font-size: 26px;
     font-weight: 700;
     color: #323232;
-    margin: 20px 20px 40px 20px;
+    margin: 30px 0 40px 0;
+
 }
 
 .first-claim {
-    font-size: 36px;
+    font-size: 30px;
+    text-transform: uppercase;
     font-weight: 800;
     color: #fff;
-    margin: 40px 20px 10px 20px;
+    margin-top: 40px;
 }
 
 .second-claim {
-    font-size: 36px;
+    font-size: 30px;
+    text-transform: uppercase;
     font-weight: 900;
     color: #323232;
-    margin: 0px 20px 20px 20px;
+    margin-top: 20px;
 }
-
-/* TEST*/
-/* header img {
-    width: 60%;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-} */
 
 .about-steps {
     background-color: white;
@@ -89,9 +99,9 @@ ol li{
 }   
 .subscribe h2{
     font-size: 40px;
-    font-weight: 999;
+    font-weight: 900;
     text-transform: uppercase;
-    padding: 40px 0px 30px 0px;
+    padding: 55px 0px 30px 0px;
 }
 .subscribe p{
     text-align: left;
@@ -138,28 +148,27 @@ ol li{
     font-weight: 700;
     padding: 15px 0px 10px 0px;
 }
-@media(min-width: 960px){
-    .subscribe{
-        background: #f8c512 url("img/pic3.png") no-repeat right bottom;
-    }
-}
-.team {
-    background-color: white;
-}
-
-footer {
-    background-color: black;
-}
-
-
 
 
 @media(min-width: 960px){
 
     .hero-image {
-        background: #f8c512 url(/css/img/pic3.png) no-repeat right bottom;
+        /* background: #f8c512 url(/img/reka.png) no-repeat center bottom;
+        background-size: 30%; */
+        background: #f8c512 url(/img/reka.png) no-repeat 450px 40px;
+        background-size: contain;
     }
 
     .subscribe{
-        background: #f8c512 url(/css/img/pic3.png) no-repeat right bottom;
+        background: #f8c512 url(/img/pic3.png) no-repeat right bottom;
     }
+
+    footer {
+        background-color: black;
+    }
+
+    .team {
+        background-color: white;
+    }
+    
+}
