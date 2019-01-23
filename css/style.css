@@ -91,7 +91,7 @@ ol li{
     font-size: 40px;
     font-weight: 900;
     text-transform: uppercase;
-    padding: 55px 0px 30px 0px;
+    padding: 55px 0px 30px 15px;
 }
 .subscribe p{
     text-align: left;
@@ -116,8 +116,7 @@ ol li{
 }
 .subscribe input{
     width: 80%;
-    font-size: 18px;
-    font-weight: regular; 
+    font-size: 18px; 
     color: #323232;
     padding: 15px 0 10px 0;
     border: none;
@@ -137,10 +136,52 @@ ol li{
     text-transform: uppercase;
     font-weight: 700;
     padding: 15px 0px 10px 0px;
+    
+}
+.name-input, .email-input{
+    
 }
 @media(min-width: 960px){
     .subscribe{
         background: #f8c512 url("img/pic3.png") no-repeat right bottom;
+        text-align: left;     
+        background: #f8c512 url(/img/pic3.png) no-repeat right 40px;
+        background-size: contain;         
+    }
+    .desktop-container{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 55%;
+    }
+    .subscribe .subscribe-button{
+        width:25%;
+        padding: 15px 0px 10px 0px;
+        position: relative;
+        left: 40%; 
+    }
+    .subscribe .form-consent-box{
+        width: 70%;
+        position: relative;
+        left: 3%;
+    }
+    .subscribe .form-consent-checkbox{
+        width: auto;
+    }
+    .name-input, .email-input{
+        position: relative;
+        left: 3%;
+    }
+}
+@media (max-width: 1160px){
+    form{
+        width: 60%;
+    }
+    .subscribe .subscribe-button{
+        width: 50%;
+        padding: 15px 0px 10px 0px;
+        position: relative;
+        left: 40%; 
     }
 }
 .team {
@@ -160,7 +201,5 @@ footer {
         background: #f8c512 url(/img/reka.png) no-repeat right bottom;
     }
 
-    .subscribe{
-        background: #f8c512 url(/img/pic3.png) no-repeat right bottom;
-    }
+    
 }
