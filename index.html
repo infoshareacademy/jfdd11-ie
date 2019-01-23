@@ -8,6 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Catamaran" rel="stylesheet">
     <!-- kod do favicon -->
     <title>Move-It</title>
 </head>
@@ -15,7 +16,7 @@
     <div class="container">
         <header class="global-settings">
             <nav>
-                <a href=""><img src="/css/img/logo_menu.png" alt="Logo firmy MoveIt"></a>
+                <a href=""><img src="css/img/logo_menu.png" alt="Logo firmy MoveIt"></a>
                 <ul>
                     <li><a href=""></a></li>
                     <li><a href=""></a></li>
@@ -78,9 +79,12 @@
             <form action="">
                 <input type="text" name="name" placeholder="Wpisz swoje imię" required>
                 <input type="email" name="email" placeholder="Wpisz swój e-mail" required>
-                <input type="checkbox" required>
-                <p>Lorem ipsum dolor sit amet.</p>
-                <input type="submit" value="Zapisz się!">
+                <div class="form-consent-box">
+                <input type="checkbox" required class="form-consent-checkbox">
+                <p class="form-consent-text">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam assumenda quidem molestias aut illo cupiditate culpa quae nostrum ratione? Laboriosam deserunt quaerat quam numquam magni itaque eum quo ab quidem, ut aspernatur eius recusandae totam aut molestiae iure fugit fuga..</p>
+                </div>
+                <input type="submit" value="Wyślij" class="subscribe-button">
             </form>
         </div>
         <div class="team global-settings">
@@ -115,7 +119,7 @@
                 <p>Kontakt, Adres e-mail: support@move.it</p>
                 <p>Copyright &copy; Move-It 2019</p>
             </div>
-            <img src="/css/img/logo_footer.png" alt="">
+            <img src="css/img/logo_footer.png" alt="">
         </footer>
     </div>
 </body>

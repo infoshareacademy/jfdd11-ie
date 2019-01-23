@@ -14,7 +14,7 @@ ol li{
 
 .global-settings {
     padding: 0 20px;
-    min-height: 320px;
+    height: auto;
 }
 
 header {
@@ -30,9 +30,70 @@ header {
 }
 
 .subscribe {
-    background-color: yellow;
+    font-family: 'Catamaran', sans-serif;
+    color: #323232;
+    font-weight: medium;
+    font-size: 24px;
+    background-color: #f8c512;
+    text-align: center;
+    padding-bottom: 30px; 
+}   
+.subscribe h2{
+    font-size: 40px;
+    font-weight: 999;
+    text-transform: uppercase;
+    padding: 40px 0px 30px 0px;
 }
-
+.subscribe p{
+    text-align: left;
+    font-size: 24px;
+    text-transform: uppercase;
+    padding: 30px 0px 30px 20px;
+}
+.subscribe .form-consent-box{
+    display: flex;
+    align-items: baseline;
+    padding: 20px 0px 10px 0px;
+}
+.subscribe .form-consent-checkbox{
+    width: auto;
+    padding: 0;
+    margin: 0 -15px 0px 15px;
+}
+.subscribe .form-consent-text{
+    font-size: 10px;
+    text-transform: initial;
+    padding: 0px 0px 30px 20px;
+}
+.subscribe input{
+    width: 80%;
+    font-size: 18px;
+    font-weight: regular; 
+    color: #323232;
+    padding: 15px 0 10px 0;
+    border: none;
+    border-bottom: 3px solid #ffffff;
+    background-color: #f8c512;
+}
+.subscribe input::placeholder{
+    font-family: 'Catamaran', sans-serif;
+    color: #323232;
+    opacity: 1;
+}
+.subscribe .subscribe-button{
+    width:50%;
+    background: #ffffff;
+    border-radius: 30px;
+    color: darkblue;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 15px 0px 10px 0px;
+}
+@media(min-width: 960px){
+    .subscribe{
+        background: #f8c512 url("img/pic3.png") no-repeat right bottom;
+    }
+}
 .team {
     background-color: white;
 }
