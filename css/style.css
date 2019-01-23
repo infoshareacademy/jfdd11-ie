@@ -89,9 +89,9 @@ ol li{
 }   
 .subscribe h2{
     font-size: 40px;
-    font-weight: 999;
+    font-weight: 900;
     text-transform: uppercase;
-    padding: 40px 0px 30px 0px;
+    padding: 55px 0px 30px 0px;
 }
 .subscribe p{
     text-align: left;
@@ -157,9 +157,10 @@ footer {
 @media(min-width: 960px){
 
     .hero-image {
-        background: #f8c512 url(/css/img/pic3.png) no-repeat right bottom;
+        background: #f8c512 url(/img/reka.png) no-repeat right bottom;
     }
 
     .subscribe{
-        background: #f8c512 url(/css/img/pic3.png) no-repeat right bottom;
+        background: #f8c512 url(/img/pic3.png) no-repeat right bottom;
     }
+}
