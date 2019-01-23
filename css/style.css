@@ -2,6 +2,10 @@
     box-sizing: border-box;
 }
 
+html {
+    font-family: 'Catamaran', sans-serif;
+}
+
 ol li{
     list-style: number;
 }
@@ -17,9 +21,54 @@ ol li{
     height: auto;
 }
 
-header {
-    background-color: yellow;
+
+.menu {
+    height: 80px;
+    background: #fff;
+    display: flex;
+    justify-content: flex-end;
 }
+
+.logo {
+    margin: 20px;
+    width: 200px;
+}
+
+.hero-image {
+    background: linear-gradient(#f8c512, #edb60d);
+    height: auto;
+    text-align: left;
+    padding: 15px;
+}
+
+.title-hero-image {
+    font-size: 30px;
+    font-weight: 700;
+    color: #323232;
+    margin: 20px 20px 40px 20px;
+}
+
+.first-claim {
+    font-size: 36px;
+    font-weight: 800;
+    color: #fff;
+    margin: 40px 20px 10px 20px;
+}
+
+.second-claim {
+    font-size: 36px;
+    font-weight: 900;
+    color: #323232;
+    margin: 0px 20px 20px 20px;
+}
+
+/* TEST*/
+/* header img {
+    width: 60%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+} */
 
 .about-steps {
     background-color: white;
@@ -102,6 +151,15 @@ footer {
     background-color: black;
 }
 
-@media (min-width: 960px) {
 
-}
+
+
+@media(min-width: 960px){
+
+    .hero-image {
+        background: #f8c512 url(/css/img/pic3.png) no-repeat right bottom;
+    }
+
+    .subscribe{
+        background: #f8c512 url(/css/img/pic3.png) no-repeat right bottom;
+    }
