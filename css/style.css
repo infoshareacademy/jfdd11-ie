@@ -113,9 +113,10 @@ ol li{
     font-size: 10px;
     text-transform: initial;
     padding: 0px 0px 30px 20px;
+    text-align: left;
 }
-.subscribe input{
-    width: 80%;
+.subscribe input[type=text], input[type=email]{
+    width: 100%;
     font-size: 18px; 
     color: #323232;
     padding: 15px 0 10px 0;
@@ -132,21 +133,27 @@ ol li{
     width:50%;
     background: #ffffff;
     border-radius: 30px;
+    border: none;
     color: darkblue;
     text-transform: uppercase;
     font-weight: 700;
     padding: 15px 0px 10px 0px;
+    cursor: pointer;
     
 }
-.name-input, .email-input{
-    
+@media(min-width: 650px) and (max-width: 959px){
+    form{
+        width: 60%;
+    }
 }
 @media(min-width: 960px){
     .subscribe{
-        background: #f8c512 url("img/pic3.png") no-repeat right bottom;
         text-align: left;     
         background: #f8c512 url(/img/pic3.png) no-repeat right 40px;
         background-size: contain;         
+    }
+    form{
+        width: 60%;
     }
     .desktop-container{
         display: flex;
@@ -155,7 +162,7 @@ ol li{
         width: 55%;
     }
     .subscribe .subscribe-button{
-        width:25%;
+        width:50%;
         padding: 15px 0px 10px 0px;
         position: relative;
         left: 40%; 
@@ -173,7 +180,7 @@ ol li{
         left: 3%;
     }
 }
-@media (max-width: 1160px){
+@media (min-width: 1160px){
     form{
         width: 60%;
     }
