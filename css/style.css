@@ -72,10 +72,77 @@ ol li{
 
 .about-steps {
     background-color: white;
+    padding-top:40px;
+}
+
+.about-steps>h2{
+    font-size: 30px;
+    font-weight:bolder;
+    padding-bottom: 20px;
+}
+.about-steps>ol>li{
+    display: flex;
+    padding-bottom: 25px;
+ }
+
+ .about-steps>ol>li>img{
+     width: 55px;
+     height: 55px;
+    margin-right: 20px;
+ }
+
+ /*.about-steps>ol>li>a{
+     padding: 2%;
+ }*/
+
+.about-steps>ol>li>a>h4{
+    font-size: 20px;
+    font-weight: bolder;
+    padding-bottom: 5px;
+    padding-top: 10px;
+
+}
+
+.about-steps>ol>li>a>p{
+    font-size: 17px;
+    font-weight: medium;
+}
+
+.about-steps>h2>a{
+    color: #f8c512;
 }
 
 .benefits {
-    background-color: gray;
+    background-color:#ededed;
+    padding-top:40px;
+}
+
+.benefits>h2{
+    font-size: 30px;
+    font-weight: bolder;
+    padding-bottom: 25px;
+}
+
+.benefits>ul>li>h4{
+    font-size: 20px;
+    font-weight: bolder;
+    padding-top:20px;
+    padding-left: 20px;
+}
+
+.benefits>ul>li{
+   display: flex;
+   padding-bottom: 15px;
+
+}
+
+.benefits>ul>li>img{
+    width: 55px;
+    height: 55px;
+}
+
+.benefits>ul{
+    padding-bottom: 15px;
 }
 
 .subscribe {
@@ -270,6 +337,91 @@ footer {
         background: #f8c512 url(/img/reka.png) no-repeat right bottom;
     }
 
+   
+
+    .about-steps{
+        background: white url(css/img/pic1.png) no-repeat right center;
+    
+    }
+
+    .benefits{
+        background: #ededed url(css/img/pic2.png) no-repeat left center;
+        
+    }
+
+    .benefits>ul>li{
+        padding-left:50%;
+    }
+
+    .about-steps{
+        padding-left: 120px;
+    }
+
+    .about-steps>h2{
+        padding-bottom: 45px;
+        font-size: 48px;
+        font-weight: Black;
+        padding-top: 5px;
+    }
+
+    .about-steps>ol>li>a>h4{
+        font-size: 30px;
+        font-weight: ExtraBold;
+    }
+
+    .about-steps>ol>li>img{
+        width: 75px;
+        height: 75px;
+       margin-right: 40px;
+    }
+
+
+    .about-steps>ol>li{
+        padding-bottom: 45px;
+    }
+   .about-steps>ol{
+       padding-bottom: 30px;
+   }
+
+    .about-steps>ol>li>a>h4{
+        font-size: 25px;
+    }
+
+    .about-steps>ol>li>a>p{
+        font-size: 20px;
+        padding-top: 5px;
+    }
+
+    .benefits{
+        padding-left: 120px;
+    }
+
+    .benefits>h2{
+        font-size: 48px;
+        font-weight: Black;
+    }
+
+    .benefits>ul>li>h4{
+        font-size: 30px;
+    }
+
+    .benefits>ul>li>img{
+        width: 90px;
+        height: 90px;
+       margin-right: 40px;
+    }
+
+    .benefits{
+        padding-top:45px;
+        padding-bottom:30px;
+    }
+    .benefits>h2{
+    padding-bottom: 45px;
+    }
+
+    .benefits>ul>li{
+        padding-bottom: 45px;
+    }
     .team {
         display: flex;
         flex-wrap: wrap;
