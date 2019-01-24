@@ -138,22 +138,76 @@ ol li{
     font-weight: 700;
     padding: 15px 0px 10px 0px;
 }
-@media(min-width: 960px){
-    .subscribe{
-        background: #f8c512 url("img/pic3.png") no-repeat right bottom;
-    }
-}
+
 .team {
     background-color: white;
+    font-family: 'Catamaran', sans-serif;
+    color: #323232;
+    font-weight: medium;
+    font-size: 24px;
+    text-align: center;
+    padding-bottom: 30px; 
+}
+
+.team h2 {
+    font-size: 40px;
+    font-weight: 999;
+    text-transform: uppercase;
+    padding: 40px 0px 30px 0px;
+}
+
+.user {
+    display: block;
+    margin: 20px auto;
+}
+
+.user:not(:last-of-type) {
+    border-bottom: #dddddd 2px solid;
+}
+
+.user>img {
+    width: 50%;
+}
+
+.user>a>img {
+    margin: 10px 5px;
+}
+
+.user h4 {
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 10px;
 }
 
 footer {
     background-color: black;
 }
 
+@media(min-width: 610px) {
 
+    .team {
+        display: flex;
+        flex-wrap: wrap;
+    }
 
+    .team h2 {
+        width: 100%;
+    }
 
+    .user {
+        width:40%;
+        display: inline-block;
+        margin: 20px auto;
+    }
+
+    .user:not(:last-of-type) {
+        border-bottom: none;
+    }
+    
+    .user>img {
+        width: 50%;
+    }
+}
 @media(min-width: 960px){
 
     .hero-image {
@@ -163,3 +217,38 @@ footer {
     .subscribe{
         background: #f8c512 url(/css/img/pic3.png) no-repeat right bottom;
     }
+
+    .team {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .team h2 {
+        width: 100%;
+    }
+
+    .user {
+        width:20%;
+        display: inline-block;
+        margin: 20px auto;
+    }
+
+    .user:not(:last-of-type) {
+        border-bottom: none;
+    }
+    
+    .user>img {
+        width: 50%;
+    }
+
+    .user h4 {
+        font-size: 20px;
+        white-space: nowrap;
+    }
+}
+
+@media(min-width: 1350px){
+    .user h4 {
+        font-size: 30px;
+    }
+}
