@@ -4,6 +4,7 @@
 
 html {
     font-family: 'Catamaran', sans-serif;
+    scroll-behavior: smooth;
 }
 
 ol li{
@@ -24,12 +25,11 @@ ol li{
 .menu {
     height: 80px;
     background: #fff;
-    display: flex;
-    justify-content: flex-end;
+
 }
 
 .js-toggler{
-    background: url(/img/menu.svg) no-repeat right;
+    background: url(img/menu.svg) no-repeat right;
     background-color: #fff;
     width: 40px;
     border:none;
@@ -230,6 +230,45 @@ ol li{
         background: #f8c512 url(img/pic3.png) no-repeat right 40px;
         background-size: contain;         
     }
+    body {
+        padding-top: 80px;
+    }
+
+    .menu {
+        display: flex;
+        justify-content: space-around;
+        position: fixed;
+        top: 0;
+        width: 100%;
+    }
+
+    .desktop-menu {
+        display: flex;
+        align-items: center;
+    }
+
+    .desktop-menu li {
+
+        padding-right: 40px;
+    }
+
+    .desktop-menu a{
+        text-decoration: none;
+        color: #323232;
+        font-size: 20px;
+    }
+
+    .fixed-menu {
+        position:fixed;
+    }
+
+
+    .hero-image {
+        background:url(../img/reka.png) no-repeat 600px 40px, linear-gradient(#f8c512, #edb60d) ;
+        background-size: contain;
+    }
+   
+
     form{
         width: 60%;
     }
@@ -340,11 +379,11 @@ footer {
 }
 @media(min-width: 960px){
 
-    .hero-image {
+    /* .hero-image {
         background: #f8c512 url(/img/reka.png) no-repeat 650px 40px;
-    }
+    } */
 
-   
+
 
     .about-steps{
         background: white url(/img/pic1.png) no-repeat right center;

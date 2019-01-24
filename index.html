@@ -18,23 +18,25 @@
 <body>
     <div class="container">
         <header class="">
+            <div class="fixed menu">
             <nav class="menu">
-                <img src="img/logo.png" class="logo" alt="Logo aplikacji Moovit">
-                <ul>
+                <a href="#hero-image"><img src="img/logo.png" class="logo" alt="Logo aplikacji Moovit"></a>
+                <ul class="desktop-menu">
                     <li><a href="">O aplikacji</a></li>
-                    <li><a href="">Dlaczego warto</a></li>
-                    <li><a href=""></a>Pobierz aplikacje</li>
+                    <li><a href="#step-by-step">Dlaczego warto</a></li>
+                    <li><a href="#subscribe">Pobierz aplikacje</a></li>
                     <li><a href="">Twórcy</a></li>
                     <li><a href="">Kontakt</a></li>
                 </ul>
             </nav>
-            <div class="hero-image">
+        </div>
+            <div class="hero-image" id="hero-image">
                 <h2 class="first-claim">Planujesz przeprowadzkę?</h2>
                 <h2 class="second-claim">Daj sobie pomóc!</h2>
                 <h1 class="title-hero-image">Poznaj oferty ponad 100 przewoźników z trójmiasta</h1>
             </div>
         </header>
-        <div class="about-steps global-settings">
+        <div class="about-steps global-settings" id="step-by-step">
             <h2><a>Zobacz,</a> jakie to proste!</h2>
             <ol>
                 <li>
@@ -88,7 +90,7 @@
                 </li>
             </ul>
         </div>
-        <div class="subscribe global-settings">
+        <div class="subscribe global-settings" id="subscribe">
             <div class="desktop-container">
                 <h2>Zapisz się!</h2>
                 <p>Po opublikowaniu aplikacji zostaniesz powiadomiony mailem.</p>
