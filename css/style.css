@@ -216,6 +216,21 @@ ol li{
     form{
         width: 60%;
     }
+    
+    .about-steps{
+        background: white url(../img/pic1.png) no-repeat right center;
+        background-size: 40% auto;
+    }
+
+    .benefits{
+        background: #ededed url(../img/pic2.png) no-repeat right center;
+        background-size: 40% auto;
+        
+    }
+
+   
+
+
 }
 @media(min-width: 960px){
     .subscribe{
@@ -331,6 +346,33 @@ footer {
         width: 50%;
     }
 }
+@media(min-width: 960px) and (max-width: 1270px){
+    .about-steps{
+        background: white url(../img/pic1.png) no-repeat right center;
+        background-size: 40% auto;
+    }
+
+    .benefits{
+        background: #ededed url(../img/pic2.png) no-repeat right center;
+        background-size: 35% auto;
+        
+    }
+}
+
+
+
+@media(min-width: 1271px){
+    .about-steps{
+        background: white url(../img/pic1.png) no-repeat right center;
+    
+    }
+
+    .benefits{
+        background: #ededed url(../img/pic2.png) no-repeat 120px bottom;
+        
+        
+    }
+
 @media(min-width: 960px){
 
     .hero-image {
@@ -338,16 +380,6 @@ footer {
     }
 
    
-
-    .about-steps{
-        background: white url(css/img/pic1.png) no-repeat right center;
-    
-    }
-
-    .benefits{
-        background: #ededed url(css/img/pic2.png) no-repeat left center;
-        
-    }
 
     .benefits>ul>li{
         padding-left:50%;
