@@ -156,9 +156,9 @@ ol li{
 }   
 .subscribe h2{
     font-size: 40px;
-    font-weight: 999;
+    font-weight: 900;
     text-transform: uppercase;
-    padding: 40px 0px 30px 0px;
+    padding: 55px 0px 30px 15px;
 }
 .subscribe p{
     text-align: left;
@@ -180,11 +180,11 @@ ol li{
     font-size: 10px;
     text-transform: initial;
     padding: 0px 0px 30px 20px;
+    text-align: left;
 }
-.subscribe input{
-    width: 80%;
-    font-size: 18px;
-    font-weight: regular; 
+.subscribe input[type=text], input[type=email]{
+    width: 100%;
+    font-size: 18px; 
     color: #323232;
     padding: 15px 0 10px 0;
     border: none;
@@ -200,36 +200,144 @@ ol li{
     width:50%;
     background: #ffffff;
     border-radius: 30px;
+    border: none;
     color: darkblue;
     text-transform: uppercase;
     font-weight: 700;
     padding: 15px 0px 10px 0px;
+    cursor: pointer;
+    
+}
+@media(min-width: 650px) and (max-width: 959px){
+    .subscribe{   
+        background: #f8c512 url(/img/pic3.png) no-repeat right bottom;
+        background-size: 40% auto;         
+    }
+    form{
+        width: 60%;
+    }
 }
 @media(min-width: 960px){
     .subscribe{
-        background: #f8c512 url("img/pic3.png") no-repeat right bottom;
+        text-align: left;     
+        background: #f8c512 url(/img/pic3.png) no-repeat right 40px;
+        background-size: contain;         
+    }
+    form{
+        width: 60%;
+    }
+    .desktop-container{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 55%;
+    }
+    .subscribe .subscribe-button{
+        width:50%;
+        padding: 15px 0px 10px 0px;
+        position: relative;
+        left: 40%; 
+    }
+    .subscribe .form-consent-box{
+        width: 70%;
+        position: relative;
+        left: 3%;
+    }
+    .subscribe .form-consent-checkbox{
+        width: auto;
+    }
+    .name-input, .email-input{
+        position: relative;
+        left: 3%;
+    }
+}
+@media (min-width: 1160px){
+    form{
+        width: 60%;
+    }
+    .subscribe .subscribe-button{
+        width: 50%;
+        padding: 15px 0px 10px 0px;
+        position: relative;
+        left: 40%; 
     }
 }
 .team {
     background-color: white;
+    font-family: 'Catamaran', sans-serif;
+    color: #323232;
+    font-weight: medium;
+    font-size: 24px;
+    text-align: center;
+    padding-bottom: 30px; 
+}
+
+.team h2 {
+    font-size: 40px;
+    font-weight: 999;
+    text-transform: uppercase;
+    padding: 40px 0px 30px 0px;
+}
+
+.user {
+    display: block;
+    margin: 20px auto;
+}
+
+.user:not(:last-of-type) {
+    border-bottom: #dddddd 2px solid;
+}
+
+.user>img {
+    width: 50%;
+}
+
+.user>a>img {
+    margin: 10px 5px;
+}
+
+.user h4 {
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 10px;
 }
 
 footer {
     background-color: black;
 }
 
+@media(min-width: 610px) {
 
+    .team {
+        display: flex;
+        flex-wrap: wrap;
+    }
 
+    .team h2 {
+        width: 100%;
+    }
 
+    .user {
+        width:40%;
+        display: inline-block;
+        margin: 20px auto;
+    }
+
+    .user:not(:last-of-type) {
+        border-bottom: none;
+    }
+    
+    .user>img {
+        width: 50%;
+    }
+}
 @media(min-width: 960px){
 
     .hero-image {
-        background: #f8c512 url(/css/img/pic3.png) no-repeat right bottom;
+        background: #f8c512 url(/img/reka.png) no-repeat right bottom;
     }
 
-    .subscribe{
-        background: #f8c512 url(/css/img/pic3.png) no-repeat right bottom;
-    }
+   
 
     .about-steps{
         background: white url(css/img/pic1.png) no-repeat right center;
@@ -314,3 +422,37 @@ footer {
     .benefits>ul>li{
         padding-bottom: 45px;
     }
+    .team {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .team h2 {
+        width: 100%;
+    }
+
+    .user {
+        width:20%;
+        display: inline-block;
+        margin: 20px auto;
+    }
+
+    .user:not(:last-of-type) {
+        border-bottom: none;
+    }
+    
+    .user>img {
+        width: 50%;
+    }
+
+    .user h4 {
+        font-size: 20px;
+        white-space: nowrap;
+    }
+}
+
+@media(min-width: 1350px){
+    .user h4 {
+        font-size: 30px;
+    }
+}
