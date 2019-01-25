@@ -438,12 +438,6 @@ footer img{
         margin-left: 120px;
 
     }
-    .subscribe .suurl(../img/reka.png) no-repeat 400px 40px, linear-gradient(#f8c512, #edb60d)
-        width:50%;url(../img/reka.png) no-repeat 400px 40px, linear-gradient(#f8c512, #edb60d)
-        padding: 15px 0px 10px 0px;
-        position: relative;
-        left: 40%; 
-    }
     .subscribe .form-consent-box{
         width: 70%;
         position: relative;
