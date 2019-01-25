@@ -64,7 +64,7 @@ ol li{
     background: linear-gradient(#f8c512, #edb60d);
     height: auto;
     text-align: left;
-    padding:120px 15px 15px 15px;
+    padding:100px 15px 15px 15px;
 }
 
 .title-hero-image {
@@ -312,11 +312,8 @@ footer img{
         
     }
 
-   
-
-
     .hero-image {
-        background:url(../img/reka.png) no-repeat 350px 40px, linear-gradient(#f8c512, #edb60d) ;
+        background:url(../img/reka.png) no-repeat 300px 100px, linear-gradient(#f8c512, #edb60d) ;
         background-size: contain;
         padding-left:50px;
     }
@@ -325,6 +322,10 @@ footer img{
 
 }
 @media(min-width: 960px){
+
+    .hero-image {
+        padding:80px 15px 15px 15px;
+    }
     .subscribe{
         text-align: left;     
         background:url(../img/pic3.png) no-repeat right bottom, #f8c512;
@@ -336,7 +337,11 @@ footer img{
 
     .js-toggler {
         display:none;
- 
+    }
+
+    .js-menu {
+        position: initial;
+        top: 0px;
     }
 
     .menu {
@@ -371,7 +376,7 @@ footer img{
 
 
     .hero-image {
-        background:url(../img/reka.png) no-repeat 400px 40px, linear-gradient(#f8c512, #edb60d) ;
+        background:url(../img/reka.png) no-repeat 400px 115px, linear-gradient(#f8c512, #edb60d) ;
         /* background-size: contain;*/
         padding-left:120px;
     }
@@ -402,10 +407,10 @@ footer img{
         flex-direction: column;
         align-items: flex-start;
         width: 55%;
-        margin-left: 120px;
+        margin-lefurl(../img/reka.png) no-repeat 400px 40px, linear-gradient(#f8c512, #edb60d)
     }
-    .subscribe .subscribe-button{
-        width:50%;
+    .subscribe .suurl(../img/reka.png) no-repeat 400px 40px, linear-gradient(#f8c512, #edb60d)
+        width:50%;url(../img/reka.png) no-repeat 400px 40px, linear-gradient(#f8c512, #edb60d)
         padding: 15px 0px 10px 0px;
         position: relative;
         left: 40%; 
@@ -664,7 +669,7 @@ footer {
     }
 
     .hero-image {
-        background:url(../img/reka.png) no-repeat 800px 40px, linear-gradient(#f8c512, #edb60d) ;
+        background:url(../img/reka.png) no-repeat 800px 115px, linear-gradient(#f8c512, #edb60d) ;
     }
 
     .benefits{
@@ -675,7 +680,7 @@ footer {
 
 @media(min-width: 1580px){
 .hero-image {
-    background:url(../img/reka.png) no-repeat 1000px 40px, linear-gradient(#f8c512, #edb60d) ;
+    background:url(../img/reka.png) no-repeat 1000px 115px, linear-gradient(#f8c512, #edb60d) ;
     }
  
 .about-steps{
