@@ -44,9 +44,6 @@ ol li{
     display: initial;
 } */
 
-.dev-hover:hover {
-    border: 1px #000 solid;
-}
 
 .logo {
     margin: 20px;
@@ -236,7 +233,7 @@ ol li{
 }
 @media(min-width: 650px) and (max-width: 959px){
     .subscribe{   
-        background: #f8c512 url(img/pic3.png) no-repeat right bottom;
+        background: url(../img/pic3.png) no-repeat right bottom, #f8c512;
         background-size: 40% auto;         
     }
     form{
@@ -255,7 +252,7 @@ ol li{
 @media(min-width: 960px){
     .subscribe{
         text-align: left;     
-        background: #f8c512 url(img/pic3.png) no-repeat right 40px;
+        background: url(../img/pic3.png) no-repeat right bottom, #f8c512;
         background-size: contain;         
     }
     body {
