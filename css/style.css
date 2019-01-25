@@ -4,6 +4,7 @@
 
 html {
     font-family: 'Catamaran', sans-serif;
+    scroll-behavior: smooth;
 }
 
 ol li{
@@ -21,13 +22,28 @@ ol li{
     height: auto;
 }
 
-
 .menu {
     height: 80px;
     background: #fff;
-    display: flex;
-    justify-content: flex-end;
+
 }
+/* 
+.js-toggler{
+    background: url(img/menu.svg) no-repeat right;
+    background-color: #fff;
+    width: 40px;
+    border:none;
+    margin-right: 30px;
+}
+
+.js-menu {
+    display:none;
+}
+
+.expanded {
+    display: initial;
+} */
+
 
 .logo {
     margin: 20px;
@@ -42,33 +58,37 @@ ol li{
 }
 
 .title-hero-image {
-    font-size: 30px;
+    font-size: 26px;
     font-weight: 700;
     color: #323232;
-    margin: 20px 20px 40px 20px;
+    margin: 10px 20px 10px 0px;
+}
+
+.white-text {
+    color: #fff;
 }
 
 .first-claim {
-    font-size: 36px;
+    font-size: 30px;
     font-weight: 800;
     color: #fff;
-    margin: 40px 20px 10px 20px;
+    margin: 40px 20px 10px 0px;
 }
 
 .second-claim {
-    font-size: 36px;
+    font-size: 30px;
     font-weight: 900;
     color: #323232;
-    margin: 0px 20px 20px 20px;
+    margin: 0px 20px 40px 0px;
 }
 
-/* TEST*/
-/* header img {
-    width: 60%;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-} */
+.upperCase {
+    text-transform: uppercase;
+}
+
+.margin-bottom {
+    margin-bottom: 40px;
+}
 
 .about-steps {
     background-color: white;
@@ -169,7 +189,7 @@ ol li{
     font-size: 40px;
     font-weight: 900;
     text-transform: uppercase;
-    padding: 55px 0px 30px 15px;
+    padding: 55px 0px 30px 0px;
 }
 .subscribe p{
     text-align: left;
@@ -188,7 +208,7 @@ ol li{
     margin: 0 -15px 0px 15px;
 }
 .subscribe .form-consent-text{
-    font-size: 10px;
+    font-size: 12px;
     text-transform: initial;
     padding: 0px 0px 30px 20px;
     text-align: left;
@@ -219,9 +239,49 @@ ol li{
     cursor: pointer;
     
 }
+footer {
+    min-height: 10vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    background-color: url(/img/footer.png) no-repeat center;
+    background-size: cover;
+    color: white; 
+}
+footer .footer-box{
+    display: flex;
+    flex-direction: column;
+}
+footer a{
+    text-decoration: none;
+    color: white;
+}
+footer a:hover{
+    text-decoration: underline;
+}
+footer .contact{
+    padding-top: 15px; 
+}
+footer .copyright{
+    text-decoration: none;
+    padding:15px 0px 10px 0px;
+}
+footer .moveIt{
+    padding:5px 0px 5px 0px;
+    font-weight: 900;
+}
+footer img{
+    width: 150px;
+    height: auto;
+    margin-bottom: -5px;
+}
+
+
+/* Media Querries */
+
 @media(min-width: 650px) and (max-width: 959px){
     .subscribe{   
-        background: #f8c512 url(/img/pic3.png) no-repeat right bottom;
+        background: url(../img/pic3.png) no-repeat right bottom, #f8c512;
         background-size: 40% auto;         
     }
     form{
@@ -242,13 +302,79 @@ ol li{
    
 
 
+    .hero-image {
+        background:url(../img/reka.png) no-repeat 350px 40px, linear-gradient(#f8c512, #edb60d) ;
+        background-size: contain;
+        padding-left:50px;
+    }
+
+    
+
 }
 @media(min-width: 960px){
     .subscribe{
         text-align: left;     
-        background: #f8c512 url(/img/pic3.png) no-repeat right 40px;
+        background:url(../img/pic3.png) no-repeat right 40px, #f8c512;
         background-size: contain;         
     }
+    body {
+        padding-top: 80px;
+    }
+
+    .menu {
+        display: flex;
+        justify-content: space-around;
+        position: fixed;
+        top: 0;
+        width: 100%;
+    }
+
+    .desktop-menu {
+        display: flex;
+        align-items: center;
+    }
+
+    .desktop-menu li {
+
+        padding-right: 40px;
+    }
+
+    .desktop-menu a{
+        text-decoration: none;
+        color: #323232;
+        font-size: 20px;
+    }
+
+    .desktop-menu a:hover{
+        color: #f8c512;
+        transition: all 0.5s;
+    }
+
+
+    .hero-image {
+        background:url(../img/reka.png) no-repeat 400px 40px, linear-gradient(#f8c512, #edb60d) ;
+        /* background-size: contain;*/
+        padding-left:120px;
+    }
+
+    .title-hero-image {
+        font-size: 33px;
+    }
+    
+    .first-claim {
+        font-size: 40px;
+        margin-top:150px;
+    }
+    
+    .second-claim {
+        font-size: 40px;
+    }
+    
+    .margin-bottom {
+        margin-bottom: 150px;
+    }
+   
+
     form{
         width: 60%;
     }
@@ -276,6 +402,13 @@ ol li{
         position: relative;
         left: 3%;
     }
+    footer {
+        min-height: 10vh;
+        display: flex;
+        justify-content: space-around;
+        background: url(../img/footer.png) no-repeat center;
+        background-size: cover;      
+    }
 }
 @media (min-width: 1160px){
     form{
@@ -286,6 +419,10 @@ ol li{
         padding: 15px 0px 10px 0px;
         position: relative;
         left: 40%; 
+    }
+    footer img{
+        width: 200px;
+        height: auto;
     }
 }
 .team {
@@ -497,5 +634,29 @@ footer {
 @media(min-width: 1350px){
     .user h4 {
         font-size: 30px;
+    }
+
+    .hero-image {
+        background:url(../img/reka.png) no-repeat 800px 40px, linear-gradient(#f8c512, #edb60d) ;
+    }
+
+    .benefits{
+        background: #ededed url(/img/pic2.png) no-repeat left bottom;
+        background-size: 40%;
+    }
+}
+
+@media(min-width: 1580px){
+.hero-image {
+    background:url(../img/reka.png) no-repeat 1000px 40px, linear-gradient(#f8c512, #edb60d) ;
+    }
+
+.about-steps{
+    background: white url(/img/pic1.png) no-repeat right center;
+    background-size: contain;
+    }
+.benefits{
+    background: #ededed url(/img/pic2.png) no-repeat left bottom;
+    background-size: 35%;
     }
 }
