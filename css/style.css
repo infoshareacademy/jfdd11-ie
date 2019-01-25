@@ -162,8 +162,6 @@ ol li{
 .benefits>ul>li>img{
     width: 55px;
     height: 55px;
-    width: 100px;
-    height: 100px;
     border-radius: 50%;
     margin-right: 40px;
     padding: 5px;
@@ -232,13 +230,18 @@ ol li{
     background: #ffffff;
     border-radius: 30px;
     border: none;
-    color: darkblue;
+    color: #323232;
     text-transform: uppercase;
     font-weight: 700;
     padding: 15px 0px 10px 0px;
     cursor: pointer;
-    
+    transition: 0.3s;
 }
+
+.subscribe-button:hover {
+    color: #f8c512;
+}
+
 footer {
     min-height: 10vh;
     display: flex;
@@ -314,8 +317,8 @@ footer img{
 @media(min-width: 960px){
     .subscribe{
         text-align: left;     
-        background:url(../img/pic3.png) no-repeat right 40px, #f8c512;
-        background-size: contain;         
+        background:url(../img/pic3.png) no-repeat right bottom, #f8c512;
+        background-size: 50%;         
     }
     body {
         padding-top: 80px;
@@ -327,6 +330,7 @@ footer img{
         position: fixed;
         top: 0;
         width: 100%;
+        z-index: 700;
     }
 
     .desktop-menu {
@@ -383,6 +387,7 @@ footer img{
         flex-direction: column;
         align-items: flex-start;
         width: 55%;
+        margin-left: 120px;
     }
     .subscribe .subscribe-button{
         width:50%;
@@ -411,6 +416,12 @@ footer img{
     }
 }
 @media (min-width: 1160px){
+    .subscribe{
+        text-align: left;     
+        background:url(../img/pic3.png) no-repeat right 40px, #f8c512;
+        background-size: contain;         
+    }
+
     form{
         width: 60%;
     }
@@ -466,7 +477,7 @@ footer img{
 }
 
 footer {
-    background-color: black;
+    background-image: url(../img/footer.png);
 }
 
 @media(min-width: 610px) {
@@ -498,12 +509,13 @@ footer {
     .about-steps{
         background: white url(../img/pic1.png) no-repeat right center;
         background-size: 40% auto;
+        padding-left: 120px;
     }
 
     .benefits{
         background: #ededed url(../img/pic2.png) no-repeat right center;
         background-size: 35% auto;
-        
+        padding-left: 120px;
     }
 }
 
@@ -650,13 +662,13 @@ footer {
 .hero-image {
     background:url(../img/reka.png) no-repeat 1000px 40px, linear-gradient(#f8c512, #edb60d) ;
     }
-
+ 
 .about-steps{
-    background: white url(/img/pic1.png) no-repeat right center;
-    background-size: contain;
+    background: white url(/img/pic1.png) no-repeat 900px 20px;
+    background-size: 40%;
     }
 .benefits{
-    background: #ededed url(/img/pic2.png) no-repeat left bottom;
+    background: #ededed url(/img/pic2.png) no-repeat 120px bottom;
     background-size: 35%;
-    }
 }
+    }
