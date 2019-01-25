@@ -22,12 +22,26 @@ ol li{
     height: auto;
 }
 
-
 .menu {
     height: 80px;
     background: #fff;
-    display: flex;
-    justify-content: flex-end;
+
+}
+
+.js-toggler{
+    background: url(img/menu.svg) no-repeat right;
+    background-color: #fff;
+    width: 40px;
+    border:none;
+    margin-right: 30px;
+}
+
+.js-menu {
+    display:none;
+}
+
+.expanded {
+    display: initial;
 }
 
 .logo {
@@ -62,14 +76,6 @@ ol li{
     color: #323232;
     margin: 0px 20px 20px 20px;
 }
-
-/* TEST*/
-/* header img {
-    width: 60%;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-} */
 
 .about-steps {
     background-color: white;
@@ -264,6 +270,45 @@ footer img{
         background:url(../img/pic3.png) no-repeat right 40px, #f8c512;
         background-size: contain;         
     }
+    body {
+        padding-top: 80px;
+    }
+
+    .menu {
+        display: flex;
+        justify-content: space-around;
+        position: fixed;
+        top: 0;
+        width: 100%;
+    }
+
+    .desktop-menu {
+        display: flex;
+        align-items: center;
+    }
+
+    .desktop-menu li {
+
+        padding-right: 40px;
+    }
+
+    .desktop-menu a{
+        text-decoration: none;
+        color: #323232;
+        font-size: 20px;
+    }
+
+    .fixed-menu {
+        position:fixed;
+    }
+
+
+    .hero-image {
+        background:url(../img/reka.png) no-repeat 600px 40px, linear-gradient(#f8c512, #edb60d) ;
+        background-size: contain;
+    }
+   
+
     form{
         width: 60%;
     }
@@ -385,19 +430,19 @@ footer {
 }
 @media(min-width: 960px){
 
-    .hero-image {
-        background: #f8c512 url(/img/reka.png) no-repeat right bottom;
-    }
+    /* .hero-image {
+        background: #f8c512 url(/img/reka.png) no-repeat 650px 40px;
+    } */
 
-   
+
 
     .about-steps{
-        background: white url(css/img/pic1.png) no-repeat right center;
+        background: white url(/img/pic1.png) no-repeat right center;
     
     }
 
     .benefits{
-        background: #ededed url(css/img/pic2.png) no-repeat left center;
+        background: #ededed url(/img/pic2.png) no-repeat left center;
         
     }
 
