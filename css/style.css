@@ -27,7 +27,7 @@ ol li{
     background: #fff;
 
 }
-
+/* 
 .js-toggler{
     background: url(img/menu.svg) no-repeat right;
     background-color: #fff;
@@ -42,7 +42,8 @@ ol li{
 
 .expanded {
     display: initial;
-}
+} */
+
 
 .logo {
     margin: 20px;
@@ -57,24 +58,36 @@ ol li{
 }
 
 .title-hero-image {
-    font-size: 30px;
+    font-size: 26px;
     font-weight: 700;
     color: #323232;
-    margin: 20px 20px 40px 20px;
+    margin: 10px 20px 10px 0px;
+}
+
+.white-text {
+    color: #fff;
 }
 
 .first-claim {
-    font-size: 36px;
+    font-size: 30px;
     font-weight: 800;
     color: #fff;
-    margin: 40px 20px 10px 20px;
+    margin: 40px 20px 10px 0px;
 }
 
 .second-claim {
-    font-size: 36px;
+    font-size: 30px;
     font-weight: 900;
     color: #323232;
-    margin: 0px 20px 20px 20px;
+    margin: 0px 20px 40px 0px;
+}
+
+.upperCase {
+    text-transform: uppercase;
+}
+
+.margin-bottom {
+    margin-bottom: 40px;
 }
 
 .about-steps {
@@ -144,8 +157,11 @@ ol li{
 }
 
 .benefits>ul>li>img{
-    width: 55px;
-    height: 55px;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    padding: 3px;
+    background: white;
 }
 
 .benefits>ul{
@@ -165,7 +181,7 @@ ol li{
     font-size: 40px;
     font-weight: 900;
     text-transform: uppercase;
-    padding: 55px 0px 30px 15px;
+    padding: 55px 0px 30px 0px;
 }
 .subscribe p{
     text-align: left;
@@ -184,7 +200,7 @@ ol li{
     margin: 0 -15px 0px 15px;
 }
 .subscribe .form-consent-text{
-    font-size: 10px;
+    font-size: 12px;
     text-transform: initial;
     padding: 0px 0px 30px 20px;
     text-align: left;
@@ -263,11 +279,24 @@ footer img{
     form{
         width: 60%;
     }
+
+    .hero-image {
+        background:url(../img/reka.png) no-repeat 350px 40px, linear-gradient(#f8c512, #edb60d) ;
+        background-size: contain;
+        padding-left:50px;
+    }
+
+    
+
 }
 @media(min-width: 960px){
     .subscribe{
         text-align: left;     
+<<<<<<< HEAD
+        background: url(../img/pic3.png) no-repeat right bottom, #f8c512;
+=======
         background:url(../img/pic3.png) no-repeat right 40px, #f8c512;
+>>>>>>> 7dea9a0a0bd5d220e31a7453718b6e0cceecb248
         background-size: contain;         
     }
     body {
@@ -298,14 +327,33 @@ footer img{
         font-size: 20px;
     }
 
-    .fixed-menu {
-        position:fixed;
+    .desktop-menu a:hover{
+        color: #f8c512;
+        transition: all 0.5s;
     }
 
 
     .hero-image {
-        background:url(../img/reka.png) no-repeat 600px 40px, linear-gradient(#f8c512, #edb60d) ;
-        background-size: contain;
+        background:url(../img/reka.png) no-repeat 400px 40px, linear-gradient(#f8c512, #edb60d) ;
+        /* background-size: contain;*/
+        padding-left:120px;
+    }
+
+    .title-hero-image {
+        font-size: 33px;
+    }
+    
+    .first-claim {
+        font-size: 40px;
+        margin-top:150px;
+    }
+    
+    .second-claim {
+        font-size: 40px;
+    }
+    
+    .margin-bottom {
+        margin-bottom: 150px;
     }
    
 
@@ -438,12 +486,12 @@ footer {
 
     .about-steps{
         background: white url(/img/pic1.png) no-repeat right center;
-    
+        background-size: 50%;
     }
 
     .benefits{
         background: #ededed url(/img/pic2.png) no-repeat left center;
-        
+        background-size: 45%;
     }
 
     .benefits>ul>li{
@@ -551,5 +599,29 @@ footer {
 @media(min-width: 1350px){
     .user h4 {
         font-size: 30px;
+    }
+
+    .hero-image {
+        background:url(../img/reka.png) no-repeat 800px 40px, linear-gradient(#f8c512, #edb60d) ;
+    }
+
+    .benefits{
+        background: #ededed url(/img/pic2.png) no-repeat left bottom;
+        background-size: 40%;
+    }
+}
+
+@media(min-width: 1580px){
+.hero-image {
+    background:url(../img/reka.png) no-repeat 1000px 40px, linear-gradient(#f8c512, #edb60d) ;
+    }
+
+.about-steps{
+    background: white url(/img/pic1.png) no-repeat right center;
+    background-size: contain;
+    }
+.benefits{
+    background: #ededed url(/img/pic2.png) no-repeat left bottom;
+    background-size: 35%;
     }
 }
