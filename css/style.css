@@ -25,24 +25,34 @@ ol li{
 .menu {
     height: 80px;
     background: #fff;
+    position:fixed;
+    width:100%;
+    display:flex;
+    justify-content: space-between;
 
 }
-/* 
+
 .js-toggler{
-    background: url(img/menu.svg) no-repeat right;
-    background-color: #fff;
-    width: 40px;
+    /* background: url(../img/menu.svg) no-repeat; */
+    width: 30px;
     border:none;
-    margin-right: 30px;
+    margin-right: 40px;
+    margin-top: 25px;
+
 }
 
 .js-menu {
     display:none;
+    top: 80px;
+    position: absolute;
+    right: 0;
+    background: #fff;
+    left:0;
 }
 
 .expanded {
     display: initial;
-} */
+}
 
 
 .logo {
@@ -54,7 +64,7 @@ ol li{
     background: linear-gradient(#f8c512, #edb60d);
     height: auto;
     text-align: left;
-    padding: 15px;
+    padding:120px 15px 15px 15px;
 }
 
 .title-hero-image {
@@ -322,6 +332,11 @@ footer img{
     }
     body {
         padding-top: 80px;
+    }
+
+    .js-toggler {
+        display:none;
+ 
     }
 
     .menu {
