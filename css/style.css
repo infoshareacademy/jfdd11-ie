@@ -29,6 +29,7 @@ ol li{
     width:100%;
     display:flex;
     justify-content: space-between;
+    z-index: 999;
 
 }
 
@@ -48,10 +49,28 @@ ol li{
     right: 0;
     background: #fff;
     left:0;
+
+
 }
+
+.js-menu li {
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.js-menu a {
+    color: #323232;
+    text-decoration: none;
+    font-size: 22px;
+}
+
 
 .expanded {
     display: initial;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 999;
 }
 
 
@@ -203,7 +222,7 @@ ol li{
     text-align: left;
     font-size: 24px;
     text-transform: uppercase;
-    padding: 30px 0px 30px 20px;
+    padding: 30px 0px 30px 0px;
 }
 .subscribe .form-consent-box{
     display: flex;
@@ -313,7 +332,7 @@ footer img{
     }
 
     .hero-image {
-        background:url(../img/reka.png) no-repeat 300px 100px, linear-gradient(#f8c512, #edb60d) ;
+        background:url(../img/reka.png) no-repeat 280px 100px, linear-gradient(#f8c512, #edb60d) ;
         background-size: contain;
         padding-left:50px;
     }
@@ -323,9 +342,16 @@ footer img{
 }
 @media(min-width: 960px){
 
-    .hero-image {
-        padding:80px 15px 15px 15px;
+    .upperCase {
+        text-transform: capitalize;
     }
+
+    .hero-image {
+        background:url(../img/reka.png) no-repeat 340px 140px, linear-gradient(#f8c512, #edb60d) ;
+        background-size: contain;
+        padding: 20px 15px 15px 50px; 
+    }
+
     .subscribe{
         text-align: left;     
         background:url(../img/pic3.png) no-repeat right bottom, #f8c512;
@@ -344,9 +370,11 @@ footer img{
         top: 0px;
     }
 
+   
+
     .menu {
         display: flex;
-        justify-content: space-around;
+        justify-content: space-evenly;
         position: fixed;
         top: 0;
         width: 100%;
@@ -359,8 +387,7 @@ footer img{
     }
 
     .desktop-menu li {
-
-        padding-right: 40px;
+        padding-right: 45px;
     }
 
     .desktop-menu a{
@@ -376,7 +403,7 @@ footer img{
 
 
     .hero-image {
-        background:url(../img/reka.png) no-repeat 400px 115px, linear-gradient(#f8c512, #edb60d) ;
+        background:url(../img/reka.png) no-repeat 400px px, linear-gradient(#f8c512, #edb60d) ;
         /* background-size: contain;*/
         padding-left:120px;
     }
@@ -407,7 +434,8 @@ footer img{
         flex-direction: column;
         align-items: flex-start;
         width: 55%;
-        margin-lefurl(../img/reka.png) no-repeat 400px 40px, linear-gradient(#f8c512, #edb60d)
+        margin-left: 120px;
+
     }
     .subscribe .suurl(../img/reka.png) no-repeat 400px 40px, linear-gradient(#f8c512, #edb60d)
         width:50%;url(../img/reka.png) no-repeat 400px 40px, linear-gradient(#f8c512, #edb60d)
@@ -555,9 +583,9 @@ footer {
 
 @media(min-width: 960px){
 
-    .hero-image {
-        background: #f8c512 url(/img/reka.png) no-repeat right bottom;
-    }
+    /* .hero-image {
+        background: url(../img/reka.png) no-repeat 700px 115px, linear-gradient(#f8c512, #edb60d);
+    } */
 
    
 
