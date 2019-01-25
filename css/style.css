@@ -153,15 +153,23 @@ ol li{
 .benefits>ul>li{
    display: flex;
    padding-bottom: 15px;
+   
 
 }
 
+
+
 .benefits>ul>li>img{
-    height: 60px;
-    width: 60px;
+    width: 55px;
+    height: 55px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
-    padding: 3px;
+    margin-right: 40px;
+    padding: 5px;
     background: white;
+    
+    
 }
 
 .benefits>ul{
@@ -279,6 +287,20 @@ footer img{
     form{
         width: 60%;
     }
+    
+    .about-steps{
+        background: white url(../img/pic1.png) no-repeat right center;
+        background-size: 40% auto;
+    }
+
+    .benefits{
+        background: #ededed url(../img/pic2.png) no-repeat right center;
+        background-size: 40% auto;
+        
+    }
+
+   
+
 
     .hero-image {
         background:url(../img/reka.png) no-repeat 350px 40px, linear-gradient(#f8c512, #edb60d) ;
@@ -292,11 +314,7 @@ footer img{
 @media(min-width: 960px){
     .subscribe{
         text-align: left;     
-<<<<<<< HEAD
-        background: url(../img/pic3.png) no-repeat right bottom, #f8c512;
-=======
         background:url(../img/pic3.png) no-repeat right 40px, #f8c512;
->>>>>>> 7dea9a0a0bd5d220e31a7453718b6e0cceecb248
         background-size: contain;         
     }
     body {
@@ -476,23 +494,40 @@ footer {
         width: 50%;
     }
 }
-@media(min-width: 960px){
-
-    /* .hero-image {
-        background: #f8c512 url(/img/reka.png) no-repeat 650px 40px;
-    } */
-
-
-
+@media(min-width: 960px) and (max-width: 1270px){
     .about-steps{
-        background: white url(/img/pic1.png) no-repeat right center;
-        background-size: 50%;
+        background: white url(../img/pic1.png) no-repeat right center;
+        background-size: 40% auto;
     }
 
     .benefits{
-        background: #ededed url(/img/pic2.png) no-repeat left center;
-        background-size: 45%;
+        background: #ededed url(../img/pic2.png) no-repeat right center;
+        background-size: 35% auto;
+        
     }
+}
+
+
+
+@media(min-width: 1271px){
+    .about-steps{
+        background: white url(../img/pic1.png) no-repeat right center;
+    
+    }
+
+    .benefits{
+        background: #ededed url(../img/pic2.png) no-repeat 120px bottom;
+        
+        
+    }
+
+@media(min-width: 960px){
+
+    .hero-image {
+        background: #f8c512 url(/img/reka.png) no-repeat right bottom;
+    }
+
+   
 
     .benefits>ul>li{
         padding-left:50%;
