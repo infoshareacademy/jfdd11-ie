@@ -215,9 +215,49 @@ ol li{
     cursor: pointer;
     
 }
+footer {
+    min-height: 10vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    background-color: url(/img/footer.png) no-repeat center;
+    background-size: cover;
+    color: white; 
+}
+footer .footer-box{
+    display: flex;
+    flex-direction: column;
+}
+footer a{
+    text-decoration: none;
+    color: white;
+}
+footer a:hover{
+    text-decoration: underline;
+}
+footer .contact{
+    padding-top: 15px; 
+}
+footer .copyright{
+    text-decoration: none;
+    padding:15px 0px 10px 0px;
+}
+footer .moveIt{
+    padding:5px 0px 5px 0px;
+    font-weight: 900;
+}
+footer img{
+    width: 150px;
+    height: auto;
+    margin-bottom: -5px;
+}
+
+
+/* Media Querries */
+
 @media(min-width: 650px) and (max-width: 959px){
     .subscribe{   
-        background: #f8c512 url(img/pic3.png) no-repeat right bottom;
+        background: url(../img/pic3.png) no-repeat right bottom, #f8c512;
         background-size: 40% auto;         
     }
     form{
@@ -227,7 +267,7 @@ ol li{
 @media(min-width: 960px){
     .subscribe{
         text-align: left;     
-        background: #f8c512 url(img/pic3.png) no-repeat right 40px;
+        background:url(../img/pic3.png) no-repeat right 40px, #f8c512;
         background-size: contain;         
     }
     body {
@@ -296,6 +336,13 @@ ol li{
         position: relative;
         left: 3%;
     }
+    footer {
+        min-height: 10vh;
+        display: flex;
+        justify-content: space-around;
+        background: url(../img/footer.png) no-repeat center;
+        background-size: cover;      
+    }
 }
 @media (min-width: 1160px){
     form{
@@ -306,6 +353,10 @@ ol li{
         padding: 15px 0px 10px 0px;
         position: relative;
         left: 40%; 
+    }
+    footer img{
+        width: 200px;
+        height: auto;
     }
 }
 .team {
