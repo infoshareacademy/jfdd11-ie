@@ -30,16 +30,14 @@ ol li{
     display:flex;
     justify-content: space-between;
     z-index: 999;
-
 }
 
 .js-toggler{
-    /* background: url(../img/menu.svg) no-repeat; */
     width: 30px;
     border:none;
     margin-right: 40px;
     margin-top: 25px;
-
+    cursor: pointer;
 }
 
 .js-menu {
@@ -49,8 +47,6 @@ ol li{
     right: 0;
     background: #fff;
     left:0;
-
-
 }
 
 .js-menu li {
@@ -64,7 +60,6 @@ ol li{
     font-size: 22px;
 }
 
-
 .expanded {
     display: initial;
     display: flex;
@@ -72,7 +67,6 @@ ol li{
     align-items: center;
     z-index: 999;
 }
-
 
 .logo {
     margin: 20px;
@@ -140,16 +134,11 @@ ol li{
     margin-right: 20px;
  }
 
- /*.about-steps>ol>li>a{
-     padding: 2%;
- }*/
-
 .about-steps>ol>li>a>h4{
     font-size: 20px;
     font-weight: bolder;
     padding-bottom: 5px;
     padding-top: 10px;
-
 }
 
 .about-steps>ol>li>a>p{
@@ -182,11 +171,7 @@ ol li{
 .benefits>ul>li{
    display: flex;
    padding-bottom: 15px;
-   
-
 }
-
-
 
 .benefits>ul>li>img{
     width: 55px;
@@ -195,8 +180,6 @@ ol li{
     margin-right: 40px;
     padding: 5px;
     background: white;
-    
-    
 }
 
 .benefits>ul{
@@ -213,34 +196,40 @@ ol li{
     text-align: center;
     padding-bottom: 30px; 
 }   
+
 .subscribe h2{
     font-size: 40px;
     font-weight: 900;
     text-transform: uppercase;
     padding: 55px 0px 30px 0px;
 }
+
 .subscribe p{
     text-align: left;
     font-size: 24px;
     text-transform: uppercase;
     padding: 30px 0px 30px 0px;
 }
+
 .subscribe .form-consent-box{
     display: flex;
     align-items: baseline;
     padding: 20px 0px 10px 0px;
 }
+
 .subscribe .form-consent-checkbox{
     width: auto;
     padding: 0;
     margin: 0 -15px 0px 15px;
 }
+
 .subscribe .form-consent-text{
     font-size: 12px;
     text-transform: initial;
     padding: 0px 0px 30px 20px;
     text-align: left;
 }
+
 .subscribe input[type=text], input[type=email]{
     width: 100%;
     font-size: 18px; 
@@ -250,11 +239,13 @@ ol li{
     border-bottom: 3px solid #ffffff;
     background-color: #f8c512;
 }
+
 .subscribe input::placeholder{
     font-family: 'Catamaran', sans-serif;
     color: #323232;
     opacity: 1;
 }
+
 .subscribe .subscribe-button{
     width:50%;
     background: #ffffff;
@@ -272,213 +263,7 @@ ol li{
     color: #f8c512;
 }
 
-footer {
-    min-height: 10vh;
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-end;
-    background-color: url(/img/footer.png) no-repeat center;
-    background-size: cover;
-    color: white; 
-}
-footer .footer-box{
-    display: flex;
-    flex-direction: column;
-}
-footer a{
-    text-decoration: none;
-    color: white;
-}
-footer a:hover{
-    text-decoration: underline;
-}
-footer .contact{
-    padding-top: 15px; 
-}
-footer .copyright{
-    text-decoration: none;
-    padding:15px 0px 10px 0px;
-}
-footer .moveIt{
-    padding:5px 0px 5px 0px;
-    font-weight: 900;
-}
-footer img{
-    width: 150px;
-    height: auto;
-    margin-bottom: -5px;
-}
 
-
-/* Media Querries */
-
-@media(min-width: 650px) and (max-width: 959px){
-    .subscribe{   
-        background: url(../img/pic3.png) no-repeat right bottom, #f8c512;
-        background-size: 40% auto;         
-    }
-    form{
-        width: 60%;
-    }
-    
-    .about-steps{
-        background: white url(../img/pic1.png) no-repeat right center;
-        background-size: 40% auto;
-    }
-
-    .benefits{
-        background: #ededed url(../img/pic2.png) no-repeat right center;
-        background-size: 40% auto;
-        
-    }
-
-    .hero-image {
-        background:url(../img/reka.png) no-repeat 280px 100px, linear-gradient(#f8c512, #edb60d) ;
-        background-size: contain;
-        padding-left:50px;
-    }
-
-    
-
-}
-@media(min-width: 960px){
-
-    .upperCase {
-        text-transform: capitalize;
-    }
-
-    .hero-image {
-        background:url(../img/reka.png) no-repeat 340px 140px, linear-gradient(#f8c512, #edb60d) ;
-        background-size: contain;
-        padding: 20px 15px 15px 50px; 
-    }
-
-    .subscribe{
-        text-align: left;     
-        background:url(../img/pic3.png) no-repeat right bottom, #f8c512;
-        background-size: 50%;         
-    }
-    body {
-        padding-top: 80px;
-    }
-
-    .js-toggler {
-        display:none;
-    }
-
-    .js-menu {
-        position: initial;
-        top: 0px;
-    }
-
-   
-
-    .menu {
-        display: flex;
-        justify-content: space-evenly;
-        position: fixed;
-        top: 0;
-        width: 100%;
-        z-index: 700;
-    }
-
-    .desktop-menu {
-        display: flex;
-        align-items: center;
-    }
-
-    .desktop-menu li {
-        padding-right: 45px;
-    }
-
-    .desktop-menu a{
-        text-decoration: none;
-        color: #323232;
-        font-size: 20px;
-    }
-
-    .desktop-menu a:hover{
-        color: #f8c512;
-        transition: all 0.5s;
-    }
-
-
-    .hero-image {
-        background:url(../img/reka.png) no-repeat 400px px, linear-gradient(#f8c512, #edb60d) ;
-        /* background-size: contain;*/
-        padding-left:120px;
-    }
-
-    .title-hero-image {
-        font-size: 33px;
-    }
-    
-    .first-claim {
-        font-size: 40px;
-        margin-top:150px;
-    }
-    
-    .second-claim {
-        font-size: 40px;
-    }
-    
-    .margin-bottom {
-        margin-bottom: 150px;
-    }
-   
-
-    form{
-        width: 60%;
-    }
-    .desktop-container{
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        width: 55%;
-        margin-left: 120px;
-
-    }
-    .subscribe .form-consent-box{
-        width: 70%;
-        position: relative;
-        left: 3%;
-    }
-    .subscribe .form-consent-checkbox{
-        width: auto;
-    }
-    .name-input, .email-input{
-        position: relative;
-        left: 3%;
-    }
-    footer {
-        min-height: 10vh;
-        display: flex;
-        justify-content: space-around;
-        background: url(../img/footer.png) no-repeat center;
-        background-size: cover;      
-    }
-}
-@media (min-width: 1160px){
-    .subscribe{
-        text-align: left;     
-        background:url(../img/pic3.png) no-repeat right 40px, #f8c512;
-        background-size: contain;         
-    }
-
-    form{
-        width: 60%;
-    }
-    .subscribe .subscribe-button{
-        width: 50%;
-        padding: 15px 0px 10px 0px;
-        position: relative;
-        left: 40%; 
-    }
-    footer img{
-        width: 200px;
-        height: auto;
-    }
-}
 .team {
     background-color: white;
     font-family: 'Catamaran', sans-serif;
@@ -512,6 +297,13 @@ footer img{
 
 .user>a>img {
     margin: 10px 5px;
+    opacity: 1;
+    transition: 0.3s;
+}
+
+
+.user>a>img:hover {
+    opacity: 0.5;
 }
 
 .user h4 {
@@ -522,6 +314,222 @@ footer img{
 
 footer {
     background-image: url(../img/footer.png);
+}
+
+footer {
+    min-height: 10vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    background-color: url(/img/footer.png) no-repeat center;
+    background-size: cover;
+    color: white; 
+}
+
+footer .footer-box{
+    display: flex;
+    flex-direction: column;
+}
+
+footer a{
+    text-decoration: none;
+    color: white;
+}
+
+footer a:hover{
+    text-decoration: underline;
+}
+
+footer .contact{
+    padding-top: 15px; 
+}
+
+footer .copyright{
+    text-decoration: none;
+    padding:15px 0px 10px 0px;
+}
+
+footer .moveIt{
+    padding:5px 0px 5px 0px;
+    font-weight: 900;
+}
+
+footer img{
+    width: 150px;
+    height: auto;
+    margin-bottom: -5px;
+}
+
+/* Media Querries */
+
+@media(min-width: 650px) and (max-width: 959px){
+    .subscribe{   
+        background: url(../img/pic3.png) no-repeat right bottom, #f8c512;
+        background-size: 40% auto;         
+    }
+
+    form{
+        width: 60%;
+    }
+    
+    .about-steps{
+        background: white url(../img/pic1.png) no-repeat right center;
+        background-size: 40% auto;
+    }
+
+    .benefits{
+        background: #ededed url(../img/pic2.png) no-repeat right center;
+        background-size: 40% auto;
+    }
+
+    .hero-image {
+        background:url(../img/reka.png) no-repeat 280px 100px, linear-gradient(#f8c512, #edb60d) ;
+        background-size: contain;
+        padding-left:50px;
+    }
+}
+
+@media(min-width: 960px){
+
+    .upperCase {
+        text-transform: capitalize;
+    }
+
+    .hero-image {
+        background:url(../img/reka.png) no-repeat 340px 140px, linear-gradient(#f8c512, #edb60d) ;
+        background-size: contain;
+        padding: 20px 15px 15px 50px; 
+    }
+
+    .subscribe{
+        text-align: left;     
+        background:url(../img/pic3.png) no-repeat right bottom, #f8c512;
+        background-size: 50%;         
+    }
+
+    body {
+        padding-top: 80px;
+    }
+
+    .js-toggler {
+        display:none;
+    }
+
+    .js-menu {
+        position: initial;
+        top: 0px;
+    }
+
+    .menu {
+        display: flex;
+        justify-content: space-evenly;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 700;
+    }
+
+    .desktop-menu {
+        display: flex;
+        align-items: center;
+    }
+
+    .desktop-menu li {
+        padding-right: 45px;
+    }
+
+    .desktop-menu a{
+        text-decoration: none;
+        color: #323232;
+        font-size: 20px;
+    }
+
+    .desktop-menu a:hover{
+        color: #f8c512;
+        transition: all 0.5s;
+    }
+
+    .hero-image {
+        background:url(../img/reka.png) no-repeat 400px px, linear-gradient(#f8c512, #edb60d) ;
+        /* background-size: contain;*/
+        padding-left:120px;
+    }
+
+    .title-hero-image {
+        font-size: 33px;
+    }
+    
+    .first-claim {
+        font-size: 40px;
+        margin-top:150px;
+    }
+    
+    .second-claim {
+        font-size: 40px;
+    }
+    
+    .margin-bottom {
+        margin-bottom: 150px;
+    }
+
+    form {
+        width: 60%;
+    }
+
+    .desktop-container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 55%;
+        margin-left: 120px;
+    }
+
+    .subscribe .form-consent-box {
+        width: 70%;
+        position: relative;
+        left: 3%;
+    }
+
+    .subscribe .form-consent-checkbox {
+        width: auto;
+    }
+
+    .name-input, .email-input {
+        position: relative;
+        left: 3%;
+    }
+
+    footer {
+        min-height: 10vh;
+        display: flex;
+        justify-content: space-around;
+        background: url(../img/footer.png) no-repeat center;
+        background-size: cover;      
+    }
+}
+
+@media (min-width: 1160px){
+    .subscribe{
+        text-align: left;     
+        background:url(../img/pic3.png) no-repeat right 40px, #f8c512;
+        background-size: contain;         
+    }
+
+    form {
+        width: 60%;
+    }
+
+    .subscribe .subscribe-button {
+        width: 50%;
+        padding: 15px 0px 10px 0px;
+        position: relative;
+        left: 40%; 
+    }
+
+    footer img {
+        width: 200px;
+        height: auto;
+    }
 }
 
 @media(min-width: 610px) {
@@ -549,6 +557,7 @@ footer {
         width: 50%;
     }
 }
+
 @media(min-width: 960px) and (max-width: 1270px){
     .about-steps{
         background: white url(../img/pic1.png) no-repeat right center;
@@ -563,8 +572,6 @@ footer {
     }
 }
 
-
-
 @media(min-width: 1271px){
     .about-steps{
         background: white url(../img/pic1.png) no-repeat right center;
@@ -576,12 +583,6 @@ footer {
     }
 
 @media(min-width: 960px){
-
-    /* .hero-image {
-        background: url(../img/reka.png) no-repeat 700px 115px, linear-gradient(#f8c512, #edb60d);
-    } */
-
-   
 
     .benefits>ul>li{
         padding-left:50%;
@@ -608,7 +609,6 @@ footer {
         height: 75px;
        margin-right: 40px;
     }
-
 
     .about-steps>ol>li{
         padding-bottom: 45px;
@@ -701,22 +701,23 @@ footer {
 }
 
 @media(min-width: 1580px){
-.hero-image {
-    background:url(../img/reka.png) no-repeat 1000px 115px, linear-gradient(#f8c512, #edb60d) ;
+    
+    .hero-image {
+        background:url(../img/reka.png) no-repeat 1000px 115px, linear-gradient(#f8c512, #edb60d) ;
+        }
+    
+    .about-steps{
+        background: white url(/img/pic1.png) no-repeat 900px 20px;
+        background-size: 40%;
+        }
+    .benefits{
+        padding-top: 85px;
+        background: #ededed url(/img/pic2.png) no-repeat 120px bottom;
+        background-size: 35%;
     }
- 
-.about-steps{
-    background: white url(/img/pic1.png) no-repeat 900px 20px;
-    background-size: 40%;
+    .subscribe{
+        text-align: left;     
+        background:url(../img/pic3.png) no-repeat right 40px, #f8c512;
+        background-size: contain;         
     }
-.benefits{
-    padding-top: 85px;
-    background: #ededed url(/img/pic2.png) no-repeat 120px bottom;
-    background-size: 35%;
 }
-.subscribe{
-    text-align: left;     
-    background:url(../img/pic3.png) no-repeat right 40px, #f8c512;
-    background-size: contain;         
-}
-    }
