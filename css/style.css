@@ -25,24 +25,53 @@ ol li{
 .menu {
     height: 80px;
     background: #fff;
+    position:fixed;
+    width:100%;
+    display:flex;
+    justify-content: space-between;
+    z-index: 999;
 
 }
-/* 
+
 .js-toggler{
-    background: url(img/menu.svg) no-repeat right;
-    background-color: #fff;
-    width: 40px;
+    /* background: url(../img/menu.svg) no-repeat; */
+    width: 30px;
     border:none;
-    margin-right: 30px;
+    margin-right: 40px;
+    margin-top: 25px;
+
 }
 
 .js-menu {
     display:none;
+    top: 80px;
+    position: absolute;
+    right: 0;
+    background: #fff;
+    left:0;
+
+
 }
+
+.js-menu li {
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.js-menu a {
+    color: #323232;
+    text-decoration: none;
+    font-size: 22px;
+}
+
 
 .expanded {
     display: initial;
-} */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 999;
+}
 
 
 .logo {
@@ -54,7 +83,7 @@ ol li{
     background: linear-gradient(#f8c512, #edb60d);
     height: auto;
     text-align: left;
-    padding: 15px;
+    padding:100px 15px 15px 15px;
 }
 
 .title-hero-image {
@@ -92,7 +121,7 @@ ol li{
 
 .about-steps {
     background-color: white;
-    padding-top:40px;
+    padding-top:80px;
 }
 
 .about-steps>h2{
@@ -134,7 +163,7 @@ ol li{
 
 .benefits {
     background-color:#ededed;
-    padding-top:40px;
+    padding-top:85px;
 }
 
 .benefits>h2{
@@ -175,6 +204,7 @@ ol li{
 }
 
 .subscribe {
+    padding-top: 25px; 
     font-family: 'Catamaran', sans-serif;
     color: #323232;
     font-weight: medium;
@@ -193,7 +223,7 @@ ol li{
     text-align: left;
     font-size: 24px;
     text-transform: uppercase;
-    padding: 30px 0px 30px 20px;
+    padding: 30px 0px 30px 0px;
 }
 .subscribe .form-consent-box{
     display: flex;
@@ -302,11 +332,8 @@ footer img{
         
     }
 
-   
-
-
     .hero-image {
-        background:url(../img/reka.png) no-repeat 350px 40px, linear-gradient(#f8c512, #edb60d) ;
+        background:url(../img/reka.png) no-repeat 280px 100px, linear-gradient(#f8c512, #edb60d) ;
         background-size: contain;
         padding-left:50px;
     }
@@ -315,6 +342,17 @@ footer img{
 
 }
 @media(min-width: 960px){
+
+    .upperCase {
+        text-transform: capitalize;
+    }
+
+    .hero-image {
+        background:url(../img/reka.png) no-repeat 340px 140px, linear-gradient(#f8c512, #edb60d) ;
+        background-size: contain;
+        padding: 20px 15px 15px 50px; 
+    }
+
     .subscribe{
         text-align: left;     
         background:url(../img/pic3.png) no-repeat right bottom, #f8c512;
@@ -324,9 +362,20 @@ footer img{
         padding-top: 80px;
     }
 
+    .js-toggler {
+        display:none;
+    }
+
+    .js-menu {
+        position: initial;
+        top: 0px;
+    }
+
+   
+
     .menu {
         display: flex;
-        justify-content: space-around;
+        justify-content: space-evenly;
         position: fixed;
         top: 0;
         width: 100%;
@@ -339,8 +388,7 @@ footer img{
     }
 
     .desktop-menu li {
-
-        padding-right: 40px;
+        padding-right: 45px;
     }
 
     .desktop-menu a{
@@ -356,7 +404,7 @@ footer img{
 
 
     .hero-image {
-        background:url(../img/reka.png) no-repeat 400px 40px, linear-gradient(#f8c512, #edb60d) ;
+        background:url(../img/reka.png) no-repeat 400px px, linear-gradient(#f8c512, #edb60d) ;
         /* background-size: contain;*/
         padding-left:120px;
     }
@@ -388,12 +436,7 @@ footer img{
         align-items: flex-start;
         width: 55%;
         margin-left: 120px;
-    }
-    .subscribe .subscribe-button{
-        width:50%;
-        padding: 15px 0px 10px 0px;
-        position: relative;
-        left: 40%; 
+
     }
     .subscribe .form-consent-box{
         width: 70%;
@@ -443,7 +486,8 @@ footer img{
     font-weight: medium;
     font-size: 24px;
     text-align: center;
-    padding-bottom: 30px; 
+    padding-bottom: 30px;
+    padding-top: 40px; 
 }
 
 .team h2 {
@@ -524,20 +568,18 @@ footer {
 @media(min-width: 1271px){
     .about-steps{
         background: white url(../img/pic1.png) no-repeat right center;
-    
     }
 
     .benefits{
         background: #ededed url(../img/pic2.png) no-repeat 120px bottom;
         
-        
     }
 
 @media(min-width: 960px){
 
-    .hero-image {
-        background: #f8c512 url(/img/reka.png) no-repeat right bottom;
-    }
+    /* .hero-image {
+        background: url(../img/reka.png) no-repeat 700px 115px, linear-gradient(#f8c512, #edb60d);
+    } */
 
    
 
@@ -649,7 +691,7 @@ footer {
     }
 
     .hero-image {
-        background:url(../img/reka.png) no-repeat 800px 40px, linear-gradient(#f8c512, #edb60d) ;
+        background:url(../img/reka.png) no-repeat 800px 115px, linear-gradient(#f8c512, #edb60d) ;
     }
 
     .benefits{
@@ -660,7 +702,7 @@ footer {
 
 @media(min-width: 1580px){
 .hero-image {
-    background:url(../img/reka.png) no-repeat 1000px 40px, linear-gradient(#f8c512, #edb60d) ;
+    background:url(../img/reka.png) no-repeat 1000px 115px, linear-gradient(#f8c512, #edb60d) ;
     }
  
 .about-steps{
@@ -668,7 +710,13 @@ footer {
     background-size: 40%;
     }
 .benefits{
+    padding-top: 85px;
     background: #ededed url(/img/pic2.png) no-repeat 120px bottom;
     background-size: 35%;
+}
+.subscribe{
+    text-align: left;     
+    background:url(../img/pic3.png) no-repeat right 40px, #f8c512;
+    background-size: contain;         
 }
     }

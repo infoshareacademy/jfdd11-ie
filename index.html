@@ -20,12 +20,13 @@
         <header class="">
                 <nav class="menu">
                     <a href="#hero-image"><img src="img/logo.png" class="logo" alt="Logo aplikacji Moovit"></a>
-                    <ul class="desktop-menu">
-                        <li><a href="">O aplikacji</a></li>
-                        <li><a href="#step-by-step">Dlaczego warto</a></li>
+                    <div ><img src="img/menu.svg" class="js-toggler"></div>
+                    <ul class="desktop-menu js-menu upperCase">
+                        <li><a href="#step-by-step">O aplikacji</a></li>
+                        <li><a href="#benefits">Dlaczego warto</a></li>
                         <li><a href="#subscribe">Pobierz aplikacje</a></li>
-                        <li><a href="">Twórcy</a></li>
-                        <li><a href="">Kontakt</a></li>
+                        <li><a href="#team">Twórcy</a></li>
+                        <li><a href="#footer">Kontakt</a></li>
                     </ul>
                 </nav>
             <div class="hero-image" id="hero-image">
@@ -67,7 +68,7 @@
                 </li>
             </ol>
         </div>
-        <div class="benefits global-settings">
+        <div class="benefits global-settings" id="benefits">
             <h2>Korzyści</h2>
             <ul>
                 <li>
@@ -100,7 +101,7 @@
                         <label class="form-consent-text">
 
                             Akceptuję Regulamin usługi, oraz politykę prywatności, Politykę antyspamową oraz wyrażam zgodę
-                            na otrzymywanie informacji od firmy MoveIt.
+                            na przejęcie mojej duszy przez firmę MoveIt.
 
 
                             Wyrażam zgodę na otrzymywanie informacji marketingowych i ofert handlowych od firmy
@@ -110,7 +111,7 @@
                 </form>
             </div>
         </div>
-        <div class="team global-settings">
+        <div class="team global-settings" id="team">
             <h2>O nas</h2>
             <div class="user">
                 <img src="img/dev1.png" alt="Zdjęcie Maciej Mazur">
@@ -137,7 +138,7 @@
                 <a href="https://www.linkedin.com/in/przemys%C5%82aw-zadomski-7b899b141"target="blank"><img src="img/lnkd.png" alt="Ikona linkedin"></a>
             </div>
         </div>
-        <footer class="global-settings">
+        <footer class="global-settings" id="footer">
             <div class="footer-box">
                 <p class="contact">Kontakt:</p><p class="moveIt">moveIt</p> <p>Adres e-mail: <a href="mailto:support@move.it">support@move.it</a></p>
                 <p class="copyright">Copyright &copy; Move-It 2019</p>
@@ -146,6 +147,7 @@
         </footer>
     </div>
     <script src="script.js"></script>
+    <script src="js/menu.js"></script>
 </body>
 
 </html>
