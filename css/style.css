@@ -109,6 +109,10 @@ ol li{
     text-transform: uppercase;
 }
 
+.upper-case-hi {
+    text-transform: uppercase;
+}
+
 .margin-bottom {
     margin-bottom: 40px;
 }
