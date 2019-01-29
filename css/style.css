@@ -109,6 +109,10 @@ ol li{
     text-transform: uppercase;
 }
 
+.upperCase-hi{
+    text-transform: uppercase;
+}
+
 .margin-bottom {
     margin-bottom: 40px;
 }
@@ -321,7 +325,7 @@ footer {
     display: flex;
     justify-content: space-around;
     align-items: flex-end;
-    background-color: url(/img/footer.png) no-repeat center;
+    background-color: url(../img/footer.png) no-repeat center;
     background-size: cover;
     color: white; 
 }
@@ -707,12 +711,12 @@ footer img{
         }
     
     .about-steps{
-        background: white url(/img/pic1.png) no-repeat 900px 20px;
+        background: white url(../img/pic1.png) no-repeat 900px 20px;
         background-size: 40%;
         }
     .benefits{
         padding-top: 85px;
-        background: #ededed url(/img/pic2.png) no-repeat 120px bottom;
+        background: #ededed url(../img/pic2.png) no-repeat 120px bottom;
         background-size: 35%;
     }
     .subscribe{
