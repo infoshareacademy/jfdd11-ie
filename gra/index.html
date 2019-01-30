@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css"/>
+</head>
+
+<body>
+    <div id="game" class="game">
+        <div id="score"></div>
+        <div id="board"></div>
+    </div>
+
+    <script src="utils.js"></script>
+
+    <script>
+        const board = document.getElementById('board');
+
+        makeBoard(board, 10);
+
+        const blocks = {
+            L: [
+                [
+                    '__#_',
+                    '__#_',
+                    '__##',
+                    '____'
+                ]
+            ]
+        }
+
+        const cells = Array.from(board.querySelectorAll('.cell'));
+        const x = 1;
+        const y = 3;
+        const boardSize = 10;
+        const cellsInFirstRow = cells.filter((cell, index) => index >= x + boardSize * y && index < x + 4 + boardSize * y)
+        const cellsInSecondRow = cells.filter((cell, index) => index >= x + (boardSize * (y + 1)) && index < x + 4 + (boardSize * (y + 1)))
+        const cellsInThirdRow = cells.filter((cell, index) => index >= x + (boardSize * (y + 2)) && index < x + 4 + (boardSize * (y + 2)))
+        const cellsInFourthRow = cells.filter((cell, index) => index >= x + (boardSize * (y + 3)) && index < x + 4 + (boardSize * (y + 3)))
+
+        const ourCells = cellsInFirstRow.concat(cellsInSecondRow, cellsInThirdRow, cellsInFourthRow);
+
+        const ourL = blocks.L[0].join('').split('')
+
+        for (let i = 0; i < 16; i += 1) {
+            if (ourL[i] === '#') {
+                ourCells[i].classList.add('fruit')
+            }
+        }
+    </script>
+</body>
+
+</html>
