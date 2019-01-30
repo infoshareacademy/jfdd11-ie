@@ -35,7 +35,7 @@ ol li{
 .js-toggler{
     width: 30px;
     border:none;
-    margin-right: 40px;
+    margin-right: 20px;
     margin-top: 25px;
     cursor: pointer;
 }
@@ -119,7 +119,8 @@ ol li{
 
 .about-steps {
     background-color: white;
-    padding-top:80px;
+    padding-top:100px;
+    padding-bottom: 100px;
 }
 
 .about-steps>h2{
@@ -156,7 +157,8 @@ ol li{
 
 .benefits {
     background-color:#ededed;
-    padding-top:85px;
+    padding-top:100px;
+    padding-bottom: 100px;
 }
 
 .benefits>h2{
@@ -191,14 +193,14 @@ ol li{
 }
 
 .subscribe {
-    padding-top: 25px; 
+    padding-top: 45px; 
     font-family: 'Catamaran', sans-serif;
     color: #323232;
     font-weight: medium;
     font-size: 24px;
     background-color: #f8c512;
     text-align: center;
-    padding-bottom: 30px; 
+    padding-bottom: 100px; 
 }   
 
 .subscribe h2{
@@ -275,8 +277,8 @@ ol li{
     font-weight: medium;
     font-size: 24px;
     text-align: center;
-    padding-bottom: 30px;
-    padding-top: 40px; 
+    padding-bottom: 100px;
+    padding-top: 60px; 
 }
 
 .team h2 {
@@ -715,7 +717,8 @@ footer img{
         background-size: 40%;
         }
     .benefits{
-        padding-top: 85px;
+        padding-top: 100px;
+        padding-bottom: 100px;
         background: #ededed url(../img/pic2.png) no-repeat 120px bottom;
         background-size: 35%;
     }
@@ -724,4 +727,5 @@ footer img{
         background:url(../img/pic3.png) no-repeat right 40px, #f8c512;
         background-size: contain;         
     }
+}
 }

@@ -1,8 +1,8 @@
-function makeBoard(target, size) {
-  for (let y = 0; y < size; y += 1) {
+function makeBoard(target, sizeY, sizeX) {
+  for (let y = 0; y < sizeX; y += 1) {
     let rowNode = createNode("row");
 
-    for (let x = 0; x < size; x += 1) {
+    for (let x = 0; x < sizeY; x += 1) {
       let cellNode = createNode("cell");
 
       rowNode.appendChild(cellNode);
