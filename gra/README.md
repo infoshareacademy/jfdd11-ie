@@ -22,9 +22,9 @@
 **MAIN CONTAINER**
 
 - Wielkość planszy:
-    - 32 szerokości x 50 wysokości
-    - Ciężarówki: 10 szerokości x 20 wysokości
-    - Pomiędzy ciężarówkami (mur między garażami) - jedno pole szerokości i wysokość na 20 pól
+    - 32 szerokości x 40 wysokości
+    - Ciężarówki: 10 szerokości x 15 wysokości
+    - Pomiędzy ciężarówkami (mur między garażami) - jedno pole szerokości i wysokość na 15 pól
     
 ## **Mechanika gry**
 
