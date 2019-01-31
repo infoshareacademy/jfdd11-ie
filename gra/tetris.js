@@ -26,8 +26,8 @@ const board = document.getElementById('board');
 
         const ourL = blocks.L[0].join('').split('')
 
-        for (let i = 0; i < 16; i += 1) {
-            if (ourL[i] === '#') {
-                ourCells[i].classList.add('fruit')
-            }
-        }
+        // for (let i = 0; i < 16; i += 1) {
+        //     if (ourL[i] === '#') {
+        //         ourCells[i].classList.add('fruit')
+        //     }
+        // }

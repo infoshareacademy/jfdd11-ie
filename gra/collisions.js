@@ -1,27 +1,35 @@
-// function detectFruitBasketCollision() {
-//     const potentiallyRemovableFruit = document.querySelector(".fruit.basket");
-  
-//     if (potentiallyRemovableFruit !== null) {
-//       potentiallyRemovableFruit.classList.remove("fruit");
-//     }
-//   }
+// przyjąłem prowizorycznny ruch klocków żeby ustalić kolizje. dla demonstracji tworzę klocka na 1 komórce i przeszkodę na 5 komórce. prowizoryczny ruch odbywa się tylko w prawo i lewo (sterowanie strzałkami). warunek kolizji jest ustawiony na krawędź planszy (null) i na elementy z klasą "blocked". 
 
-  function handleUserInput(event) {
-    const brickNode = document.querySelector(".cell");
-  
-    if (event.code === "ArrowRight") {
-      const targetNode = basketNode.nextElementSibling;
-      if (targetNode === null) {
-        return;
-      }
-      moveBrick(basketNode, targetNode);
+// przykładowy klocek
+let brickNode = document.querySelector(".cell");
+brickNode.classList.add("brick");
+// przykładowa przeszkoda
+let brickObstacle = document.querySelector(".cell:nth-child(5)");
+brickObstacle.classList.add("blocked");
+
+addEventListener("keyup", function(event){
+  if (event.code === "ArrowRight") {
+    let targetNode = brickNode.nextElementSibling;
+    if (targetNode === null || targetNode.classList.contains("blocked")) {
+      return;
     }
-  
-    if (event.code === "ArrowLeft") {
-      const targetNode = basketNode.previousElementSibling;
-      if (targetNode === null) {
-        return;
-      }
-      moveBrick(basketNode, targetNode);
+    // prowizoryczny ruch
+    moveBrick(brickNode, targetNode);
+    brickNode = document.querySelector(".brick")
+  }
+  if (event.code === "ArrowLeft") {
+    let targetNode = brickNode.previousElementSibling;
+    if (targetNode === null || targetNode.classList.contains("blocked")) {
+      return;
     }
+    // prowizoryczny ruch
+    moveBrick(brickNode, targetNode);
+    brickNode = document.querySelector(".brick")
+    
+  }
+});
+  // prowizoryczny ruch
+  function moveBrick(fromNode, toNode) {
+    fromNode.classList.remove("brick");
+    toNode.classList.add("brick");
   }

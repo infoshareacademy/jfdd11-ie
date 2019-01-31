@@ -88,3 +88,9 @@ body {
 .fruit {
   background-color: red;
 }
+.blocked{
+  background-color: black;
+}
+.brick{
+  background-color: rgb(214, 30, 184);
+}
