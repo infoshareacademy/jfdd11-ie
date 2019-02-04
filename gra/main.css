@@ -82,14 +82,32 @@ body {
 }
 
 .truck {
-  background-color: darkgray;
+  background-color: rgb(121, 74, 30);
+}
+
+.wall {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  transition: background-color 0.1s;
+  background: rgb(126, 139, 165);
+}
+
+.truck-one {
+  background-color: yellow;
+}
+
+.truck-two {
+  background-color: yellow;
+}
+
+.truck-three {
+  background-color: yellow;
 }
 
 .fruit {
   background-color: red;
 }
 .blocked{
-  background-color: black;
+  background-color: rgb(143, 143, 143);
 }
 .brick{
   background-color: rgb(214, 30, 184);

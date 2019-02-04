@@ -7,7 +7,6 @@ let y = 0;
 var x = 0;
 
 setInterval(function () {
-  console.log(window.x);
   y += 1;
   const boardSize = 32;
   const cellsInFirstRow = cells.filter((cell, index) => index >= x + boardSize * y && index < x + 4 + boardSize * y)
@@ -19,27 +18,22 @@ setInterval(function () {
 
   const ourCells = cellsInFirstRow.concat(cellsInSecondRow, cellsInThirdRow, cellsInFourthRow);
 
-  const ourL = blocks.BigO[3].join('').split('')
+  const ourL = blocks.L[2].join('').split('')
 
 
 
   const hashIndices = ourL.map((symbol, index) => ({ symbol, index })).filter(item => item.symbol === '#').map(item => item.index);
-  // console.log(hashIndices);
 
   const cellsWeWantToPaint = hashIndices.map(index => ourCells[index])
   const cellsWeHavePainted = document.querySelectorAll('.fruit:not(.blocked)');
 
   const weCanGo = cellsWeWantToPaint.every(cell => {
-    // console.log(cell);
-    // console.log(cell.classList.toString())
     return cell !== undefined && !cell.classList.contains('blocked')
   })
 
 
 
   if (weCanGo === false) {
-    // console.log('STOP')
-    // debugger;
     y = 0;
     cellsWeHavePainted.forEach(item => item.classList.add('blocked'));
     return;
