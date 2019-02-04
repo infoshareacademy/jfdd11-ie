@@ -50,7 +50,7 @@ body {
   /* border: 1px solid white;
   margin: 0.4vw; */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-  transition: background-color 0.5s;
+  transition: background-color 0.1s;
   background: white;
 }
 
@@ -87,4 +87,10 @@ body {
 
 .fruit {
   background-color: red;
+}
+.blocked{
+  background-color: black;
+}
+.brick{
+  background-color: rgb(214, 30, 184);
 }
