@@ -19,33 +19,35 @@ setInterval(function () {
 
   const ourCells = cellsInFirstRow.concat(cellsInSecondRow, cellsInThirdRow, cellsInFourthRow);
 
-  const ourL = blocks.L[0].join('').split('')
+  const ourL = blocks.BigO[3].join('').split('')
 
 
 
   const hashIndices = ourL.map((symbol, index) => ({ symbol, index })).filter(item => item.symbol === '#').map(item => item.index);
+  // console.log(hashIndices);
 
-  const weCanGo = hashIndices.map(index => ourCells[index]).every(cell => !cell.classList.contains('blocked'))
+  const cellsWeWantToPaint = hashIndices.map(index => ourCells[index])
+  const cellsWeHavePainted = document.querySelectorAll('.fruit:not(.blocked)');
+
+  const weCanGo = cellsWeWantToPaint.every(cell => {
+    // console.log(cell);
+    // console.log(cell.classList.toString())
+    return cell !== undefined && !cell.classList.contains('blocked')
+  })
 
 
 
   if (weCanGo === false) {
+    // console.log('STOP')
+    // debugger;
     y = 0;
-    document.querySelectorAll('.fruit:not(.blocked)').forEach(item => item.classList.add('blocked'));
+    cellsWeHavePainted.forEach(item => item.classList.add('blocked'));
     return;
   }
 
   // remove all existing cells
-  document.querySelectorAll('.fruit:not(.blocked)').forEach(item => item.classList.remove('fruit'));
+  cellsWeHavePainted.forEach(item => item.classList.remove('fruit'));
 
-  for (let i = 0; i < 16; i += 1) {
-    if (ourCells[i] === undefined) {
-      y = 0;
-      document.querySelectorAll('.fruit:not(.blocked)').forEach(item => item.classList.add('blocked'));
-      break;
-    }
-    if (ourL[i] === '#') {
-      ourCells[i].classList.add('fruit')
-    }
-  }
+  cellsWeWantToPaint.forEach(cell => cell.classList.add('fruit'))
+
 }, 200);
