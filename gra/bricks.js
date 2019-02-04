@@ -1,9 +1,9 @@
-let bricks = document.querySelectorAll('.fruit');
-
+const bricks = document.querySelectorAll('.fruit');
+const boardSize = 32;
 const cells = Array.from(board.querySelectorAll('.cell'));
 
 let y = 0;
-let x = 0;
+let x = randomBrickStart();
 
 addEventListener("keydown", function (event) {
   if (event.code === "ArrowRight") {
@@ -19,9 +19,20 @@ addEventListener("keydown", function (event) {
     paintingBricks();
   }
 });
+function randomBrickStart(){
+  return Math.round(Math.random() * boardSize);
+  }
+function randomBrick(){
+  return Object.keys(blocks)[Math.floor(Math.random() * Object.keys(blocks).length)];
+}
+function weCanGoDown(){
 
+}
+function weCanGoSide(){
+  
+}
 function getCellsWeWantToPaint() {
-  const boardSize = 32;
+  
   const cellsInFirstRow = cells.filter((cell, index) => index >= x + boardSize * y && index < x + 4 + boardSize * y)
   const cellsInSecondRow = cells.filter((cell, index) => index >= x + (boardSize * (y + 1)) && index < x + 4 + (boardSize * (y + 1)))
   const cellsInThirdRow = cells.filter((cell, index) => index >= x + (boardSize * (y + 2)) && index < x + 4 + (boardSize * (y + 2)))
@@ -29,9 +40,9 @@ function getCellsWeWantToPaint() {
 
   const ourCells = cellsInFirstRow.concat(cellsInSecondRow, cellsInThirdRow, cellsInFourthRow);
 
-  const ourL = blocks.BigO[3].join('').split('')
+  let newBrick = blocks.BigO[3].join('').split('')
 
-  const hashIndexes = ourL.map((symbol, index) => ({ symbol, index })).filter(item => item.symbol === '#').map(item => item.index);
+  const hashIndexes = newBrick.map((symbol, index) => ({ symbol, index })).filter(item => item.symbol === '#').map(item => item.index);
 
   return hashIndexes.map(index => ourCells[index])
 }
