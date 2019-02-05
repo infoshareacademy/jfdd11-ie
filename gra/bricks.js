@@ -26,8 +26,16 @@ window.addEventListener("keydown", function (event) {
   }
   paintingBricks();
 });
+let currentBrickName = randomBrick();
+let currentBrickFrame = 0;
+addEventListener ("keyup",function(event){
+  if(event.code === "Space"){
+    currentBrickFrame = (currentBrickFrame+1)%4;
+  }
+  });
+
 function randomBrickStart(){
-  return Math.floor(Math.random() * boardSize - 4);
+  return Math.floor(Math.random() * 28);
 }
 function randomBrick(){
   return Object.keys(blocks)[Math.floor(Math.random() * Object.keys(blocks).length)];
@@ -47,7 +55,7 @@ function getCellsWeWantToPaint() {
 
   const ourCells = cellsInFirstRow.concat(cellsInSecondRow, cellsInThirdRow, cellsInFourthRow);
 
-  let newBrick = blocks.BigO[3].join('').split('')
+  let newBrick = blocks[currentBrickName][currentBrickFrame].join('').split('')
 
   const hashIndexes = newBrick.map((symbol, index) => ({ symbol, index })).filter(item => item.symbol === '#').map(item => item.index);
 
