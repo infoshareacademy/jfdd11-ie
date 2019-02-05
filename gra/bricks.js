@@ -1,5 +1,9 @@
-const bricks = document.querySelectorAll('.fruit');
 const boardSize = 32;
+const board = document.getElementById('board');
+
+makeBoard(board, boardSize, 40);
+const bricks = document.querySelectorAll('.fruit');
+
 const cells = Array.from(board.querySelectorAll('.cell'));
 
 let y = 0;
@@ -35,7 +39,7 @@ addEventListener ("keydown",function(event){
   });
 
 function randomBrickStart(){
-  return Math.floor(Math.random() * 28);
+  return Math.floor(Math.random() * (boardSize - 4));
 }
 function randomBrick(){
   return Object.keys(blocks)[Math.floor(Math.random() * Object.keys(blocks).length)];
