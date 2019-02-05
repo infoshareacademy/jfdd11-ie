@@ -54,7 +54,6 @@ function getCellsWeWantToPaint() {
   const cellsInFourthRow = cells.filter((cell, index) => index >= x + (boardSize * (y + 3)) && index < x + 4 + (boardSize * (y + 3)))
 
   const ourCells = cellsInFirstRow.concat(cellsInSecondRow, cellsInThirdRow, cellsInFourthRow);
-
   let newBrick = blocks[currentBrickName][currentBrickFrame].join('').split('')
 
   const hashIndexes = newBrick.map((symbol, index) => ({ symbol, index })).filter(item => item.symbol === '#').map(item => item.index);
@@ -65,12 +64,8 @@ function getCellsWeWantToPaint() {
 function paintingBricks() {
   const cellsWeWantToPaint = getCellsWeWantToPaint();
   const cellsWeHavePainted = document.querySelectorAll('.fruit:not(.blocked)');
-
-  // wyciągnąć funkcję na zewnątrz
   
   if (!weCanGo()) {
-
-
     cellsWeHavePainted.forEach(item => item.classList.add('blocked'));
     currentBrickName = randomBrick();
     y = -1;
@@ -83,9 +78,11 @@ function paintingBricks() {
 
   // paint new cells
   cellsWeWantToPaint.forEach(cell => cell.classList.add('fruit'))
+  
 }
 
 // spadanie klocków
+
 setInterval(function () {
   y++;
   paintingBricks();
