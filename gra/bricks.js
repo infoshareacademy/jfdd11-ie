@@ -5,31 +5,38 @@ const cells = Array.from(board.querySelectorAll('.cell'));
 let y = 0;
 let x = randomBrickStart();
 
-addEventListener("keydown", function (event) {
+window.addEventListener("keydown", function (event) {
   if (event.code === "ArrowRight") {
     x++;
-    paintingBricks()
+    if (!weCanGo()) {
+      x--;
+    }
   }
   if (event.code === "ArrowLeft") {
     x--;
-    paintingBricks()
+    if (!weCanGo()) {
+      x++;
+    }
   }
   if (event.code === "ArrowDown") {
     y++;
-    paintingBricks();
+    if (!weCanGo()) {
+      y--;
+    }
   }
+  paintingBricks();
 });
 function randomBrickStart(){
-  return Math.round(Math.random() * boardSize);
-  }
+  return Math.floor(Math.random() * boardSize - 4);
+}
 function randomBrick(){
   return Object.keys(blocks)[Math.floor(Math.random() * Object.keys(blocks).length)];
 }
-function weCanGoDown(){
 
-}
-function weCanGoSide(){
-  
+function weCanGo() {
+  return getCellsWeWantToPaint().every(cell => {
+    return cell !== undefined && !cell.classList.contains('blocked')
+  })
 }
 function getCellsWeWantToPaint() {
   
@@ -52,28 +59,22 @@ function paintingBricks() {
   const cellsWeHavePainted = document.querySelectorAll('.fruit:not(.blocked)');
 
   // wyciągnąć funkcję na zewnątrz
-  const weCanGoDown = cellsWeWantToPaint.every(cell => {
-    return cell !== undefined //&& !cell.classList.contains('blocked')
-  })
-  if (weCanGoDown === false) {
-    y = -1;
+  
+  if (!weCanGo()) {
     cellsWeHavePainted.forEach(item => item.classList.add('blocked'));
-    return;
-  }
-  const weCanGoSide = cellsWeWantToPaint.every(cell => {
-    return !cell.classList.contains("blocked");
-  }) 
-  if(weCanGoSide === false){
+    y = -1;
+    x = randomBrickStart()
     return;
   }
 
   // remove all existing cells
   cellsWeHavePainted.forEach(item => item.classList.remove('fruit'));
 
+  // paint new cells
   cellsWeWantToPaint.forEach(cell => cell.classList.add('fruit'))
 }
-// spadanie klocków
 
+// spadanie klocków
 setInterval(function () {
   y++;
   paintingBricks();
