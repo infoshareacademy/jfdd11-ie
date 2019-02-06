@@ -1,7 +1,3 @@
-
-
-
-
 const blocks = {
     L: [
         [

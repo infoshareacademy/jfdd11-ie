@@ -1,4 +1,4 @@
-const boardSize = 32;
+const boardSize = 34;
 const board = document.getElementById('board');
 
 makeBoard(board, boardSize, 40);
@@ -86,7 +86,6 @@ function paintingBricks() {
 }
 
 // spadanie klocków
-
 setInterval(function () {
   y++;
   paintingBricks();

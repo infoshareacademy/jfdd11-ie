@@ -1,6 +1,6 @@
-let trucks = cells.slice(800);
-let wallOne = cells.slice(778, 779);
-let wallTwo = cells.slice(789, 790);
+let trucks = cells.slice(884);
+let wallOne = cells.slice(861, 862);
+let wallTwo = cells.slice(872, 873);
 
 wallOne.forEach(item => item.classList.add('wall'));
 wallTwo.forEach(item => item.classList.add('wall'));
@@ -8,28 +8,37 @@ wallOne.forEach(item => item.classList.add('blocked'));
 wallTwo.forEach(item => item.classList.add('blocked'));
 trucks.forEach(item => item.classList.add('truck'));
 
+let cellNodes = document.querySelectorAll('.cell');
+cellNodes.forEach((el, index) => {
+        if ([0, 33].includes(index % boardSize)) {
+                el.classList.add('blocked')
+                el.classList.add('wall');
+        }
+})
+
+
 let truckNodes = document.querySelectorAll('.truck');
 truckNodes.forEach((el, index) => {
-        if ([10, 21].includes(index % 32)) {
+        if ([11, 22].includes(index % boardSize)) {
                 el.classList.add('blocked')
                 el.classList.add('wall');
         }
 })
 
 truckNodes.forEach((el, index) => {
-        if (index % 32 < 10) {
+        if (index % boardSize < 12) {
                 el.classList.add('truck-one');
         }
 })
 
 truckNodes.forEach((el, index) => {
-        if (index % 32 < 21 && index % 32 > 10) {
+        if (index % boardSize < 22 && index % boardSize > 12) {
                 el.classList.add('truck-two');
         }
 })
 
 truckNodes.forEach((el, index) => {
-        if (index % 32 > 21) {
+        if (index % boardSize > 22) {
                 el.classList.add('truck-three');
         }
 })
