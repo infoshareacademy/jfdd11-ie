@@ -5,11 +5,20 @@ makeBoard(board, boardSize, 40);
 const bricks = document.querySelectorAll('.fruit');
 
 const cells = Array.from(board.querySelectorAll('.cell'));
-
+let gameIsPaused = false;
 let y = 0;
 let x = randomBrickStart();
+addEventListener("keyup", function (event){
+if(event.code === "Escape"){
+  gameIsPaused = !gameIsPaused
+  console.log(gameIsPaused)
+}
 
+})
 window.addEventListener("keydown", function (event) {
+  if(gameIsPaused){
+    return;
+  }
   if (event.code === "ArrowRight") {
     x++;
     if (!weCanGo()) {
@@ -87,6 +96,9 @@ function paintingBricks() {
 
 // spadanie klocków
 setInterval(function () {
+  if(gameIsPaused){
+    return;
+  }
   y++;
   paintingBricks();
 }, 200);
