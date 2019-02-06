@@ -89,7 +89,7 @@ body {
   background-color: red;
 }
 .blocked{
-  background-color: rgb(143, 143, 143);
+  background-color: rgb(143, 143, 143) !important;
 }
 .wall {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);

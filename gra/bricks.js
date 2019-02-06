@@ -1,5 +1,10 @@
 const boardSize = 34;
 const board = document.getElementById('board');
+const colors = ['red', 'green', 'blue'];
+
+
+const pickRandom = items => items[Math.floor(Math.random() * items.length)]
+let currentColor = pickRandom(colors);
 
 makeBoard(board, boardSize, 40);
 const bricks = document.querySelectorAll('.fruit');
@@ -83,14 +88,24 @@ function paintingBricks() {
     currentBrickName = randomBrick();
     y = -1;
     x = randomBrickStart()
+    currentColor = pickRandom(colors);
     return;
   }
 
   // remove all existing cells
-  cellsWeHavePainted.forEach(item => item.classList.remove('fruit'));
-
+  cellsWeHavePainted.forEach(item => 
+    {
+      item.classList.remove('fruit')
+      item.style.backgroundColor = ''
+    }
+  )
   // paint new cells
-  cellsWeWantToPaint.forEach(cell => cell.classList.add('fruit'))
+  cellsWeWantToPaint.forEach(item => {
+    item.classList.add('fruit')
+    item.style.backgroundColor = currentColor
+  }
+    
+  )
   
 }
 
