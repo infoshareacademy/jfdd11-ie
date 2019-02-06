@@ -81,6 +81,10 @@ body {
   width: 33.3%;
 }
 
+.truck-one{
+  background-color: darkblue;
+}
+
 .truck {
   background-color: rgb(121, 74, 30);
 }

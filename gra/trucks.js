@@ -26,8 +26,9 @@ truckNodes.forEach((el, index) => {
 })
 
 truckNodes.forEach((el, index) => {
-        if (index % boardSize < 12) {
+        if (index % boardSize < 11 && index % boardSize > 0) {
                 el.classList.add('truck-one');
+                el.setAttribute('data-id' , '1');
         }
 })
 
@@ -38,8 +39,9 @@ truckNodes.forEach((el, index) => {
 })
 
 truckNodes.forEach((el, index) => {
-        if (index % boardSize > 22) {
+        if (index % boardSize > 22 && index % boardSize < 33) {
                 el.classList.add('truck-three');
+
         }
 })
 

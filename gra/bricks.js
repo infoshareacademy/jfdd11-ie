@@ -41,7 +41,7 @@ window.addEventListener("keydown", function (event) {
 });
 let currentBrickName = randomBrick();
 let currentBrickFrame = 0;
-addEventListener ("keydown",function(event){
+addEventListener ("keyup",function(event){
   if(event.code === "Space"){
     currentBrickFrame = (currentBrickFrame+1)%4;
   }
@@ -80,6 +80,19 @@ function paintingBricks() {
   
   if (!weCanGo()) {
     cellsWeHavePainted.forEach(item => item.classList.add('blocked'));
+
+    // If not every cell we have painted has class truck
+    if (Array.from(cellsWeHavePainted).some(cell => !cell.classList.contains('truck'))) {
+      // Find cell which has data-truck-id attribute and get its ID
+      const cellWithinTruck = Array.from(cellsWeHavePainted).find(cell => cell.hasAttribute('data-id'))
+      const truckId = cellWithinTruck.getAttribute('data-id');
+      console.log(truckId)
+      // Block truck with that id
+      // TODO
+    }
+    
+    
+
     currentBrickName = randomBrick();
     y = -1;
     x = randomBrickStart()
