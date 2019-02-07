@@ -50,7 +50,7 @@ body {
   /* border: 1px solid white;
   margin: 0.4vw; */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-  transition: background-color 0.1s;
+  transition: background-color 0.01s;
   background: white;
 }
 
@@ -90,10 +90,11 @@ body {
 }
 .blocked{
   background-color: rgb(143, 143, 143);
+  background-color: rgb(143, 143, 143) !important;
 }
 .wall {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-  transition: background-color 0.1s;
+  transition: background-color 0.001s;
   background: rgb(67, 124, 240);
 }
 .brick{
