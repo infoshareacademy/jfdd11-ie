@@ -1,6 +1,7 @@
 const boardSize = 34;
 const board = document.getElementById('board');
-const colors = ['red', 'green', 'blue'];
+const colors = ['#C14470', '#3AC7A4','#FCC141','#466ECE','#CACACA','#5EC456','#A454C7' ];
+
 
 
 const pickRandom = items => items[Math.floor(Math.random() * items.length)]
@@ -52,10 +53,6 @@ window.addEventListener("keydown", function (event) {
   }
   paintingBricks();
 });
-
-addEventListener ("keydown",function(event){
-  
-  });
 
 function randomBrickStart(){
   return Math.floor(Math.random() * (boardSize - 4));
