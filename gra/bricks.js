@@ -1,11 +1,13 @@
 const boardSize = 34;
 const board = document.getElementById('board');
-const colors = ['#C14470', '#3AC7A4','#FCC141','#466ECE','#CACACA','#5EC456','#A454C7' ];
+const colors = ['#C14470', '#3AC7A4', '#FCC141', '#466ECE', '#CACACA', '#5EC456', '#A454C7'];
 
 
 
 const pickRandom = items => items[Math.floor(Math.random() * items.length)]
 let currentColor = pickRandom(colors);
+const popUpStatus = document.querySelector('.popup-body');
+const resumeButton = document.querySelector('.resume-game');
 
 makeBoard(board, boardSize, 40);
 const bricks = document.querySelectorAll('.fruit');
@@ -14,23 +16,34 @@ const cells = Array.from(board.querySelectorAll('.cell'));
 let gameIsPaused = false;
 let y = 0;
 let x = randomBrickStart();
-let currentBrickName = randomBrick();
-let currentBrickFrame = 0;
-addEventListener("keyup", function (event){
-if(event.code === "Escape"){
-  gameIsPaused = !gameIsPaused
+
+
+function popUp() {
+  popUpStatus.classList.toggle('hidden');
 }
 
-})
+resumeButton.addEventListener('click', function (event) {
+  event.target.blur();
+  gameIsPaused = !gameIsPaused
+  popUp();
+});
+
+addEventListener("keyup", function (event) {
+  if (event.code === "Escape") {
+    gameIsPaused = !gameIsPaused
+    popUp();
+  }
+});
+
 window.addEventListener("keydown", function (event) {
-  if(event.code === "Space"){
-    currentBrickFrame = (4 + currentBrickFrame+1)%4;
-    if(!weCanGo()){
-      currentBrickFrame = (4 + currentBrickFrame-1)%4;
-      return;  
+  if (event.code === "Space") {
+    currentBrickFrame = (4 + currentBrickFrame + 1) % 4;
+    if (!weCanGo()) {
+      currentBrickFrame = (4 + currentBrickFrame - 1) % 4;
+      return;
     }
   }
-  if(gameIsPaused){
+  if (gameIsPaused) {
     return;
   }
   if (event.code === "ArrowRight") {
@@ -53,11 +66,21 @@ window.addEventListener("keydown", function (event) {
   }
   paintingBricks();
 });
+let currentBrickName = randomBrick();
+let currentBrickFrame = 0;
+addEventListener("keydown", function (event) {
+  if (event.code === "Space") {
+    currentBrickFrame = (currentBrickFrame + 1) % 4;
+  }
+});
 
-function randomBrickStart(){
+
+
+
+function randomBrickStart() {
   return Math.floor(Math.random() * (boardSize - 4));
 }
-function randomBrick(){
+function randomBrick() {
   return Object.keys(blocks)[Math.floor(Math.random() * Object.keys(blocks).length)];
 }
 
@@ -67,7 +90,7 @@ function weCanGo() {
   })
 }
 function getCellsWeWantToPaint() {
-  
+
   const cellsInFirstRow = cells.filter((cell, index) => index >= x + boardSize * y && index < x + 4 + boardSize * y)
   const cellsInSecondRow = cells.filter((cell, index) => index >= x + (boardSize * (y + 1)) && index < x + 4 + (boardSize * (y + 1)))
   const cellsInThirdRow = cells.filter((cell, index) => index >= x + (boardSize * (y + 2)) && index < x + 4 + (boardSize * (y + 2)))
@@ -84,7 +107,7 @@ function getCellsWeWantToPaint() {
 function paintingBricks() {
   const cellsWeWantToPaint = getCellsWeWantToPaint();
   const cellsWeHavePainted = document.querySelectorAll('.fruit:not(.blocked)');
-  
+
   if (!weCanGo()) {
     cellsWeHavePainted.forEach(item => item.classList.add('blocked'));
     currentBrickName = randomBrick();
@@ -95,25 +118,24 @@ function paintingBricks() {
   }
 
   // remove all existing cells
-  cellsWeHavePainted.forEach(item => 
-    {
-      item.classList.remove('fruit')
-      item.style.backgroundColor = ''
-    }
+  cellsWeHavePainted.forEach(item => {
+    item.classList.remove('fruit')
+    item.style.backgroundColor = ''
+  }
   )
   // paint new cells
   cellsWeWantToPaint.forEach(item => {
     item.classList.add('fruit')
     item.style.backgroundColor = currentColor
   }
-    
+
   )
-  
+
 }
 
 // spadanie klocków
 setInterval(function () {
-  if(gameIsPaused){
+  if (gameIsPaused) {
     return;
   }
   y++;
