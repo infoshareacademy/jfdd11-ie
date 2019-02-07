@@ -89,7 +89,6 @@ body {
   background-color: red;
 }
 .blocked{
-  background-color: rgb(143, 143, 143);
   background-color: rgb(143, 143, 143) !important;
 }
 .wall {
