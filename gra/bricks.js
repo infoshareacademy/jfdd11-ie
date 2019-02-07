@@ -13,22 +13,22 @@ let x = randomBrickStart();
 
 function popUp() {
   popUpStatus.classList.toggle('hidden');
-  }
+}
 
-resumeButton.addEventListener('click', function(){
+resumeButton.addEventListener('click', function () {
   gameIsPaused = !gameIsPaused
   popUp();
 });
 
-addEventListener("keyup", function (event){
-if(event.code === "Escape"){
-  gameIsPaused = !gameIsPaused
-  popUp();
-  console.log(popUpStatus);
-}});
+addEventListener("keyup", function (event) {
+  if (event.code === "Escape") {
+    gameIsPaused = !gameIsPaused
+    popUp();
+  }
+});
 
 window.addEventListener("keydown", function (event) {
-  if(gameIsPaused){
+  if (gameIsPaused) {
     return;
   }
   if (event.code === "ArrowRight") {
@@ -53,19 +53,19 @@ window.addEventListener("keydown", function (event) {
 });
 let currentBrickName = randomBrick();
 let currentBrickFrame = 0;
-addEventListener ("keydown",function(event){
-  if(event.code === "Space"){
-    currentBrickFrame = (currentBrickFrame+1)%4;
+addEventListener("keydown", function (event) {
+  if (event.code === "Space") {
+    currentBrickFrame = (currentBrickFrame + 1) % 4;
   }
-  });
+});
 
 
 
 
-function randomBrickStart(){
+function randomBrickStart() {
   return Math.floor(Math.random() * (boardSize - 4));
 }
-function randomBrick(){
+function randomBrick() {
   return Object.keys(blocks)[Math.floor(Math.random() * Object.keys(blocks).length)];
 }
 
@@ -75,7 +75,7 @@ function weCanGo() {
   })
 }
 function getCellsWeWantToPaint() {
-  
+
   const cellsInFirstRow = cells.filter((cell, index) => index >= x + boardSize * y && index < x + 4 + boardSize * y)
   const cellsInSecondRow = cells.filter((cell, index) => index >= x + (boardSize * (y + 1)) && index < x + 4 + (boardSize * (y + 1)))
   const cellsInThirdRow = cells.filter((cell, index) => index >= x + (boardSize * (y + 2)) && index < x + 4 + (boardSize * (y + 2)))
@@ -92,7 +92,7 @@ function getCellsWeWantToPaint() {
 function paintingBricks() {
   const cellsWeWantToPaint = getCellsWeWantToPaint();
   const cellsWeHavePainted = document.querySelectorAll('.fruit:not(.blocked)');
-  
+
   if (!weCanGo()) {
     cellsWeHavePainted.forEach(item => item.classList.add('blocked'));
     currentBrickName = randomBrick();
@@ -106,12 +106,12 @@ function paintingBricks() {
 
   // paint new cells
   cellsWeWantToPaint.forEach(cell => cell.classList.add('fruit'))
-  
+
 }
 
 // spadanie klocków
 setInterval(function () {
-  if(gameIsPaused){
+  if (gameIsPaused) {
     return;
   }
   y++;
