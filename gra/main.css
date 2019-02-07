@@ -94,7 +94,7 @@ body {
 .wall {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
   transition: background-color 0.1s;
-  background: rgb(67, 124, 240);
+  background: rgb(67, 124, 240) !important;
 }
 .brick{
   background-color: rgb(214, 30, 184);

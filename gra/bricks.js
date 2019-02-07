@@ -13,14 +13,22 @@ const cells = Array.from(board.querySelectorAll('.cell'));
 let gameIsPaused = false;
 let y = 0;
 let x = randomBrickStart();
+let currentBrickName = randomBrick();
+let currentBrickFrame = 0;
 addEventListener("keyup", function (event){
 if(event.code === "Escape"){
   gameIsPaused = !gameIsPaused
-  console.log(gameIsPaused)
 }
 
 })
 window.addEventListener("keydown", function (event) {
+  if(event.code === "Space"){
+    currentBrickFrame = (4 + currentBrickFrame+1)%4;
+    if(!weCanGo()){
+      currentBrickFrame = (4 + currentBrickFrame-1)%4;
+      return;  
+    }
+  }
   if(gameIsPaused){
     return;
   }
@@ -44,12 +52,9 @@ window.addEventListener("keydown", function (event) {
   }
   paintingBricks();
 });
-let currentBrickName = randomBrick();
-let currentBrickFrame = 0;
+
 addEventListener ("keydown",function(event){
-  if(event.code === "Space"){
-    currentBrickFrame = (currentBrickFrame+1)%4;
-  }
+  
   });
 
 function randomBrickStart(){
