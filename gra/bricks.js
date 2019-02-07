@@ -1,5 +1,7 @@
 const boardSize = 34;
 const board = document.getElementById('board');
+const popUpStatus = document.querySelector('.popup-body');
+const resumeButton = document.querySelector('.resume-game');
 
 makeBoard(board, boardSize, 40);
 const bricks = document.querySelectorAll('.fruit');
@@ -8,13 +10,23 @@ const cells = Array.from(board.querySelectorAll('.cell'));
 let gameIsPaused = false;
 let y = 0;
 let x = randomBrickStart();
+
+function popUp() {
+  popUpStatus.classList.toggle('hidden');
+  }
+
+resumeButton.addEventListener('click', function(){
+  gameIsPaused = !gameIsPaused
+  popUp();
+});
+
 addEventListener("keyup", function (event){
 if(event.code === "Escape"){
   gameIsPaused = !gameIsPaused
-  console.log(gameIsPaused)
-}
+  popUp();
+  console.log(popUpStatus);
+}});
 
-})
 window.addEventListener("keydown", function (event) {
   if(gameIsPaused){
     return;
@@ -46,6 +58,9 @@ addEventListener ("keydown",function(event){
     currentBrickFrame = (currentBrickFrame+1)%4;
   }
   });
+
+
+
 
 function randomBrickStart(){
   return Math.floor(Math.random() * (boardSize - 4));
