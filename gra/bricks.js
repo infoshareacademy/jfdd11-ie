@@ -1,6 +1,6 @@
 const boardSize = 34;
 const board = document.getElementById('board');
-const colors = ['#C14470', '#3AC7A4', '#FCC141', '#466ECE', '#CACACA', '#5EC456', '#A454C7'];
+const colors = ['#C14470', '#3AC7A4', '#FCC141', '#466ECE', '#5EC456', '#A454C7'];
 
 
 
@@ -18,9 +18,13 @@ let gameIsPaused = false;
 let y = 0;
 let x = randomBrickStart();
 
-
 function popUp() {
   popUpStatus.classList.toggle('hidden');
+}
+function checkIfGameEnds(truck1, truck2, truck3){
+  if(truck1 === true && truck2 === true && truck3 === true){
+    popUpStatus.classList.remove('hidden');
+  }
 }
 
 resumeButton.addEventListener('click', function (event) {
@@ -248,7 +252,7 @@ function paintingBricks() {
       blockTruck(truckId);
     }
     cellsWeHavePainted.forEach(item => item.classList.add('blocked'));
-
+    
     makeNewBrick();
     return;
   }
