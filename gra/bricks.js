@@ -18,9 +18,13 @@ let gameIsPaused = false;
 let y = 0;
 let x = randomBrickStart();
 
-
 function popUp() {
   popUpStatus.classList.toggle('hidden');
+}
+function checkIfGameEnds(truck1, truck2, truck3){
+  if(truck1 === true && truck2 === true && truck3 === true){
+    popUpStatus.classList.remove('hidden');
+  }
 }
 
 resumeButton.addEventListener('click', function (event) {
@@ -74,6 +78,7 @@ window.addEventListener("keydown", function (event) {
         if (index % boardSize < 11 && index % boardSize > 0) {
           el.classList.remove('fruit');
           el.classList.remove('blocked');
+          blockedTruckIds[1] = false;
         }
       })
     }
@@ -87,6 +92,7 @@ window.addEventListener("keydown", function (event) {
         if (index % boardSize < 22 && index % boardSize > 11) {
           el.classList.remove('fruit');
           el.classList.remove('blocked');
+          blockedTruckIds[2] = false;
         }
       })
     }
@@ -100,6 +106,7 @@ window.addEventListener("keydown", function (event) {
         if (index % boardSize > 22 && index % boardSize < 33) {
           el.classList.remove('fruit');
           el.classList.remove('blocked');
+          blockedTruckIds[3] = false;
         }
       })
     }
@@ -175,6 +182,8 @@ function paintingBricks() {
         allCells.forEach((el, index) => {
           if (index % boardSize < 11 && index % boardSize > 0) {
             el.classList.add('blocked');
+            blockedTruckIds[truckId] = true;
+            checkIfGameEnds(blockedTruckIds["1"], blockedTruckIds["2"], blockedTruckIds["3"]);
           }
         })
       }
@@ -182,6 +191,8 @@ function paintingBricks() {
         allCells.forEach((el, index) => {
           if (index % boardSize < 22 && index % boardSize > 11) {
             el.classList.add('blocked');
+            blockedTruckIds[truckId] = true;
+            checkIfGameEnds(blockedTruckIds["1"], blockedTruckIds["2"], blockedTruckIds["3"]);
           }
         })
       }
@@ -189,13 +200,16 @@ function paintingBricks() {
         allCells.forEach((el, index) => {
           if (index % boardSize > 22 && index % boardSize < 33) {
             el.classList.add('blocked');
+            blockedTruckIds[truckId] = true;
+            checkIfGameEnds(blockedTruckIds["1"], blockedTruckIds["2"], blockedTruckIds["3"]);
           }
         })
       }
+      
       // TODO
     }
     cellsWeHavePainted.forEach(item => item.classList.add('blocked'));
-
+    
     makeNewBrick();
     return;
   }
