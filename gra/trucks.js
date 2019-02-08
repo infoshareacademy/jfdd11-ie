@@ -26,35 +26,27 @@ truckNodes.forEach((el, index) => {
 })
 
 truckNodes.forEach((el, index) => {
-        if (index % boardSize < 12) {
+        if (index % boardSize < 11 && index % boardSize > 0) {
                 el.classList.add('truck-one');
+                el.setAttribute('data-id' , '1');
         }
 })
 
 truckNodes.forEach((el, index) => {
-        if (index % boardSize < 22 && index % boardSize > 12) {
+        if (index % boardSize < 22 && index % boardSize > 11) {
                 el.classList.add('truck-two');
+                el.setAttribute('data-id' , '2');
         }
 })
 
 truckNodes.forEach((el, index) => {
-        if (index % boardSize > 22) {
+        if (index % boardSize > 22 && index % boardSize < 33) {
                 el.classList.add('truck-three');
+                el.setAttribute('data-id' , '3');
+
         }
 })
 
-function detectTruck() {
-        ourBricks = document.querySelectorAll('.fruit');
-        truckOne = document.querySelectorAll('.truck-one');
-
-
-        if (ourBricks.classList.contains('truck')) {
-                truckOne.forEach((el) => {
-                        el.classList.remove('truck');
-                        el.classList.add('wall')
-                })
-        }
+function blockTruck() {
+        
 }
-// game end logic
-// if truck id 1 && truck id 2 && truck id 3 has .blocked class -> end game
-// end game = end game screen class .hidden off; show number of points (score added to local storage; check if highest score in local storage if true -> congrats popup) 
