@@ -68,11 +68,6 @@ window.addEventListener("keydown", function (event) {
 });
 let currentBrickName = randomBrick();
 let currentBrickFrame = 0;
-addEventListener("keydown", function (event) {
-  if (event.code === "Space") {
-    currentBrickFrame = (currentBrickFrame + 1) % 4;
-  }
-});
 
 
 

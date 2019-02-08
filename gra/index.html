@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>MoveItGame - zatrzymanie gry</title>
-    <link rel="stylesheet" href="/gra/main.css">
-    <link rel="stylesheet" href="/gra/main.css">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="main.css">
     <link rel="icon" type="image/png" href="../img/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=Catamaran:400,700,800,900&amp;subset=latin-ext" rel="stylesheet">
 </head>
@@ -16,15 +16,55 @@
     <div id="game" class="game">
         <div class="menu-container">
             <div class="logo-core"></div>
-            <div class="instruction"></div>
+            <div class="instruction">
+                <h1 class="instruction-title">STEROWANIE:</h1>
+                    <ul>
+                        <li>
+                            <img src="esc.jpg" alt="esc">
+                            <h4>Pauza w oknie gry</h4>
+                        </li>
+                        <li>
+                            <img src="A.jpg" alt="A">
+                            <h4>Odesłanie ciężarówki nr 1</h4>
+                        </li>
+                        <li>
+                            <img src="s.jpg" alt="S">
+                            <h4>Odesłanie ciężarówki nr 2</h4>
+                        </li>
+                        <li>
+                            <img src="D.jpg" alt="D">
+                            <h4>Odesłanie ciężarówki nr 3</h4>
+                        </li>
+                        <li>
+                            <img src="leftarrow.jpg" alt="left arrow">
+                            <h4>Przesunięcie klocka w lewo</h4>
+                        </li>
+                        <li>
+                            <img src="rightarrow.jpg" alt="right arrow">
+                            <h4>Przesunięcie klocka w prawo</h4>
+                        </li>
+                        <li>
+                            <img src="downarrow.jpg" alt="down arrow">
+                            <h4>Przyspieszenie spadania klocka</h4>
+                        </li>
+                        <li>
+                            <img src="space.jpg" alt="Space">
+                            <h4>Obrót klocka</h4>
+                        </li>
+                    </ul>
+            </div>
+            
         </div>
-        <div class="score">Wynik: </div>
+        <div class="score">WYNIK: </div>
         <div class="game-display">
-            <div id="board"></div>
-            <div class="trucks">
-                <div class="firstTruck"></div>
-                <div class="secondTruck"></div>
-                <div class="thirdTruck"></div>
+            <div class="board-with-trucks">
+                <div id="board"></div>
+                <div class="trucks">
+                    <div class="firstTruck truckPhantom">
+                    </div>
+                    <div class="secondTruck truckPhantom"></div>
+                    <div class="thirdTruck truckPhantom"></div>
+                </div>
             </div>
         </div>
     </div>
