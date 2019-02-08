@@ -46,7 +46,3 @@ truckNodes.forEach((el, index) => {
 
         }
 })
-
-function blockTruck() {
-        
-}
