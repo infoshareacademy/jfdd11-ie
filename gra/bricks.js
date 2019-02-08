@@ -12,11 +12,17 @@ const resumeButton = document.querySelector('.resume-game');
 makeBoard(board, boardSize, 40);
 const bricks = document.querySelectorAll('.fruit');
 
+const blockedBrickSound = new Audio("sounds/NFF-bump-wood.wav");
+const menuButtonHover = new Audio("sounds/NFF-finger-snap.wav");
+const gameMusic = new Audio("main_theme_01.wav");
+
 const cells = Array.from(board.querySelectorAll('.cell'));
 const allCells = cells.slice(0);
 let gameIsPaused = false;
 let y = 0;
 let x = randomBrickStart();
+
+
 
 function popUp() {
   popUpStatus.classList.toggle('hidden');
@@ -24,6 +30,7 @@ function popUp() {
 function checkIfGameEnds(truck1, truck2, truck3){
   if(truck1 === true && truck2 === true && truck3 === true){
     popUpStatus.classList.remove('hidden');
+    blockedBrickSound = "";
   }
 }
 
@@ -40,11 +47,10 @@ addEventListener("keyup", function (event) {
   }
 });
 
-window.addEventListener("keydown", function (event) {
-
-  console.log("WAAAAT")
+window.addEventListener("keyup", function (event) {
   if (event.code === "Space") {
     currentBrickFrame = (4 + currentBrickFrame + 1) % 4;
+    menuButtonHover.play();
     if (!weCanGo()) {
       currentBrickFrame = (4 + currentBrickFrame - 1) % 4;
       return;
@@ -252,7 +258,7 @@ function paintingBricks() {
       blockTruck(truckId);
     }
     cellsWeHavePainted.forEach(item => item.classList.add('blocked'));
-    
+    blockedBrickSound.play();
     makeNewBrick();
     return;
   }
