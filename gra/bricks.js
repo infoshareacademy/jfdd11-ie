@@ -77,30 +77,41 @@ window.addEventListener("keyup", function (event) {
       y--;
     }
   }
+
   if (event.code === "KeyA") {
     if (blockedTruckIds[1] === true) {
       console.log("nie pośmigasz")
     }
     else {
+      blockTruck("1");
       truckNodes.forEach((el, index) => {
         if (index % boardSize < 11 && index % boardSize > 0) {
           el.classList.remove('fruit');
           el.classList.remove('blocked');
-          blockedTruckIds[1] = false;
+          el.style.backgroundColor = "";
+         setTimeout(function() {
+           unblockTruck("1");
+         }, 10000)
         }
       })
+      
     }
   }
+
   if (event.code === "KeyS") {
     if (blockedTruckIds[2] === true) {
       console.log("nie pośmigasz")
     }
     else {
+      blockTruck("2");
       truckNodes.forEach((el, index) => {
         if (index % boardSize < 22 && index % boardSize > 11) {
           el.classList.remove('fruit');
           el.classList.remove('blocked');
-          blockedTruckIds[2] = false;
+          el.style.backgroundColor = "";
+          setTimeout(function() {
+           unblockTruck("2");
+         }, 10000)
         }
       })
     }
@@ -110,11 +121,15 @@ window.addEventListener("keyup", function (event) {
       console.log("nie pośmigasz")
     }
     else {
+      blockTruck("3");
       truckNodes.forEach((el, index) => {
         if (index % boardSize > 22 && index % boardSize < 33) {
           el.classList.remove('fruit');
           el.classList.remove('blocked');
-          blockedTruckIds[3] = false;
+          el.style.backgroundColor = "";
+          setTimeout(function() {
+           unblockTruck("3");
+         }, 10000)
         }
       })
     }
@@ -161,6 +176,62 @@ function makeNewBrick() {
   x = randomBrickStart();
 }
 
+function incomingTruck() {
+  setTimeout
+}
+
+function blockTruck(truckId) {
+  // Block truck with that id
+  blockedTruckIds[truckId] = true
+  if (truckId === '1') {
+    allCells.forEach((el, index) => {
+      if (index % boardSize < 11 && index % boardSize > 0) {
+        el.classList.add('blocked');
+      }
+    })
+  }
+  if (truckId === '2') {
+    allCells.forEach((el, index) => {
+      if (index % boardSize < 22 && index % boardSize > 11) {
+        el.classList.add('blocked');
+      }
+    })
+  }
+  if (truckId === '3') {
+    allCells.forEach((el, index) => {
+      if (index % boardSize > 22 && index % boardSize < 33) {
+        el.classList.add('blocked');
+      }
+    })
+  }
+  // TODO
+}
+
+function unblockTruck(truckId) {
+  blockedTruckIds[truckId] = false;
+  if (truckId === '1') {
+    allCells.forEach((el, index) => {
+      if (index % boardSize < 11 && index % boardSize > 0) {
+        el.classList.remove('blocked');
+      }
+    })
+  }
+  if (truckId === '2') {
+    allCells.forEach((el, index) => {
+      if (index % boardSize < 22 && index % boardSize > 11) {
+        el.classList.remove('blocked');
+      }
+    })
+  }
+  if (truckId === '3') {
+    allCells.forEach((el, index) => {
+      if (index % boardSize > 22 && index % boardSize < 33) {
+        el.classList.remove('blocked');
+      }
+    })
+  }
+}
+
 const blockedTruckIds = {
   1: false,
   2: false,
@@ -184,37 +255,7 @@ function paintingBricks() {
 
 
       const truckId = cellWithinTruck.getAttribute('data-id');
-      // Block truck with that id
-      blockedTruckIds[truckId] = true
-      if (truckId === '1') {
-        allCells.forEach((el, index) => {
-          if (index % boardSize < 11 && index % boardSize > 0) {
-            el.classList.add('blocked');
-            blockedTruckIds[truckId] = true;
-            checkIfGameEnds(blockedTruckIds["1"], blockedTruckIds["2"], blockedTruckIds["3"]);
-          }
-        })
-      }
-      if (truckId === '2') {
-        allCells.forEach((el, index) => {
-          if (index % boardSize < 22 && index % boardSize > 11) {
-            el.classList.add('blocked');
-            blockedTruckIds[truckId] = true;
-            checkIfGameEnds(blockedTruckIds["1"], blockedTruckIds["2"], blockedTruckIds["3"]);
-          }
-        })
-      }
-      if (truckId === '3') {
-        allCells.forEach((el, index) => {
-          if (index % boardSize > 22 && index % boardSize < 33) {
-            el.classList.add('blocked');
-            blockedTruckIds[truckId] = true;
-            checkIfGameEnds(blockedTruckIds["1"], blockedTruckIds["2"], blockedTruckIds["3"]);
-          }
-        })
-      }
-      
-      // TODO
+      blockTruck(truckId);
     }
     cellsWeHavePainted.forEach(item => item.classList.add('blocked'));
     blockedBrickSound.play();
@@ -245,4 +286,4 @@ setInterval(function () {
   }
   y++;
   paintingBricks();
-}, 100);
+}, 200);
