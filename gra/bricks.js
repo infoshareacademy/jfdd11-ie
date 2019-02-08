@@ -1,5 +1,13 @@
 const boardSize = 34;
 const board = document.getElementById('board');
+const colors = ['#C14470', '#3AC7A4', '#FCC141', '#466ECE', '#CACACA', '#5EC456', '#A454C7'];
+
+
+
+const pickRandom = items => items[Math.floor(Math.random() * items.length)]
+let currentColor = pickRandom(colors);
+const popUpStatus = document.querySelector('.popup-body');
+const resumeButton = document.querySelector('.resume-game');
 
 makeBoard(board, boardSize, 40);
 const bricks = document.querySelectorAll('.fruit');
@@ -9,13 +17,33 @@ const allCells = cells.slice(0);
 let gameIsPaused = false;
 let y = 0;
 let x = randomBrickStart();
+
+
+function popUp() {
+  popUpStatus.classList.toggle('hidden');
+}
+
+resumeButton.addEventListener('click', function (event) {
+  event.target.blur();
+  gameIsPaused = !gameIsPaused
+  popUp();
+});
+
 addEventListener("keyup", function (event) {
   if (event.code === "Escape") {
     gameIsPaused = !gameIsPaused
+    popUp();
   }
+});
 
-})
 window.addEventListener("keydown", function (event) {
+  if (event.code === "Space") {
+    currentBrickFrame = (4 + currentBrickFrame + 1) % 4;
+    if (!weCanGo()) {
+      currentBrickFrame = (4 + currentBrickFrame - 1) % 4;
+      return;
+    }
+  }
   if (gameIsPaused) {
     return;
   }
@@ -80,11 +108,9 @@ window.addEventListener("keydown", function (event) {
 });
 let currentBrickName = randomBrick();
 let currentBrickFrame = 0;
-addEventListener("keyup", function (event) {
-  if (event.code === "Space") {
-    currentBrickFrame = (currentBrickFrame + 1) % 4;
-  }
-});
+
+
+
 
 function randomBrickStart() {
   return Math.floor(Math.random() * (boardSize - 4));
@@ -114,6 +140,7 @@ function getCellsWeWantToPaint() {
 }
 
 function makeNewBrick() {
+  currentColor = pickRandom(colors);
   currentBrickName = randomBrick();
   y = -1;
   x = randomBrickStart();
@@ -169,16 +196,23 @@ function paintingBricks() {
     }
     cellsWeHavePainted.forEach(item => item.classList.add('blocked'));
 
-
     makeNewBrick();
     return;
   }
 
   // remove all existing cells
-  cellsWeHavePainted.forEach(item => item.classList.remove('fruit'));
-
+  cellsWeHavePainted.forEach(item => {
+    item.classList.remove('fruit')
+    item.style.backgroundColor = ''
+  }
+  )
   // paint new cells
-  cellsWeWantToPaint.forEach(cell => cell.classList.add('fruit'))
+  cellsWeWantToPaint.forEach(item => {
+    item.classList.add('fruit')
+    item.style.backgroundColor = currentColor
+  }
+
+  )
 
 }
 
@@ -189,4 +223,4 @@ setInterval(function () {
   }
   y++;
   paintingBricks();
-}, 200);
+}, 100);
