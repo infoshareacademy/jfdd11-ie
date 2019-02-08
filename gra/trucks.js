@@ -55,3 +55,6 @@ function detectTruck() {
                 })
         }
 }
+// game end logic
+// if truck id 1 && truck id 2 && truck id 3 has .blocked class -> end game
+// end game = end game screen class .hidden off; show number of points (score added to local storage; check if highest score in local storage if true -> congrats popup) 
