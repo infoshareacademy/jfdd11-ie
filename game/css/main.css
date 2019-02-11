@@ -7,7 +7,7 @@ html {
 }
 
 #game {
-  background: url(/img/nackground.png) no-repeat center;
+  background: url('../img/nackground.png') no-repeat center;
 }
 
 body {
@@ -32,7 +32,7 @@ body {
   top: 0;
   flex-direction: column;
   margin-right: 100px;
-  background: url(/img/logo_white.png) no-repeat left 33% bottom 95%;
+  background: url('../img/logo_white.png') no-repeat left 33% bottom 95%;
   ;
 }
 
@@ -103,7 +103,7 @@ body {
 }
 
 .truckPhantom {
-  background: url('/img/paka.png');
+  background: url('../img/paka.png');
   background-position: center bottom;
   background-repeat: no-repeat;
   background-size: contain;
@@ -147,7 +147,7 @@ body {
 .popup-body {
   height: 100vh;
   width: 100vw;
-  background: url(./img/nackground.png) no-repeat center;
+  background: url('../img/nackground.png') no-repeat center;
   background-size: cover;
   display: flex;
   align-items: center;
@@ -160,7 +160,7 @@ body {
 
 .main-popup-container {
   margin: 0 auto;
-  background: url(/img/apla.png) no-repeat center;
+  background: url('../img/apla.png') no-repeat center;
   background-size: cover;
   height: 80vh;
   width: 65vw;
