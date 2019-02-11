@@ -1,0 +1,160 @@
+* {
+    box-sizing: border-box;
+}
+
+html{
+    font-family: 'Catamaran', sans-serif;
+}
+
+.logo {
+    background-color: #fff;
+    padding-bottom: 50px;
+}
+
+.main-page {
+    height: 100vh;
+    width: 100vw;
+    background: url(/img/backgroundgame.png) no-repeat  center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+} 
+
+.main-container {
+    margin: 0 auto;
+    padding: 0 7%;
+    width: 60%;
+    height: 35vw;
+    background: #fff;
+    opacity: 0.8;
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+}
+
+.upper-case {
+    text-transform: uppercase;
+}
+
+.paragraph-about-game {
+    font-size: 18px;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.add-button {
+    border: 1px #fcc61e solid;
+    background: linear-gradient(#f8c512, #edb60d);
+    font-size: 14px;
+    color: #fff;
+    font-weight: 800;
+    padding: 20px 50px 20px 50px;
+    margin: 5px;
+    cursor:pointer;
+    transition: all 0.05s;
+}
+
+.add-button:hover {
+    background: #ff8c0a;
+}
+
+.start-game {
+    font-size: 20px;
+    background-color: #323232;
+    color: #fff;
+    font-weight: 900;
+    border: none;
+    padding: 20px 40px 20px 40px;
+    margin: 20px 0;
+    width: 80%;
+    cursor:pointer;
+    transition: all 0.5s;
+    text-decoration: none;
+    text-align: center;
+}
+
+
+.box-for-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+}
+
+.start-game:hover {
+    background: #050505;
+
+}
+
+i {
+  border: solid #fff;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+.right {
+  transform: rotate(-45deg);
+}
+
+.arrow {
+    margin-left: 5px;
+}
+
+
+@media (max-width: 1310px) {
+
+    .main-container {
+        padding: 0 5%;
+        width: 70%;
+        height: 45vw;
+    }
+}
+
+
+@media (max-width: 900px) {
+
+    .start-game {
+        display: none;
+    }
+
+    .add-button {
+        display: none;
+    }
+
+    .main-container {
+        padding: 0 5%;
+        width: 80%;
+        height: 70vw;
+    }
+}
+
+@media (max-width: 550px) {
+    .logo img{
+        padding: 0 10px;
+        width: 100%;
+        margin-top: 50px;
+    }
+}
+
+@media (max-width: 430px) {
+        .paragraph-about-game  {
+            /* margin-bottom: 90px; */
+        }
+
+        .main-container {
+            height: 100vw;
+            width: 80%;
+
+        }
+
+        .main-page {
+            height: 100vh;
+            width: 100vw;
+            background: url(/img/backgroundgame.png) no-repeat  center;
+            background-size: cover;
+            display: block;
+            padding-top: 50px;
+        } 
+}
