@@ -2,20 +2,53 @@ const boardSize = 34;
 const board = document.getElementById('board');
 const colors = ['#C14470', '#3AC7A4', '#FCC141', '#466ECE', '#5EC456', '#A454C7'];
 
+
+const blockedTruckIds = {
+  1: false,
+  2: false,
+  3: false
+}
+const availableTruckIds = Object.entries(blockedTruckIds).map(([truckId, isBlocked]) => ({ truckId, isBlocked })).filter(({ isBlocked }) => isBlocked === false).map(({ truckId }) => parseInt(truckId));
+
+const randomCanal = function getRandomCanal(){ 
+let min = Math.min(...availableTruckIds);
+let max = Math.max(...availableTruckIds);
+return Math.floor(Math.random() * (max - min + 1) + min);
+}
+function randomBrickStart() {
+  return Math.floor(Math.random() * randomCanal()*10);
+}
+
 let score = 0;
+
 
 const pickRandom = items => items[Math.floor(Math.random() * items.length)]
 let currentColor = pickRandom(colors);
-const popUpStatus = document.querySelector('.popup-body');
 const scorePopUp = document.querySelector('.popup-score');
+const pausePopUpStatus = document.querySelector('.popup-body');
 const resumeButton = document.querySelector('.resume-game');
+const gameOverPopUpStatus = document.querySelector(".popup-game-over");
+const menuButtons = document.querySelectorAll(".add-button");
+
+menuButtons.forEach(function(button){
+  button.addEventListener("mouseenter", function(){
+    menuButtonHover.play();
+  });
+  button.addEventListener("click", function(){
+    menuButtonClick.play();
+  });
+});
 
 makeBoard(board, boardSize, 40);
 const bricks = document.querySelectorAll('.fruit');
 let trucksNodes = document.querySelectorAll('.truck');
 const blockedBrickSound = new Audio("sounds/NFF-bump-wood.wav");
-const menuButtonHover = new Audio("sounds/NFF-finger-snap.wav");
-const gameMusic = new Audio("main_theme_01.wav");
+const brickRotateSound = new Audio("sounds/NFF-finger-snap.wav");
+const gameMusic = new Audio("sounds/main_theme_01.wav");
+gameMusic.loop = true;
+const menuButtonHover = new Audio("sounds/NFF-menu-08-a.wav");
+const menuButtonClick = new Audio("sounds/NFF-menu-08-b.wav");
+const pauseSound = new Audio("sounds/NFF-suck.wav");
 const submitButton = document.querySelector('.form-score')
 
 const cells = Array.from(board.querySelectorAll('.cell'));
@@ -23,9 +56,17 @@ const allCells = cells.slice(0);
 let gameIsPaused = false;
 let y = 0;
 let x = randomBrickStart();
+let truckDeliveryTime = 10000;
+let brickFallingSpeed = 200;
 
-function popUp() {
-  popUpStatus.classList.toggle('hidden');
+
+
+function pauseMenuPopUp() {
+  pausePopUpStatus.classList.toggle('hidden');
+}
+
+function gameOverPopUp(){
+  gameOverPopUpStatus.classList.remove("hidden");
 }
 
 function checkIfGameEnds(truck1, truck2, truck3){
@@ -34,6 +75,7 @@ function checkIfGameEnds(truck1, truck2, truck3){
     let showScoreGameOver = document.querySelector('.show-score');
     showScoreGameOver.textContent = "Twój wynik: " + score;
     blockedBrickSound = "";
+    gameMusic.pause();
   }
 }
 
@@ -85,20 +127,31 @@ function refreshScores() {
 resumeButton.addEventListener('click', function (event) {
   event.target.blur();
   gameIsPaused = !gameIsPaused
-  popUp();
+  pauseMenuPopUp();
+  if(gameIsPaused){
+    gameMusic.pause();
+  }else{
+    gameMusic.play();
+  }
 });
 
 addEventListener("keydown", function (event) {
   if (event.code === "Escape") {
     gameIsPaused = !gameIsPaused
-    popUp();
+    pauseMenuPopUp();
+    if(gameIsPaused){
+      gameMusic.pause();
+      pauseSound.play();
+    }else{
+      gameMusic.play();
+    }
   }
 });
 
 window.addEventListener("keydown", function (event) {
   if (event.code === "Space") {
     currentBrickFrame = (4 + currentBrickFrame + 1) % 4;
-    menuButtonHover.play();
+    brickRotateSound.play();
     if (!weCanGo()) {
       currentBrickFrame = (4 + currentBrickFrame - 1) % 4;
       return;
@@ -142,10 +195,11 @@ window.addEventListener("keydown", function (event) {
           el.style.backgroundColor = "";
          setTimeout(function() {
            unblockTruck("1");
-         }, 30000)
+         }, truckDeliveryTime)
         }
       })
-      
+      truckDeliveryTime += 5000;
+      brickFallingSpeed -= 100;
     }
   }
 
@@ -165,9 +219,11 @@ window.addEventListener("keydown", function (event) {
           el.style.backgroundColor = "";
           setTimeout(function() {
            unblockTruck("2");
-         }, 30000)
+         }, truckDeliveryTime)
         }
       })
+      truckDeliveryTime += 5000;
+      brickFallingSpeed -= 100;
     }
   }
   if (event.code === "KeyD") {
@@ -186,9 +242,11 @@ window.addEventListener("keydown", function (event) {
           el.style.backgroundColor = "";
           setTimeout(function() {
            unblockTruck("3");
-         }, 30000)
+         }, truckDeliveryTime)
         }
       })
+      truckDeliveryTime += 5000;
+      brickFallingSpeed -= 100;
     }
   }
   paintingBricks();
@@ -197,10 +255,8 @@ let currentBrickName = randomBrick();
 let currentBrickFrame = 0;
 
 
+gameMusic.play();
 
-function randomBrickStart() {
-  return Math.floor(Math.random() * (boardSize - 4));
-}
 function randomBrick() {
   return Object.keys(blocks)[Math.floor(Math.random() * Object.keys(blocks).length)];
 }
@@ -289,11 +345,7 @@ function unblockTruck(truckId) {
   }
 }
 
-const blockedTruckIds = {
-  1: false,
-  2: false,
-  3: false
-}
+
 
 function paintingBricks() {
   const cellsWeWantToPaint = getCellsWeWantToPaint();
@@ -350,4 +402,4 @@ setInterval(function () {
   }
   y++;
   paintingBricks();
-}, 200);
+}, brickFallingSpeed);
