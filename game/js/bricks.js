@@ -2,6 +2,7 @@ const boardSize = 34;
 const board = document.getElementById('board');
 const colors = ['#C14470', '#3AC7A4', '#FCC141', '#466ECE', '#5EC456', '#A454C7'];
 
+
 const blockedTruckIds = {
   1: false,
   2: false,
@@ -17,6 +18,9 @@ return Math.floor(Math.random() * (max - min + 1) + min);
 function randomBrickStart() {
   return Math.floor(Math.random() * randomCanal()*10);
 }
+
+let score = 0;
+
 
 const pickRandom = items => items[Math.floor(Math.random() * items.length)]
 let currentColor = pickRandom(colors);
@@ -35,7 +39,7 @@ menuButtons.forEach(function(button){
 
 makeBoard(board, boardSize, 40);
 const bricks = document.querySelectorAll('.fruit');
-
+let trucksNodes = document.querySelectorAll('.truck');
 const blockedBrickSound = new Audio("sounds/NFF-bump-wood.wav");
 const brickRotateSound = new Audio("sounds/NFF-finger-snap.wav");
 const gameMusic = new Audio("sounds/main_theme_01.wav");
@@ -127,7 +131,10 @@ window.addEventListener("keydown", function (event) {
       console.log("nie pośmigasz")
     }
     else {
+      let scoreTruckOneNodes = document.querySelectorAll('.truck-one.blocked')
+      score += scoreTruckOneNodes.length;
       blockTruck("1");
+      showScore();
       truckNodes.forEach((el, index) => {
         if (index % boardSize < 11 && index % boardSize > 0) {
           el.classList.remove('fruit');
@@ -148,7 +155,10 @@ window.addEventListener("keydown", function (event) {
       console.log("nie pośmigasz")
     }
     else {
+      let scoreTruckTwoNodes = document.querySelectorAll('.truck-two.blocked')
+      score += scoreTruckTwoNodes.length;
       blockTruck("2");
+      showScore();
       truckNodes.forEach((el, index) => {
         if (index % boardSize < 22 && index % boardSize > 11) {
           el.classList.remove('fruit');
@@ -168,7 +178,10 @@ window.addEventListener("keydown", function (event) {
       console.log("nie pośmigasz")
     }
     else {
+      let scoreTruckThreeNodes = document.querySelectorAll('.truck-three.blocked')
+      score += scoreTruckThreeNodes.length;
       blockTruck("3");
+      showScore();
       truckNodes.forEach((el, index) => {
         if (index % boardSize > 22 && index % boardSize < 33) {
           el.classList.remove('fruit');
@@ -190,7 +203,6 @@ let currentBrickFrame = 0;
 
 
 gameMusic.play();
-
 
 function randomBrick() {
   return Object.keys(blocks)[Math.floor(Math.random() * Object.keys(blocks).length)];
@@ -321,6 +333,13 @@ function paintingBricks() {
 
   )
 
+}
+
+let scoreDiv = document.querySelector('.score')
+
+//liczenie punktów
+function showScore() {
+scoreDiv.textContent = "WYNIK: " + score;
 }
 
 // spadanie klocków
