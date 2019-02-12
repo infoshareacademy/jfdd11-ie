@@ -24,10 +24,12 @@ let score = 0;
 
 const pickRandom = items => items[Math.floor(Math.random() * items.length)]
 let currentColor = pickRandom(colors);
+const scorePopUp = document.querySelector('.popup-score');
 const pausePopUpStatus = document.querySelector('.popup-body');
 const resumeButton = document.querySelector('.resume-game');
 const gameOverPopUpStatus = document.querySelector(".popup-game-over");
 const menuButtons = document.querySelectorAll(".add-button");
+
 menuButtons.forEach(function(button){
   button.addEventListener("mouseenter", function(){
     menuButtonHover.play();
@@ -47,6 +49,7 @@ gameMusic.loop = true;
 const menuButtonHover = new Audio("sounds/NFF-menu-08-a.wav");
 const menuButtonClick = new Audio("sounds/NFF-menu-08-b.wav");
 const pauseSound = new Audio("sounds/NFF-suck.wav");
+const submitButton = document.querySelector('.form-score')
 
 const cells = Array.from(board.querySelectorAll('.cell'));
 const allCells = cells.slice(0);
@@ -61,15 +64,65 @@ let brickFallingSpeed = 200;
 function pauseMenuPopUp() {
   pausePopUpStatus.classList.toggle('hidden');
 }
+
 function gameOverPopUp(){
-  gameOverPopUpStatus,classList.remove("hidden");
+  gameOverPopUpStatus.classList.remove("hidden");
 }
+
 function checkIfGameEnds(truck1, truck2, truck3){
   if(truck1 === true && truck2 === true && truck3 === true){
-    gameOverPopUpStatus.classList.remove('hidden');
+    scorePopUp.classList.remove('hidden');
+    let showScoreGameOver = document.querySelector('.show-score');
+    showScoreGameOver.textContent = "Twój wynik: " + score;
+    blockedBrickSound = "";
     gameMusic.pause();
   }
 }
+
+submitButton.addEventListener('submit', event => { 
+  event.preventDefault();
+  const inputValue = event.target.name.value;
+  addNewScore(inputValue);
+})
+
+function addNewScore(name) {
+  fetch('https://moveitgame.firebaseio.com/moveitgame.json', {
+    method: 'POST', 
+    body: JSON.stringify({ 
+      name: name,
+      score: score
+    }) 
+    } )
+    .then(() => refreshScores())
+}
+
+let listScores = document.querySelector('.last-scores');
+
+function refreshScores() {
+
+  fetch("https://moveitgame.firebaseio.com/moveitgame.json").then(response => response.json()).then(scores => {
+    let objectScores = Object.entries(scores);
+    objectScores.map(objects => {
+    
+      userName = objects[1].name;
+      userScore = objects[1].score; 
+      let liUserScore = document.createElement('li');
+      liUserScore.textContent = userName + ": " + userScore;
+      listScores.appendChild(liUserScore);
+      console.log(liUserScore);
+    
+    })
+  })};
+
+  const makeListItem = userScore => {
+    const scoreNode = document.createElement("li");
+    const viewNode = document.createElement("div");
+    // Compose all of the above
+    scoreNode.textContent = userScore.name;
+
+    scoreNode.appendChild(viewNode);
+    return scoreNode;
+  };
 
 resumeButton.addEventListener('click', function (event) {
   event.target.blur();
