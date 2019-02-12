@@ -7,6 +7,7 @@ let score = 0;
 const pickRandom = items => items[Math.floor(Math.random() * items.length)]
 let currentColor = pickRandom(colors);
 const popUpStatus = document.querySelector('.popup-body');
+const scorePopUp = document.querySelector('.popup-score');
 const resumeButton = document.querySelector('.resume-game');
 
 makeBoard(board, boardSize, 40);
@@ -15,6 +16,7 @@ let trucksNodes = document.querySelectorAll('.truck');
 const blockedBrickSound = new Audio("sounds/NFF-bump-wood.wav");
 const menuButtonHover = new Audio("sounds/NFF-finger-snap.wav");
 const gameMusic = new Audio("main_theme_01.wav");
+const submitButton = document.querySelector('.form-score')
 
 const cells = Array.from(board.querySelectorAll('.cell'));
 const allCells = cells.slice(0);
@@ -22,17 +24,59 @@ let gameIsPaused = false;
 let y = 0;
 let x = randomBrickStart();
 
-
-
 function popUp() {
   popUpStatus.classList.toggle('hidden');
 }
+
 function checkIfGameEnds(truck1, truck2, truck3){
   if(truck1 === true && truck2 === true && truck3 === true){
-    popUpStatus.classList.remove('hidden');
+    scorePopUp.classList.remove('hidden');
+    let showScoreGameOver = document.querySelector('.show-score');
+    showScoreGameOver.textContent = "Twój wynik: " + score;
     blockedBrickSound = "";
   }
 }
+
+submitButton.addEventListener('submit', event => { 
+  event.preventDefault();
+  const inputValue = event.target.name.value;
+  addNewScore(inputValue);
+})
+
+function addNewScore(name) {
+  fetch('https://moveitgame.firebaseio.com/moveitgame.json', {
+    method: 'POST', 
+    body: JSON.stringify({ 
+      name: name,
+      scores: score
+    }) 
+    } )
+    .then(() => refreshScores())
+}
+
+let listScores = document.querySelector('.last-scores');
+
+function refreshScores() {
+
+  fetch("https://moveitgame.firebaseio.com/moveitgame.json").then(response => response.json()).then(scores => {
+    // listScores.innerHTML = "";
+    // scores
+    //   .map(makeListItem)
+    //   .forEach(score => listScores.appendChild(score));
+    
+    const scoresArray = Object.entries(scores);
+    scoresArray.map(objects => Object.entries(objects).map(object => console.log(object)));
+  })};
+
+  const makeListItem = userScore => {
+    const scoreNode = document.createElement("li");
+    const viewNode = document.createElement("div");
+    // Compose all of the above
+    scoreNode.textContent = userScore.name;
+
+    scoreNode.appendChild(viewNode);
+    return scoreNode;
+  };
 
 resumeButton.addEventListener('click', function (event) {
   event.target.blur();
@@ -94,7 +138,7 @@ window.addEventListener("keydown", function (event) {
           el.style.backgroundColor = "";
          setTimeout(function() {
            unblockTruck("1");
-         }, 10000)
+         }, 30000)
         }
       })
       
@@ -117,7 +161,7 @@ window.addEventListener("keydown", function (event) {
           el.style.backgroundColor = "";
           setTimeout(function() {
            unblockTruck("2");
-         }, 10000)
+         }, 30000)
         }
       })
     }
@@ -138,7 +182,7 @@ window.addEventListener("keydown", function (event) {
           el.style.backgroundColor = "";
           setTimeout(function() {
            unblockTruck("3");
-         }, 10000)
+         }, 30000)
         }
       })
     }
@@ -191,6 +235,7 @@ function incomingTruck() {
 function blockTruck(truckId) {
   // Block truck with that id
   blockedTruckIds[truckId] = true
+  checkIfGameEnds(blockedTruckIds[1], blockedTruckIds[2], blockedTruckIds[3]);
   if (truckId === '1') {
     allCells.forEach((el, index) => {
       if (index % boardSize < 11 && index % boardSize > 0) {
