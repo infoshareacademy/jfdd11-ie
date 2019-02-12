@@ -48,7 +48,7 @@ function addNewScore(name) {
     method: 'POST', 
     body: JSON.stringify({ 
       name: name,
-      scores: score
+      score: score
     }) 
     } )
     .then(() => refreshScores())
@@ -59,13 +59,17 @@ let listScores = document.querySelector('.last-scores');
 function refreshScores() {
 
   fetch("https://moveitgame.firebaseio.com/moveitgame.json").then(response => response.json()).then(scores => {
-    // listScores.innerHTML = "";
-    // scores
-    //   .map(makeListItem)
-    //   .forEach(score => listScores.appendChild(score));
+    let objectScores = Object.entries(scores);
+    objectScores.map(objects => {
     
-    const scoresArray = Object.entries(scores);
-    scoresArray.map(objects => Object.entries(objects).map(object => console.log(object)));
+      userName = objects[1].name;
+      userScore = objects[1].score; 
+      let liUserScore = document.createElement('li');
+      liUserScore.textContent = userName + ": " + userScore;
+      listScores.appendChild(liUserScore);
+      console.log(liUserScore);
+    
+    })
   })};
 
   const makeListItem = userScore => {
