@@ -21,7 +21,8 @@ const allCells = cells.slice(0);
 let gameIsPaused = false;
 let y = 0;
 let x = randomBrickStart();
-
+let truckDeliveryTime = 10000;
+let brickFallingSpeed = 200;
 
 
 function popUp() {
@@ -91,10 +92,12 @@ window.addEventListener("keydown", function (event) {
           el.style.backgroundColor = "";
          setTimeout(function() {
            unblockTruck("1");
-         }, 10000)
+         }, truckDeliveryTime)
         }
       })
-      
+      truckDeliveryTime += 5000;
+      brickFallingSpeed -= 100;
+      console.log(brickFallingSpeed);
     }
   }
 
@@ -111,9 +114,12 @@ window.addEventListener("keydown", function (event) {
           el.style.backgroundColor = "";
           setTimeout(function() {
            unblockTruck("2");
-         }, 10000)
+         }, truckDeliveryTime)
         }
       })
+      truckDeliveryTime += 5000;
+      brickFallingSpeed -= 100;
+      console.log(brickFallingSpeed);
     }
   }
   if (event.code === "KeyD") {
@@ -129,9 +135,12 @@ window.addEventListener("keydown", function (event) {
           el.style.backgroundColor = "";
           setTimeout(function() {
            unblockTruck("3");
-         }, 10000)
+         }, truckDeliveryTime)
         }
       })
+      truckDeliveryTime += 5000;
+      brickFallingSpeed -= 100;
+      console.log(brickFallingSpeed);
     }
   }
   paintingBricks();
@@ -183,6 +192,7 @@ function incomingTruck() {
 function blockTruck(truckId) {
   // Block truck with that id
   blockedTruckIds[truckId] = true
+  checkIfGameEnds(blockedTruckIds[1], blockedTruckIds[2], blockedTruckIds[3]);
   if (truckId === '1') {
     allCells.forEach((el, index) => {
       if (index % boardSize < 11 && index % boardSize > 0) {
@@ -286,4 +296,5 @@ setInterval(function () {
   }
   y++;
   paintingBricks();
-}, 200);
+  console.log(brickFallingSpeed);
+}, brickFallingSpeed);
