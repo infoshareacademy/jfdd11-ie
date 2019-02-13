@@ -327,10 +327,10 @@ i {
 .arrow {
   margin-left: 5px;
 }
-
+/* 
  .hidden {
   top: -100%;
-} 
+}  */
 
 .board-with-trucks {
   position: relative;
