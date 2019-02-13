@@ -332,6 +332,22 @@ i {
   top: -100%;
 }  */
 
+.form-score {
+  margin-bottom: 20px;
+}
+
+.last-scores {
+  text-align: left;
+  
+}
+
+.last-scores li {
+  color: #fff;
+  font-size: 20px;
+  margin-bottom: 10px;
+
+}
+
 .board-with-trucks {
   position: relative;
 }
