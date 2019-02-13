@@ -95,25 +95,26 @@
     <!-- </div> -->
     <!-- <div class="hidden"> -->
       <div class="popup-score hidden">
-        <div class="main-popup-container">
-          <img src="./img/moveitgame.png" alt="logo gry MoveIt" />
-          <h1 class="upper-case end-game">Koniec gry</h1>
-          <h1 class="show-score end-game upper-case"></h1>
+        <div class="main-popup-container-end">
+          <!-- <img src="./img/logo_white.png" alt="logo gry MoveIt" /> -->
+          <h1 class="upper-case end-game">game over!</h1>
+          <h1 class="show-score end-game-2 upper-case"></h1>
           <form class="form-score">
-            <label for="name">Podaj imię: </label>
-            <input type="text" placeholder="Imię" name="name">
+            <div class="header-for-score">Dodaj swój rezultat do tablicy wyników!</div>
+            <!-- <label for="name">Podaj imię: </label> -->
+            <input class="input-button" type="text" placeholder="  Wpisz swoje imię..." name="name">
             <input class="submit-button" type="submit" value="Wyślij">
+            <!-- <p class="paragraph-about-gameover">Ostatnie wyniki:</p> -->
           </form>
-          <p class="paragraph-about-gameover">Ostatnie wyniki:</p>
           <ul class="last-scores"></ul>
-          <div class="button-box">
-            <a class="add-button upper-case" href="./index.html"
-              >koniec gry<i class="arrow right"></i
-            ></a>
-            <a class="add-button upper-case" href="./game.html"
-              >restart gry<i class="arrow right"></i
-            ></a>
-          </div>
+          <div class="button-box-end">
+              <a class="add-button upper-case " href="./index.html"
+                >koniec gry<i class="arrow right"></i
+              ></a>
+              <a class="add-button upper-case " href="./game.html"
+                >restart gry<i class="arrow right"></i
+              ></a>
+            </div>
         </div>
       </div>
       <!-- </div> -->
