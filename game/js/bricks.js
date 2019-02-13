@@ -73,7 +73,7 @@ function checkIfGameEnds(truck1, truck2, truck3){
   if(truck1 === true && truck2 === true && truck3 === true){
     scorePopUp.classList.remove('hidden');
     let showScoreGameOver = document.querySelector('.show-score');
-    showScoreGameOver.textContent = "Twój wynik: " + score;
+    showScoreGameOver.textContent = "Twój wynik to: " + score;
     blockedBrickSound = "";
     gameMusic.pause();
   }

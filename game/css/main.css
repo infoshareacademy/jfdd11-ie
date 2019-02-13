@@ -205,6 +205,19 @@ body {
   align-items: center;
 }
 
+.main-popup-container-end {
+  margin: 0 auto;
+  background: url('../img/gameover_tlo_black.png') no-repeat center;
+  background-size: cover;
+  height: 80vh;
+  width: 65vw;
+  padding: 0 100px 0 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .pause-game {
   font-size: 50px;
   font-weight: 800;
@@ -212,11 +225,18 @@ body {
   color: #323232;
 }
 
-.end-game {
-  font-size: 30px;
+.end-game-2 {
+  font-size: 45px;
   font-weight: 800;
   margin: 40px 10px 40px 10px;
-  color: #323232;
+  color: #f8c512;
+}
+
+.end-game {
+  font-size: 50px;
+  font-weight: 800;
+  margin: 40px 10px 0px 10px;
+  color: #fff;
 }
 
 .upper-case {
@@ -258,7 +278,7 @@ a {
 
 .submit-button {
   border: 1px #323232 solid;
-  background: linear-gradient(#636363, #323232);
+  background-color: #fcc61e;
   font-size: 10px;
   color: #fff;
   font-weight: 800;
@@ -266,14 +286,31 @@ a {
   margin: 5px;
   cursor: pointer;
   transition: all 0.05s;
+  width: 50%;
+  height: 30px;
+  font-size: 14px;
 }
 
-.submit-button:hover {
-  color: #fcc61e;
+.header-for-score {
+  font-size: 30px;
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+.input-button {
+  height: 30px;
+  font-size: 14px;
+  margin-left: 20px;
 }
 
 .button-box {
   padding-top: 60px;
+  width: 80%;
+}
+
+.button-box-end {
+  padding-top: 60px;
+  width: 50%;
 }
 
 i {
@@ -291,9 +328,9 @@ i {
   margin-left: 5px;
 }
 
-.hidden {
+ .hidden {
   top: -100%;
-}
+} 
 
 .board-with-trucks {
   position: relative;
