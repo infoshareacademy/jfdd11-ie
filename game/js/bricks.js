@@ -105,6 +105,7 @@ function checkIfGameEnds(truck1, truck2, truck3){
     gameOver = true;
     showScorePopUp();
     gameOverSound.play();
+    hideAllTimers();
   }
 }
 
@@ -227,24 +228,22 @@ window.addEventListener("keydown", function (event) {
           el.classList.remove('fruit');
           el.classList.remove('blocked');
           el.style.backgroundColor = "";
-          if(!gameIsPaused){
          setTimeout(function() {
            unblockTruck("1");
            clearInterval(truckTime);
            firstTruckTimer.classList.add("hidden");
          }, truckDeliveryTime)
         }
-        }
       })
       //timer
-      firstTruckTimer.classList.remove("hidden");
       let count = truckDeliveryTime;
       let truckTime = setInterval(function () {
-      if(!gameIsPaused){
+      if(!gameIsPaused || !gameOver){
         count = count - 1000;
         firstTruckTimer.textContent = count / 1000;
       }
       }, 999);
+      firstTruckTimer.classList.remove("hidden");
       truckDeliveryTime += 5000;
     }
   }
@@ -262,25 +261,23 @@ window.addEventListener("keydown", function (event) {
         if (index % boardSize < 22 && index % boardSize > 11) {
           el.classList.remove('fruit');
           el.classList.remove('blocked');
-          el.style.backgroundColor = "";
-          if(!gameIsPaused){
+          el.style.backgroundColor = "";     
           setTimeout(function() {
            unblockTruck("2");
            clearInterval(truckTime);
            secondTruckTimer.classList.add("hidden");
          }, truckDeliveryTime)
         }
-        }
       })
       //timer
-      secondTruckTimer.classList.remove("hidden");
       let count = truckDeliveryTime;
       let truckTime = setInterval(function () {
-        if(!gameIsPaused){
+        if(!gameIsPaused || !gameOver){
         count = count - 1000;
         secondTruckTimer.textContent = count / 1000;
       }
       }, 999);
+      secondTruckTimer.classList.remove("hidden");
       truckDeliveryTime += 5000;
     }
   }
@@ -298,25 +295,22 @@ window.addEventListener("keydown", function (event) {
           el.classList.remove('fruit');
           el.classList.remove('blocked');
           el.style.backgroundColor = "";
-          if(!gameIsPaused){
           setTimeout(function() {
            unblockTruck("3");
            clearInterval(truckTime);
            thirdTruckTimer.classList.add("hidden");
          }, truckDeliveryTime)
         }
-        }
       })
       //timer
-      thirdTruckTimer.classList.remove("hidden");
       let count = truckDeliveryTime;
       let truckTime = setInterval(function () {
-        if(!gameIsPaused){
+        if(!gameIsPaused || !gameOver){
         count = count - 1000;
         thirdTruckTimer.textContent = count / 1000;
       }
       }, 999);
-
+      thirdTruckTimer.classList.remove("hidden");
       truckDeliveryTime += 5000;
     }
   }
