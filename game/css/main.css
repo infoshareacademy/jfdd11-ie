@@ -124,17 +124,19 @@ body {
   font-size: 8rem;
   position: absolute;
   z-index: 9999;
+  opacity: 1;
+  transition: all 1s;
 }
 .first-truck-timer-position{
-  left: 70px;
+  left: 60px;
   bottom: 200px;
 }
 .second-truck-timer-position{
-  left: 290px;
+  left: 275px;
   bottom: 200px;
 }
 .third-truck-timer-position{
-  left: 500px;
+  left: 485px;
   bottom: 200px;
 }
 .fruit {
@@ -365,6 +367,7 @@ i {
 
 .hidden {
   top: -100%;
+  opacity: 0;
 }
 
 .form-score {
