@@ -120,7 +120,23 @@ body {
 .truck {
   background-color: rgb(189, 189, 189);
 }
-
+.timer{
+  font-size: 8rem;
+  position: absolute;
+  z-index: 9999;
+}
+.first-truck-timer-position{
+  left: 70px;
+  bottom: 200px;
+}
+.second-truck-timer-position{
+  left: 290px;
+  bottom: 200px;
+}
+.third-truck-timer-position{
+  left: 500px;
+  bottom: 200px;
+}
 .fruit {
   background-color: red;
 }

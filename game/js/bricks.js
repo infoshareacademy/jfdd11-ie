@@ -28,6 +28,9 @@ const pausePopUpStatus = document.querySelector('.popup-body');
 const resumeButton = document.querySelector('.resume-game');
 const musicButton = document.querySelector(".music-button");
 const menuButtons = document.querySelectorAll(".add-button");
+const firstTruckTimer = document.querySelector(".first-truck-timer-position");
+const secondTruckTimer = document.querySelector(".second-truck-timer-position");
+const thirdTruckTimer = document.querySelector(".third-truck-timer-position");
 
 menuButtons.forEach(function(button){
   button.addEventListener("mouseenter", function(){
@@ -215,11 +218,21 @@ window.addEventListener("keydown", function (event) {
           el.style.backgroundColor = "";
          setTimeout(function() {
            unblockTruck("1");
+           clearInterval(truckTime);
+           firstTruckTimer.classList.add("hidden");
          }, truckDeliveryTime)
         }
       })
+      firstTruckTimer.classList.remove("hidden");
+      let count = truckDeliveryTime;
+      let truckTime = setInterval(function () {
+        count = count - 1000;
+        firstTruckTimer.textContent = count / 1000;
+        if (count <= 0) {
+          count = truckDeliveryTime;
+        }
+      }, 999);
       truckDeliveryTime += 5000;
-      brickFallingSpeed -= 100;
     }
   }
 
@@ -239,11 +252,21 @@ window.addEventListener("keydown", function (event) {
           el.style.backgroundColor = "";
           setTimeout(function() {
            unblockTruck("2");
+           clearInterval(truckTime);
+           secondTruckTimer.classList.add("hidden");
          }, truckDeliveryTime)
         }
       })
+      secondTruckTimer.classList.remove("hidden");
+      let count = truckDeliveryTime;
+      let truckTime = setInterval(function () {
+        count = count - 1000;
+        secondTruckTimer.textContent = count / 1000;
+        if (count <= 0) {
+          count = truckDeliveryTime;
+        }
+      }, 999);
       truckDeliveryTime += 5000;
-      brickFallingSpeed -= 100;
     }
   }
   if (event.code === "KeyD") {
@@ -260,20 +283,31 @@ window.addEventListener("keydown", function (event) {
           el.classList.remove('fruit');
           el.classList.remove('blocked');
           el.style.backgroundColor = "";
+          
           setTimeout(function() {
            unblockTruck("3");
+           clearInterval(truckTime);
+           thirdTruckTimer.classList.add("hidden");
          }, truckDeliveryTime)
         }
       })
+      thirdTruckTimer.classList.remove("hidden");
+      let count = truckDeliveryTime;
+      let truckTime = setInterval(function () {
+        count = count - 1000;
+        thirdTruckTimer.textContent = count / 1000;
+        if (count <= 0) {
+          count = truckDeliveryTime;
+        }
+      }, 999);
+
       truckDeliveryTime += 5000;
-      brickFallingSpeed -= 100;
     }
   }
   paintingBricks();
 });
 let currentBrickName = randomBrick();
 let currentBrickFrame = 0;
-
 
 gameMusic.play();
 
