@@ -26,7 +26,7 @@ let currentColor = pickRandom(colors);
 const scorePopUp = document.querySelector('.popup-score');
 const pausePopUpStatus = document.querySelector('.popup-body');
 const resumeButton = document.querySelector('.resume-game');
-// const gameOverPopUpStatus = document.querySelector(".popup-game-over");
+const musicButton = document.querySelector(".music-button");
 const menuButtons = document.querySelectorAll(".add-button");
 
 menuButtons.forEach(function(button){
@@ -58,7 +58,16 @@ let x = randomBrickStart();
 let truckDeliveryTime = 10000;
 let brickFallingSpeed = 200;
 let gameOver = false;
-
+let musicSwitchOn = true;
+function hearTheMusicPlay(){
+  if(musicSwitchOn === true){
+    musicButton.classList.remove("off");
+    gameMusic.play();
+  }else{
+    musicButton.classList.add("off");
+    gameMusic.pause();
+  }
+}
 
 function pauseMenuPopUp() {
   pausePopUpStatus.classList.toggle('hidden');
@@ -123,7 +132,10 @@ function refreshScores() {
     scoreNode.appendChild(viewNode);
     return scoreNode;
   };
-
+musicButton.addEventListener("click", function(){
+  musicSwitchOn = !musicSwitchOn;
+  hearTheMusicPlay();
+})
 resumeButton.addEventListener('click', function (event) {
   event.target.blur();
   gameIsPaused = !gameIsPaused
@@ -141,10 +153,11 @@ addEventListener("keydown", function (event) {
     gameIsPaused = !gameIsPaused
     pauseMenuPopUp();
     if(gameIsPaused){
-      gameMusic.pause();
+      musicSwitchOn = false;
+      hearTheMusicPlay();
       pauseSound.play();
     }else{
-      gameMusic.play();
+      hearTheMusicPlay();
     }
   }
 }

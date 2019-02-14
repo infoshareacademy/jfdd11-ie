@@ -388,3 +388,19 @@ i {
 .board-with-trucks {
   position: relative;
 }
+.music-button{
+  width: 80px;
+  height: 80px;
+  background-image: url("../img/audio-on.svg");
+  background-size: cover;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  transition: all 0.5s;
+}
+.music-button:hover{
+  opacity: 0.5;
+}
+.off{
+  background-image: url("../img/audio-off.svg");
+}
