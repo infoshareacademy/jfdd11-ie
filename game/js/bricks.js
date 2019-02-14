@@ -26,7 +26,7 @@ let currentColor = pickRandom(colors);
 const scorePopUp = document.querySelector('.popup-score');
 const pausePopUpStatus = document.querySelector('.popup-body');
 const resumeButton = document.querySelector('.resume-game');
-const gameOverPopUpStatus = document.querySelector(".popup-game-over");
+// const gameOverPopUpStatus = document.querySelector(".popup-game-over");
 const menuButtons = document.querySelectorAll(".add-button");
 
 menuButtons.forEach(function(button){
@@ -41,7 +41,7 @@ menuButtons.forEach(function(button){
 makeBoard(board, boardSize, 40);
 const bricks = document.querySelectorAll('.fruit');
 let trucksNodes = document.querySelectorAll('.truck');
-const blockedBrickSound = new Audio("sounds/NFF-bump-wood.wav");
+let blockedBrickSound = new Audio("sounds/NFF-bump-wood.wav");
 const brickRotateSound = new Audio("sounds/NFF-finger-snap.wav");
 const gameMusic = new Audio("sounds/main_theme_01.wav");
 gameMusic.loop = true;
@@ -57,24 +57,25 @@ let y = 0;
 let x = randomBrickStart();
 let truckDeliveryTime = 10000;
 let brickFallingSpeed = 200;
-
+let gameOver = false;
 
 
 function pauseMenuPopUp() {
   pausePopUpStatus.classList.toggle('hidden');
 }
 
-function gameOverPopUp(){
-  gameOverPopUpStatus.classList.remove("hidden");
-}
-
-function checkIfGameEnds(truck1, truck2, truck3){
-  if(truck1 === true && truck2 === true && truck3 === true){
-    scorePopUp.classList.remove('hidden');
+function showScorePopUp(){
+  scorePopUp.classList.remove('hidden');
     let showScoreGameOver = document.querySelector('.show-score');
     showScoreGameOver.textContent = "Twój wynik to: " + score;
     blockedBrickSound = "";
     gameMusic.pause();
+}
+
+function checkIfGameEnds(truck1, truck2, truck3){
+  if(truck1 === true && truck2 === true && truck3 === true){
+    gameOver = true;
+    showScorePopUp();
   }
 }
 
@@ -135,6 +136,7 @@ resumeButton.addEventListener('click', function (event) {
 });
 
 addEventListener("keydown", function (event) {
+  if(gameOver === false){
   if (event.code === "Escape") {
     gameIsPaused = !gameIsPaused
     pauseMenuPopUp();
@@ -145,6 +147,7 @@ addEventListener("keydown", function (event) {
       gameMusic.play();
     }
   }
+}
 });
 
 window.addEventListener("keydown", function (event) {
