@@ -143,7 +143,8 @@ body {
   background-color: #fff;
   padding-bottom: 50px;
 }
-.popup-game-over{
+
+.popup-game-over {
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -156,10 +157,12 @@ body {
   background-color: rgb(0, 0, 0);
   transition: all 1s;
 }
-.popup-game-over h1{
+
+.popup-game-over h1 {
   font-size: 10rem;
   color: rgb(255, 255, 255);
 }
+
 .popup-body {
   height: 100vh;
   width: 100vw;
@@ -205,6 +208,30 @@ body {
   align-items: center;
 }
 
+.main-popup-container-end {
+  margin: 0 auto;
+  background: url('../img/gameover_tlo_black.png') no-repeat center;
+  background-size: cover;
+  height: 80vh;
+  width: 65vw;
+  padding: 0 100px 0 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* .text-about-truck-time {
+  font-size: 30px;
+  position: absolute;
+  top: 300px;
+  left: 625px;
+  background-color: RGBA(255, 255, 255, 0.4);
+  width: 200px;
+  text-align: center;
+  padding: 5px;
+} */
+
 .pause-game {
   font-size: 50px;
   font-weight: 800;
@@ -212,11 +239,18 @@ body {
   color: #323232;
 }
 
-.end-game {
-  font-size: 30px;
+.end-game-2 {
+  font-size: 45px;
   font-weight: 800;
   margin: 40px 10px 40px 10px;
-  color: #323232;
+  color: #f8c512;
+}
+
+.end-game {
+  font-size: 50px;
+  font-weight: 800;
+  margin: 40px 10px 0px 10px;
+  color: #fff;
 }
 
 .upper-case {
@@ -258,7 +292,7 @@ a {
 
 .submit-button {
   border: 1px #323232 solid;
-  background: linear-gradient(#636363, #323232);
+  background-color: #fcc61e;
   font-size: 10px;
   color: #fff;
   font-weight: 800;
@@ -266,14 +300,36 @@ a {
   margin: 5px;
   cursor: pointer;
   transition: all 0.05s;
+  width: 40%;
+  height: 30px;
+  font-size: 14px;
 }
 
-.submit-button:hover {
-  color: #fcc61e;
+.header-for-score {
+  font-size: 30px;
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+.input-button {
+  height: 30px;
+  font-size: 14px;
+  margin-left: 20px;
 }
 
 .button-box {
   padding-top: 60px;
+  width: 80%;
+}
+
+.button-box-end {
+  padding-top: 60px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 60%;
+  align-items: center;
 }
 
 i {
@@ -293,6 +349,40 @@ i {
 
 .hidden {
   top: -100%;
+}
+
+.form-score {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 60%;
+  align-items: center;
+}
+
+.last-scorse-header {
+  color: #f8c512;
+  margin: 10px 0 10px 0;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.last-scorse-header-2 {
+  color: #fff;
+  margin: 10px 0 10px 0;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.last-scores {
+  text-align: left;
+}
+
+.last-scores li {
+  color: #fff;
+  font-size: 20px;
+  margin-bottom: 10px;
 }
 
 .board-with-trucks {
