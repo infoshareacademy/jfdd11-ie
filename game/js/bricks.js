@@ -41,13 +41,18 @@ menuButtons.forEach(function(button){
 makeBoard(board, boardSize, 40);
 const bricks = document.querySelectorAll('.fruit');
 let trucksNodes = document.querySelectorAll('.truck');
-let blockedBrickSound = new Audio("sounds/NFF-bump-wood.wav");
-const brickRotateSound = new Audio("sounds/NFF-finger-snap.wav");
-const gameMusic = new Audio("sounds/main_theme_01.wav");
+let blockedBrickSound = new Audio("sounds/NFF-bump-wood.mp3");
+const brickRotateSound = new Audio("sounds/NFF-finger-snap.mp3");
+const gameMusic = new Audio("sounds/main_theme_01.mp3");
 gameMusic.loop = true;
-const menuButtonHover = new Audio("sounds/NFF-menu-08-a.wav");
-const menuButtonClick = new Audio("sounds/NFF-menu-08-b.wav");
-const pauseSound = new Audio("sounds/NFF-suck.wav");
+const menuButtonHover = new Audio("sounds/NFF-menu-08-a.mp3");
+const menuButtonClick = new Audio("sounds/NFF-menu-08-b.mp3");
+const pauseSound = new Audio("sounds/NFF-suck.mp3");
+const noRotateSound = new Audio("sounds/NFF-no-go.mp3");
+let brickDestroySound = new Audio("sounds/NFF-robo-hit.mp3");
+const gameOverSound = new Audio("sounds/game-over.mp3");
+
+
 const submitButton = document.querySelector('.form-score')
 
 const cells = Array.from(board.querySelectorAll('.cell'));
@@ -77,14 +82,17 @@ function showScorePopUp(){
   scorePopUp.classList.remove('hidden');
     let showScoreGameOver = document.querySelector('.show-score');
     showScoreGameOver.textContent = "Twój wynik to: " + score;
+    brickDestroySound = "";
     blockedBrickSound = "";
-    gameMusic.pause();
+    musicSwitchOn = false;
+    hearTheMusicPlay();
 }
 
 function checkIfGameEnds(truck1, truck2, truck3){
   if(truck1 === true && truck2 === true && truck3 === true){
     gameOver = true;
     showScorePopUp();
+    gameOverSound.play();
   }
 }
 
@@ -140,11 +148,7 @@ resumeButton.addEventListener('click', function (event) {
   event.target.blur();
   gameIsPaused = !gameIsPaused
   pauseMenuPopUp();
-  if(gameIsPaused){
-    gameMusic.pause();
-  }else{
-    gameMusic.play();
-  }
+  hearTheMusicPlay();
 });
 
 addEventListener("keydown", function (event) {
@@ -169,6 +173,7 @@ window.addEventListener("keydown", function (event) {
     brickRotateSound.play();
     if (!weCanGo()) {
       currentBrickFrame = (4 + currentBrickFrame - 1) % 4;
+      noRotateSound.play();
       return;
     }
   }
@@ -373,6 +378,7 @@ function paintingBricks() {
       // Find cell which has data-truck-id attribute and get its ID
       const cellWithinTruck = Array.from(cellsWeHavePainted).find(cell => cell.hasAttribute('data-id'))
       if (cellWithinTruck === undefined) {
+        brickDestroySound.play();
         makeNewBrick();
         return
       }
