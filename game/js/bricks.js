@@ -2,10 +2,6 @@ const boardSize = 34;
 const board = document.getElementById('board');
 const colors = ['#C14470', '#3AC7A4', '#FCC141', '#466ECE', '#5EC456', '#A454C7'];
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 29fad9d48043162ae041a17afc5d293721ffbd32
 const blockedTruckIds = {
   1: false,
   2: false,
@@ -21,13 +17,9 @@ return Math.floor(Math.random() * (max - min + 1) + min);
 function randomBrickStart() {
   return Math.floor(Math.random() * randomCanal()*10);
 }
-<<<<<<< HEAD
-let score = 0;
-=======
 
 let score = 0;
 
->>>>>>> 29fad9d48043162ae041a17afc5d293721ffbd32
 
 const pickRandom = items => items[Math.floor(Math.random() * items.length)]
 let currentColor = pickRandom(colors);
