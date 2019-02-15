@@ -239,6 +239,7 @@ window.addEventListener("keydown", function (event) {
   if (event.code === "KeyA") {
     if (blockedTruckIds[1] === true) {
       console.log("nie pośmigasz")
+      board.classList.add("shake-animation");
     }
     else {
       let scoreTruckOneNodes = document.querySelectorAll('.truck-one.blocked')
@@ -282,6 +283,7 @@ window.addEventListener("keydown", function (event) {
   if (event.code === "KeyS") {
     if (blockedTruckIds[2] === true) {
       console.log("nie pośmigasz")
+      board.classList.add("shake-animation");
     }
     else {
       let scoreTruckTwoNodes = document.querySelectorAll('.truck-two.blocked')
@@ -324,6 +326,7 @@ window.addEventListener("keydown", function (event) {
   if (event.code === "KeyD") {
     if (blockedTruckIds[3] === true) {
       console.log("nie pośmigasz")
+      board.classList.add("shake-animation");
     }
     else {
       let scoreTruckThreeNodes = document.querySelectorAll('.truck-three.blocked')
@@ -365,6 +368,11 @@ window.addEventListener("keydown", function (event) {
   }
   paintingBricks();
 });
+
+board.addEventListener("animationend", () => {
+  board.classList.remove("shake-animation");
+});
+
 let currentBrickName = randomBrick();
 let currentBrickFrame = 0;
 

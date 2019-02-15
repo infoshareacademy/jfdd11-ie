@@ -121,21 +121,15 @@ body {
   background-color: rgb(189, 189, 189);
 }
 .first-truck-timer-position{
-  position: absolute;
-  bottom: 15px;
-  left: 15px;
 }
 .second-truck-timer-position{
-  position: absolute;
-  bottom: 15px;
-  left: 15px;
 }
 .third-truck-timer-position{
-  position: absolute;
-  bottom: 15px;
-  left: 15px;
 }
 .timer-border{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-family: 'ZCOOL QingKe HuangYou', cursive;
   font-size: 4rem;
   position: absolute;
@@ -444,4 +438,24 @@ i {
 }
 .off{
   background-image: url("../img/audio-off.svg");
+}
+.shake-animation{
+  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+}
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
 }
