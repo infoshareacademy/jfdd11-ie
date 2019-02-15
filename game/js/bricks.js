@@ -7,15 +7,19 @@ const blockedTruckIds = {
   2: false,
   3: false
 }
-const availableTruckIds = Object.entries(blockedTruckIds).map(([truckId, isBlocked]) => ({ truckId, isBlocked })).filter(({ isBlocked }) => isBlocked === false).map(({ truckId }) => parseInt(truckId));
-
-const randomCanal = function getRandomCanal(){ 
-let min = Math.min(...availableTruckIds);
-let max = Math.max(...availableTruckIds);
-return Math.floor(Math.random() * (max - min + 1) + min);
-}
 function randomBrickStart() {
-  return Math.floor(Math.random() * randomCanal()*10);
+  
+  const availableTruckIds = Object.entries(blockedTruckIds).map(([truckId, isBlocked]) => ({ truckId, isBlocked })).filter(({ isBlocked }) => isBlocked === false).map(({ truckId }) => parseInt(truckId));
+  const randomCanal = function getRandomCanal(){ 
+    let min = Math.min(...availableTruckIds);
+    let max = Math.max(...availableTruckIds);
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  }
+  let brickStartPoint = Math.floor(Math.random() * randomCanal()*10);
+  if(randomCanal===3 && brickStartPoint<24){
+    brickStartPoint = 24;
+  }
+  return brickStartPoint;
 }
 
 let score = 0;
@@ -103,8 +107,7 @@ function showScorePopUp(){
   scorePopUp.classList.remove('hidden');
     let showScoreGameOver = document.querySelector('.show-score');
     showScoreGameOver.textContent = "Twój wynik to: " + score;
-    brickDestroySound = "";
-    blockedBrickSound = "";
+    
     musicSwitchOn = false;
     hearTheMusicPlay();
 }
@@ -498,7 +501,7 @@ scoreDiv.textContent = "WYNIK: " + score;
 
 // spadanie klocków
 setInterval(function () {
-  if (gameIsPaused) {
+  if (gameIsPaused || gameOver) {
     return;
   }
   y++;
