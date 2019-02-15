@@ -120,7 +120,47 @@ body {
 .truck {
   background-color: rgb(189, 189, 189);
 }
-
+.first-truck-timer-position{
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+}
+.second-truck-timer-position{
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+}
+.third-truck-timer-position{
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+}
+.timer-border{
+  font-family: 'ZCOOL QingKe HuangYou', cursive;
+  font-size: 4rem;
+  position: absolute;
+  left: 60px;
+  bottom: 200px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 5px solid black;
+  background-color: white;
+  opacity: 1;
+  transition: all 1s;
+}
+.one{
+  left: 60px;
+  bottom: 200px;
+}
+.two{
+  left: 275px;
+  bottom: 200px;
+}
+.three{
+  left: 485px;
+  bottom: 200px;
+}
 .fruit {
   background-color: red;
 }
@@ -349,6 +389,7 @@ i {
 
 .hidden {
   top: -100%;
+  opacity: 0;
 }
 
 .form-score {
