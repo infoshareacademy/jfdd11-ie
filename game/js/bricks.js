@@ -61,6 +61,8 @@ const pauseSound = new Audio("sounds/NFF-suck.mp3");
 const noRotateSound = new Audio("sounds/NFF-no-go.mp3");
 let brickDestroySound = new Audio("sounds/NFF-robo-hit.mp3");
 const gameOverSound = new Audio("sounds/game-over.mp3");
+const errorSound = new Audio("sounds/error.mp3");
+const timerSound = new Audio("sounds/NFF-clock-ticking.mp3");
 
 
 const submitButton = document.querySelector('.form-score')
@@ -230,6 +232,7 @@ window.addEventListener("keydown", function (event) {
     if (blockedTruckIds[1] === true) {
       console.log("nie pośmigasz")
       board.classList.add("shake-animation");
+      errorSound.play();
     }
     else {
       let scoreTruckOneNodes = document.querySelectorAll('.truck-one.blocked')
@@ -241,6 +244,7 @@ window.addEventListener("keydown", function (event) {
           el.classList.remove('fruit');
           el.classList.remove('blocked');
           el.style.backgroundColor = "";
+          timerSound.play();
           //timer
           let count = truckDeliveryTime/1000;
           firstTruckTimer.textContent = count;
@@ -274,6 +278,7 @@ window.addEventListener("keydown", function (event) {
     if (blockedTruckIds[2] === true) {
       console.log("nie pośmigasz")
       board.classList.add("shake-animation");
+      errorSound.play();
     }
     else {
       let scoreTruckTwoNodes = document.querySelectorAll('.truck-two.blocked')
@@ -285,6 +290,7 @@ window.addEventListener("keydown", function (event) {
           el.classList.remove('fruit');
           el.classList.remove('blocked');
           el.style.backgroundColor = "";  
+          timerSound.play();
           //timer
           let count = truckDeliveryTime/1000;
           secondTruckTimer.textContent = count;
@@ -317,6 +323,7 @@ window.addEventListener("keydown", function (event) {
     if (blockedTruckIds[3] === true) {
       console.log("nie pośmigasz")
       board.classList.add("shake-animation");
+      errorSound.play();
     }
     else {
       let scoreTruckThreeNodes = document.querySelectorAll('.truck-three.blocked')
@@ -328,6 +335,7 @@ window.addEventListener("keydown", function (event) {
           el.classList.remove('fruit');
           el.classList.remove('blocked');
           el.style.backgroundColor = "";
+          timerSound.play();
           //timer
           let count = truckDeliveryTime/1000;
           thirdTruckTimer.textContent = count;
