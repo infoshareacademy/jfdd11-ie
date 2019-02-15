@@ -126,6 +126,7 @@ submitButton.addEventListener('submit', event => {
   event.preventDefault();
   const inputValue = event.target.name.value;
   addNewScore(inputValue);
+  submitButton.classList.add('sent');
 })
 
 function addNewScore(name) {
@@ -140,28 +141,29 @@ function addNewScore(name) {
 }
 
 let listScores = document.querySelector('.last-scores');
+let resultScore = document.querySelector('.result-score');
+let firstScore = document.querySelector('.first-score');
+let secondScore = document.querySelector('.second-score');
+let thirdScore = document.querySelector('.third-score');
 
 function refreshScores() {
 
   fetch("https://moveitgame.firebaseio.com/moveitgame.json").then(response => response.json()).then(objects => {
     
     let sortObjects = Object.entries(objects).map(object => ({ name: object[1].name, score: object[1].score })).sort((a,b) => b.score - a.score);
-    let sortPlayers = sortObjects.map(objects => objects.name);
-    let sortScores = sortObjects.map(objects => objects.score);
-
-    for(let i = 0; i < 3; i++) {
-      let playerScore = document.createElement('li');
-      playerScore.textContent = sortPlayers[i] + ": " + sortScores[i];
-      listScores.appendChild(playerScore); 
-    }
-
-    myPosition = sortScores.findIndex(score => score === myScore) + 1;
-
-    if (userName.classList.contains('clicked') === true) {
-        userName.innerHTML = '<br>Your position in the ranking: ' + myPosition + '<br><br><br>';
-    }
+    let sortPlayers = sortObjects.map(object => object.name);
+    let sortScores = sortObjects.map(object => object.score);
     
-    return myPosition;
+    firstScore.textContent = sortPlayers[0] + ": " + sortScores[0];
+    secondScore.textContent = sortPlayers[1] + ": " + sortScores[1];
+    thirdScore.textContent = sortPlayers[2] + ": " + sortScores[2];
+    
+    if (submitButton.classList.contains('sent')) {
+      let myPosition = sortScores.findIndex(scores => scores === score) + 1;
+      resultScore.textContent = "Twój rezultat jest na " + myPosition + " miejscu, wśród najlepszych wyników." ;
+      document.querySelector('.form-score').style.display = "none";
+}
+    
   })};
 
   const makeListItem = userScore => {
