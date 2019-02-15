@@ -1,0 +1,127 @@
+* {
+    box-sizing: border-box;
+}
+
+html{
+    font-family: 'Catamaran', sans-serif;
+}
+
+.logo {
+    background-color: #fff;
+    padding-bottom: 20px;
+}
+
+.main-page {
+    height: 100vh;
+    width: 100vw;
+    background: url('../img/backgroundgame.png') no-repeat  center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+} 
+
+.main-container {
+    margin: 0 auto;
+    padding: 0 7%;
+    width: 70vw;
+    height: 45vw;
+    background: #fff;
+    opacity: 0.8;
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+}
+
+.upper-case {
+    text-transform: uppercase;
+}
+
+.paragraph-about-game {
+    font-size: 28px;
+    color:  #323232;
+    text-align: center;
+    padding: 0 10px 10px 10px;
+    font-weight: bold;
+
+}
+
+h2{
+    font-weight: bold;
+    font-size: 22px;
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 10px;
+    color: #edb60d;
+    
+}
+ 
+span {
+    color:  #edb60d;
+    
+}
+p{
+    text-align: center;
+    font-size: 18px;
+}
+
+
+.start-game {
+    font-size: 20px;
+    background-color: #323232;
+    color: #fff;
+    font-weight: 900;
+    border: none;
+    padding: 20px 110px 20px 110px;
+    margin: 20px 20px;
+    cursor:pointer;
+    transition: all 0.5s;
+    text-decoration: none;
+    text-align: center;
+}
+
+.start-game-two {
+    font-size: 20px;
+    background-color: #323232;
+    color: #fff;
+    font-weight: 900;
+    border: none;
+    padding: 20px 30px 20px 30px;
+    margin: 20px 20px;
+    cursor:pointer;
+    transition: all 0.5s;
+    text-decoration: none;
+    text-align: center;
+}
+
+
+.box-for-buttons {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+}
+
+.start-game:hover {
+    background: #050505;
+    
+
+}
+
+i {
+  border: solid #fff;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+
+
+h3{
+    font-weight: bold;
+    font-size: 25px;
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 10px;
+    color: #050505;
+    
+}
