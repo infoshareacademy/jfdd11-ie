@@ -49,7 +49,7 @@ menuButtons.forEach(function (button) {
 });
 
 makeBoard(board, boardSize, 40);
-const bricks = document.querySelectorAll('.fruit');
+const bricks = document.querySelectorAll('.brick');
 let trucksNodes = document.querySelectorAll('.truck');
 let blockedBrickSound = new Audio("sounds/NFF-bump-wood.mp3");
 const brickRotateSound = new Audio("sounds/NFF-finger-snap.mp3");
@@ -252,7 +252,7 @@ window.addEventListener("keydown", function (event) {
       showScore();
       truckNodes.forEach((el, index) => {
         if (index % boardSize < 11 && index % boardSize > 0) {
-          el.classList.remove('fruit');
+          el.classList.remove('brick');
           el.classList.remove('blocked');
           el.style.backgroundColor = "";
           timerSound.play();
@@ -298,7 +298,7 @@ window.addEventListener("keydown", function (event) {
       showScore();
       truckNodes.forEach((el, index) => {
         if (index % boardSize < 22 && index % boardSize > 11) {
-          el.classList.remove('fruit');
+          el.classList.remove('brick');
           el.classList.remove('blocked');
           el.style.backgroundColor = "";
           timerSound.play();
@@ -343,7 +343,7 @@ window.addEventListener("keydown", function (event) {
       showScore();
       truckNodes.forEach((el, index) => {
         if (index % boardSize > 22 && index % boardSize < 33) {
-          el.classList.remove('fruit');
+          el.classList.remove('brick');
           el.classList.remove('blocked');
           el.style.backgroundColor = "";
           timerSound.play();
@@ -477,7 +477,7 @@ function unblockTruck(truckId) {
 
 function paintingBricks() {
   const cellsWeWantToPaint = getCellsWeWantToPaint();
-  const cellsWeHavePainted = document.querySelectorAll('.fruit:not(.blocked)');
+  const cellsWeHavePainted = document.querySelectorAll('.brick:not(.blocked)');
 
   if (!weCanGo()) {
 
@@ -510,13 +510,13 @@ function paintingBricks() {
 
   // remove all existing cells
   cellsWeHavePainted.forEach(item => {
-    item.classList.remove('fruit')
+    item.classList.remove('brick')
     item.style.backgroundColor = ''
   }
   )
   // paint new cells
   cellsWeWantToPaint.forEach(item => {
-    item.classList.add('fruit')
+    item.classList.add('brick')
     item.style.backgroundColor = currentColor
   })
 }

@@ -34,8 +34,8 @@ function createNode(className) {
 
 
 
-// function moveFruit(element) {
-//   element.classList.remove("fruit");
+// function movebrick(element) {
+//   element.classList.remove("brick");
 
 //   const columnIndex = getIndexWithinParent(element);
 //   const nextRow = getNextRow(element);
@@ -46,28 +46,28 @@ function createNode(className) {
 //   const targetNode = nextRow.querySelector(
 //     `.cell:nth-child(${columnIndex + 1})`
 //   );
-//   targetNode.classList.add("fruit");
+//   targetNode.classList.add("brick");
 // }
 
 
 
 
-function spawnFruit() {
+function spawnbrick() {
   // const allFreeCellsInFirstRow = document.querySelectorAll(
-  //   ".row:nth-child(1) .cell:not(.fruit)"
+  //   ".row:nth-child(1) .cell:not(.brick)"
   // );
   // const howManyFreeCells = allFreeCellsInFirstRow.length;
   // const randomIndex = Math.floor(Math.random() * howManyFreeCells);
-  // allFreeCellsInFirstRow[randomIndex].classList.add("fruit");
+  // allFreeCellsInFirstRow[randomIndex].classList.add("brick");
 }
 
 // let spawnIntervalId = 0;
-// let fruitMovementIntervalId = 0;
+// let brickMovementIntervalId = 0;
 // let handler;
 
 function play() {
   // clearInterval(spawnIntervalId);
-  // clearInterval(fruitMovementIntervalId);
+  // clearInterval(brickMovementIntervalId);
 
   const board = document.querySelector("#board");
   board.innerHTML = '';
@@ -87,28 +87,28 @@ function play() {
   
   // handler = handleUserInput
   // window.addEventListener("keyup", handler);
-  const allFruitNodes = document.querySelectorAll(".fruit");
-  fruitMovementIntervalId = setInterval(function() {
+  const allbrickNodes = document.querySelectorAll(".brick");
+  brickMovementIntervalId = setInterval(function() {
     
   
-    allFruitNodes.forEach(function(element, index) {
-      moveFruit(element);
-      detectFruitBasketCollision();
+    allbrickNodes.forEach(function(element, index) {
+      movebrick(element);
+      detectbrickBasketCollision();
     });
   }, 500);
   
-  // spawnIntervalId = setInterval(spawnFruit, 3000);  
+  // spawnIntervalId = setInterval(spawnbrick, 3000);  
 
   // function updateScore(deltaOfPoints) {
   //   score += deltaOfPoints;
   //   scoreNode.textContent = score;
   // }
 
-  function detectFruitBasketCollision() {
-    const potentiallyRemovableFruit = document.querySelector(".fruit.basket");
+  function detectbrickBasketCollision() {
+    const potentiallyRemovablebrick = document.querySelector(".brick.basket");
   
-    if (potentiallyRemovableFruit !== null) {
-      // potentiallyRemovableFruit.classList.remove("fruit");
+    if (potentiallyRemovablebrick !== null) {
+      // potentiallyRemovablebrick.classList.remove("brick");
       // updateScore(1);
     }
   }
@@ -132,6 +132,6 @@ function play() {
     //   moveBasket(basketNode, targetNode);
     // }
   
-    // detectFruitBasketCollision();
+    // detectbrickBasketCollision();
   }
 }
