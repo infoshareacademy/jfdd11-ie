@@ -72,7 +72,7 @@ const allCells = cells.slice(0);
 let gameIsPaused = false;
 let y = 0;
 let x = randomBrickStart();
-let truckDeliveryTime = 30000;
+let truckDeliveryTime = 3000;
 let brickFallingSpeed = 200;
 let gameOver = false;
 let musicSwitchOn = true;
@@ -194,16 +194,16 @@ addEventListener("keydown", function (event) {
     if (event.code === "Escape") {
       gameIsPaused = !gameIsPaused
       pauseMenuPopUp();
-      hideAllTimers();
       if (gameIsPaused) {
         musicSwitchOn = false;
         hearTheMusicPlay();
         pauseSound.play();
       } else {
         hearTheMusicPlay();
-        showAllTimers();
       }
     }
+  }else{
+    return;
   }
 });
 
@@ -240,6 +240,7 @@ window.addEventListener("keydown", function (event) {
   }
 
   if (event.code === "KeyA") {
+    if(!gameOver){
     if (blockedTruckIds[1] === true) {
       console.log("nie pośmigasz")
       board.classList.add("shake-animation");
@@ -263,29 +264,32 @@ window.addEventListener("keydown", function (event) {
             if (!gameIsPaused) {
               count = count - 1;
               firstTruckTimer.textContent = count;
+              timerBorderOne.classList.remove("hidden");
+              firstTruckTimer.classList.remove("hidden");
+            }else{
+              timerBorderOne.classList.add("hidden");
+              firstTruckTimer.classList.add("hidden");
+            }
+            if(count <=0){
+              unblockTruck("1");
+              clearInterval(truckTime);
+              timerBorderOne.classList.add("hidden");
+              firstTruckTimer.classList.add("hidden");
             }
           }, 999);
           timerBorderOne.classList.remove("hidden");
           firstTruckTimer.classList.remove("hidden");
-
-          if (gameOver) {
-            timerBorderOne.classList.add("hidden");
-            firstTruckTimer.classList.add("hidden");
-          }
-
-          setTimeout(function () {
-            unblockTruck("1");
-            clearInterval(truckTime);
-            timerBorderOne.classList.add("hidden");
-            firstTruckTimer.classList.add("hidden");
-          }, truckDeliveryTime)
         }
       })
       truckDeliveryTime += 5000;
     }
+  }else{
+    return;
   }
+}
 
   if (event.code === "KeyS") {
+    if(!gameOver){
     if (blockedTruckIds[2] === true) {
       console.log("nie pośmigasz")
       board.classList.add("shake-animation");
@@ -309,28 +313,31 @@ window.addEventListener("keydown", function (event) {
             if (!gameIsPaused) {
               count = count - 1;
               secondTruckTimer.textContent = count;
+              timerBorderTwo.classList.remove("hidden");
+              secondTruckTimer.classList.remove("hidden");
+            }else{
+              timerBorderTwo.classList.add("hidden");
+              secondTruckTimer.classList.add("hidden");
+            }
+            if(count <=0){
+              unblockTruck("2");
+              clearInterval(truckTime);
+              timerBorderTwo.classList.add("hidden");
+              secondTruckTimer.classList.add("hidden");
             }
           }, 999);
           timerBorderTwo.classList.remove("hidden");
           secondTruckTimer.classList.remove("hidden");
-
-          if (gameOver) {
-            timerBorderTwo.classList.add("hidden");
-            secondTruckTimer.classList.add("hidden");
-          }
-
-          setTimeout(function () {
-            unblockTruck("2");
-            clearInterval(truckTime);
-            timerBorderTwo.classList.add("hidden");
-            secondTruckTimer.classList.add("hidden");
-          }, truckDeliveryTime)
         }
       })
       truckDeliveryTime += 5000;
     }
+  }else{
+    return;
+  }
   }
   if (event.code === "KeyD") {
+    if(!gameOver){
     if (blockedTruckIds[3] === true) {
       console.log("nie pośmigasz")
       board.classList.add("shake-animation");
@@ -354,26 +361,29 @@ window.addEventListener("keydown", function (event) {
             if (!gameIsPaused) {
               count = count - 1;
               thirdTruckTimer.textContent = count;
+              timerBorderThree.classList.remove("hidden");
+              thirdTruckTimer.classList.remove("hidden");
+            }else{
+              timerBorderThree.classList.add("hidden");
+              thirdTruckTimer.classList.add("hidden");
             }
+            if(count <=0){
+                unblockTruck("3");
+                clearInterval(truckTime);
+                timerBorderThree.classList.add("hidden");
+                thirdTruckTimer.classList.add("hidden");
+              }
           }, 999);
           timerBorderThree.classList.remove("hidden");
           thirdTruckTimer.classList.remove("hidden");
-
-          if (gameOver) {
-            timerBorderThree.classList.add("hidden");
-            thirdTruckTimer.classList.add("hidden");
-          }
-
-          setTimeout(function () {
-            unblockTruck("3");
-            clearInterval(truckTime);
-            timerBorderThree.classList.add("hidden");
-            thirdTruckTimer.classList.add("hidden");
-          }, truckDeliveryTime)
+          
         }
       })
       truckDeliveryTime += 5000;
     }
+  }else{
+    return;
+  }
   }
   paintingBricks();
 });
