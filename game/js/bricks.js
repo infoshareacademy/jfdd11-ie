@@ -8,15 +8,15 @@ const blockedTruckIds = {
   3: false
 }
 function randomBrickStart() {
-  
+
   const availableTruckIds = Object.entries(blockedTruckIds).map(([truckId, isBlocked]) => ({ truckId, isBlocked })).filter(({ isBlocked }) => isBlocked === false).map(({ truckId }) => parseInt(truckId));
-  const randomCanal = function getRandomCanal(){ 
+  const randomCanal = function getRandomCanal() {
     let min = Math.min(...availableTruckIds);
     let max = Math.max(...availableTruckIds);
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
-  let brickStartPoint = Math.floor(Math.random() * randomCanal()*10);
-  if(randomCanal===3 && brickStartPoint<24){
+  let brickStartPoint = Math.floor(Math.random() * randomCanal() * 10);
+  if (randomCanal === 3 && brickStartPoint < 24) {
     brickStartPoint = 24;
   }
   return brickStartPoint;
@@ -39,11 +39,11 @@ const timerBorderOne = document.querySelector(".one");
 const timerBorderTwo = document.querySelector(".two");
 const timerBorderThree = document.querySelector(".three");
 
-menuButtons.forEach(function(button){
-  button.addEventListener("mouseenter", function(){
+menuButtons.forEach(function (button) {
+  button.addEventListener("mouseenter", function () {
     menuButtonHover.play();
   });
-  button.addEventListener("click", function(){
+  button.addEventListener("click", function () {
     menuButtonClick.play();
   });
 });
@@ -76,16 +76,16 @@ let truckDeliveryTime = 30000;
 let brickFallingSpeed = 200;
 let gameOver = false;
 let musicSwitchOn = true;
-function hearTheMusicPlay(){
-  if(musicSwitchOn === true){
+function hearTheMusicPlay() {
+  if (musicSwitchOn === true) {
     musicButton.classList.remove("off");
     gameMusic.play();
-  }else{
+  } else {
     musicButton.classList.add("off");
     gameMusic.pause();
   }
 }
-function hideAllTimers(){
+function hideAllTimers() {
   timerBorderOne.classList.add("hidden");
   timerBorderTwo.classList.add("hidden");
   timerBorderThree.classList.add("hidden");
@@ -93,7 +93,7 @@ function hideAllTimers(){
   secondTruckTimer.classList.add("hidden");
   thirdTruckTimer.classList.add("hidden");
 }
-function showAllTimers(){
+function showAllTimers() {
   timerBorderOne.classList.remove("hidden");
   timerBorderTwo.classList.remove("hidden");
   timerBorderThree.classList.remove("hidden");
@@ -105,17 +105,17 @@ function pauseMenuPopUp() {
   pausePopUpStatus.classList.toggle('hidden');
 }
 
-function showScorePopUp(){
+function showScorePopUp() {
   scorePopUp.classList.remove('hidden');
-    let showScoreGameOver = document.querySelector('.show-score');
-    showScoreGameOver.textContent = "Twój wynik to: " + score;
-    
-    musicSwitchOn = false;
-    hearTheMusicPlay();
+  let showScoreGameOver = document.querySelector('.show-score');
+  showScoreGameOver.textContent = "Twój wynik to: " + score;
+
+  musicSwitchOn = false;
+  hearTheMusicPlay();
 }
 
-function checkIfGameEnds(truck1, truck2, truck3){
-  if(truck1 === true && truck2 === true && truck3 === true){
+function checkIfGameEnds(truck1, truck2, truck3) {
+  if (truck1 === true && truck2 === true && truck3 === true) {
     gameOver = true;
     showScorePopUp();
     refreshScores();
@@ -124,7 +124,7 @@ function checkIfGameEnds(truck1, truck2, truck3){
   }
 }
 
-submitButton.addEventListener('submit', event => { 
+submitButton.addEventListener('submit', event => {
   event.preventDefault();
   const inputValue = event.target.name.value;
   addNewScore(inputValue);
@@ -133,12 +133,12 @@ submitButton.addEventListener('submit', event => {
 
 function addNewScore(name) {
   fetch('https://moveitgame.firebaseio.com/moveitgame.json', {
-    method: 'POST', 
-    body: JSON.stringify({ 
+    method: 'POST',
+    body: JSON.stringify({
       name: name,
       score: score
-    }) 
-    } )
+    })
+  })
     .then(() => refreshScores())
 }
 
@@ -151,33 +151,34 @@ let thirdScore = document.querySelector('.third-score');
 function refreshScores() {
 
   fetch("https://moveitgame.firebaseio.com/moveitgame.json").then(response => response.json()).then(objects => {
-    
-    let sortObjects = Object.entries(objects).map(object => ({ name: object[1].name, score: object[1].score })).sort((a,b) => b.score - a.score);
+
+    let sortObjects = Object.entries(objects).map(object => ({ name: object[1].name, score: object[1].score })).sort((a, b) => b.score - a.score);
     let sortPlayers = sortObjects.map(object => object.name);
     let sortScores = sortObjects.map(object => object.score);
-    
+
     firstScore.textContent = sortPlayers[0] + ": " + sortScores[0];
     secondScore.textContent = sortPlayers[1] + ": " + sortScores[1];
     thirdScore.textContent = sortPlayers[2] + ": " + sortScores[2];
-    
+
     if (submitButton.classList.contains('sent')) {
       let myPosition = sortScores.findIndex(scores => scores === score) + 1;
-      resultScore.textContent = "Twój rezultat jest na " + myPosition + " miejscu, wśród najlepszych wyników." ;
+      resultScore.textContent = "Twój rezultat jest na " + myPosition + " miejscu, wśród najlepszych wyników.";
       document.querySelector('.form-score').style.display = "none";
-}
-    
-  })};
+    }
 
-  const makeListItem = userScore => {
-    const scoreNode = document.createElement("li");
-    const viewNode = document.createElement("div");
-    // Compose all of the above
-    scoreNode.textContent = userScore.name;
+  })
+};
 
-    scoreNode.appendChild(viewNode);
-    return scoreNode;
-  };
-musicButton.addEventListener("click", function(){
+const makeListItem = userScore => {
+  const scoreNode = document.createElement("li");
+  const viewNode = document.createElement("div");
+  // Compose all of the above
+  scoreNode.textContent = userScore.name;
+
+  scoreNode.appendChild(viewNode);
+  return scoreNode;
+};
+musicButton.addEventListener("click", function () {
   musicSwitchOn = !musicSwitchOn;
   hearTheMusicPlay();
 })
@@ -189,21 +190,21 @@ resumeButton.addEventListener('click', function (event) {
 });
 
 addEventListener("keydown", function (event) {
-  if(gameOver === false){
-  if (event.code === "Escape") {
-    gameIsPaused = !gameIsPaused
-    pauseMenuPopUp();
-    hideAllTimers();
-    if(gameIsPaused){
-      musicSwitchOn = false;
-      hearTheMusicPlay();
-      pauseSound.play();
-    }else{
-      hearTheMusicPlay();
-      showAllTimers();
+  if (gameOver === false) {
+    if (event.code === "Escape") {
+      gameIsPaused = !gameIsPaused
+      pauseMenuPopUp();
+      hideAllTimers();
+      if (gameIsPaused) {
+        musicSwitchOn = false;
+        hearTheMusicPlay();
+        pauseSound.play();
+      } else {
+        hearTheMusicPlay();
+        showAllTimers();
+      }
     }
   }
-}
 });
 
 window.addEventListener("keydown", function (event) {
@@ -256,7 +257,7 @@ window.addEventListener("keydown", function (event) {
           el.style.backgroundColor = "";
           timerSound.play();
           //timer
-          let count = truckDeliveryTime/1000;
+          let count = truckDeliveryTime / 1000;
           firstTruckTimer.textContent = count;
           let truckTime = setInterval(function () {
             if (!gameIsPaused) {
@@ -271,13 +272,13 @@ window.addEventListener("keydown", function (event) {
             timerBorderOne.classList.add("hidden");
             firstTruckTimer.classList.add("hidden");
           }
-          
-         setTimeout(function() {
-           unblockTruck("1");
-           clearInterval(truckTime);
-           timerBorderOne.classList.add("hidden");
-           firstTruckTimer.classList.add("hidden");
-         }, truckDeliveryTime)
+
+          setTimeout(function () {
+            unblockTruck("1");
+            clearInterval(truckTime);
+            timerBorderOne.classList.add("hidden");
+            firstTruckTimer.classList.add("hidden");
+          }, truckDeliveryTime)
         }
       })
       truckDeliveryTime += 5000;
@@ -299,10 +300,10 @@ window.addEventListener("keydown", function (event) {
         if (index % boardSize < 22 && index % boardSize > 11) {
           el.classList.remove('fruit');
           el.classList.remove('blocked');
-          el.style.backgroundColor = "";  
+          el.style.backgroundColor = "";
           timerSound.play();
           //timer
-          let count = truckDeliveryTime/1000;
+          let count = truckDeliveryTime / 1000;
           secondTruckTimer.textContent = count;
           let truckTime = setInterval(function () {
             if (!gameIsPaused) {
@@ -313,17 +314,17 @@ window.addEventListener("keydown", function (event) {
           timerBorderTwo.classList.remove("hidden");
           secondTruckTimer.classList.remove("hidden");
 
-          if(gameOver){
+          if (gameOver) {
             timerBorderTwo.classList.add("hidden");
             secondTruckTimer.classList.add("hidden");
           }
 
-          setTimeout(function() {
-           unblockTruck("2");
-           clearInterval(truckTime);
-           timerBorderTwo.classList.add("hidden");
-           secondTruckTimer.classList.add("hidden");
-         }, truckDeliveryTime)
+          setTimeout(function () {
+            unblockTruck("2");
+            clearInterval(truckTime);
+            timerBorderTwo.classList.add("hidden");
+            secondTruckTimer.classList.add("hidden");
+          }, truckDeliveryTime)
         }
       })
       truckDeliveryTime += 5000;
@@ -347,7 +348,7 @@ window.addEventListener("keydown", function (event) {
           el.style.backgroundColor = "";
           timerSound.play();
           //timer
-          let count = truckDeliveryTime/1000;
+          let count = truckDeliveryTime / 1000;
           thirdTruckTimer.textContent = count;
           let truckTime = setInterval(function () {
             if (!gameIsPaused) {
@@ -362,13 +363,13 @@ window.addEventListener("keydown", function (event) {
             timerBorderThree.classList.add("hidden");
             thirdTruckTimer.classList.add("hidden");
           }
-          
-          setTimeout(function() {
-           unblockTruck("3");
-           clearInterval(truckTime);
-           timerBorderThree.classList.add("hidden");
-           thirdTruckTimer.classList.add("hidden");
-         }, truckDeliveryTime)
+
+          setTimeout(function () {
+            unblockTruck("3");
+            clearInterval(truckTime);
+            timerBorderThree.classList.add("hidden");
+            thirdTruckTimer.classList.add("hidden");
+          }, truckDeliveryTime)
         }
       })
       truckDeliveryTime += 5000;
@@ -474,8 +475,6 @@ function unblockTruck(truckId) {
   }
 }
 
-
-
 function paintingBricks() {
   const cellsWeWantToPaint = getCellsWeWantToPaint();
   const cellsWeHavePainted = document.querySelectorAll('.fruit:not(.blocked)');
@@ -489,17 +488,16 @@ function paintingBricks() {
       if (cellWithinTruck === undefined) {
         brickDestroySound.play();
         score -= 40;
-          if(score < 0) {
-            gameOver = true;
-            showScorePopUp();
-            refreshScores();
-            gameOverSound.play();
-          }
+        if (score < 0) {
+          gameOver = true;
+          showScorePopUp();
+          refreshScores();
+          gameOverSound.play();
+        }
         showScore();
         makeNewBrick();
         return
       }
-
 
       const truckId = cellWithinTruck.getAttribute('data-id');
       blockTruck(truckId);
@@ -520,17 +518,14 @@ function paintingBricks() {
   cellsWeWantToPaint.forEach(item => {
     item.classList.add('fruit')
     item.style.backgroundColor = currentColor
-  }
-
-  )
-
+  })
 }
 
 let scoreDiv = document.querySelector('.score')
 
 //liczenie punktów
 function showScore() {
-scoreDiv.textContent = "WYNIK: " + score;
+  scoreDiv.textContent = "WYNIK: " + score;
 }
 
 // spadanie klocków
