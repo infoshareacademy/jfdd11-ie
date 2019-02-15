@@ -60,7 +60,7 @@ const allCells = cells.slice(0);
 let gameIsPaused = false;
 let y = 0;
 let x = randomBrickStart();
-let truckDeliveryTime = 10000;
+let truckDeliveryTime = 30000;
 let brickFallingSpeed = 200;
 let gameOver = false;
 let musicSwitchOn = true;
@@ -92,6 +92,7 @@ function checkIfGameEnds(truck1, truck2, truck3){
   if(truck1 === true && truck2 === true && truck3 === true){
     gameOver = true;
     showScorePopUp();
+    refreshScores();
     gameOverSound.play();
   }
 }
@@ -117,18 +118,25 @@ let listScores = document.querySelector('.last-scores');
 
 function refreshScores() {
 
-  fetch("https://moveitgame.firebaseio.com/moveitgame.json").then(response => response.json()).then(scores => {
-    let objectScores = Object.entries(scores);
-    objectScores.map(objects => {
+  fetch("https://moveitgame.firebaseio.com/moveitgame.json").then(response => response.json()).then(objects => {
     
-      userName = objects[1].name;
-      userScore = objects[1].score; 
-      let liUserScore = document.createElement('li');
-      liUserScore.textContent = userName + ": " + userScore;
-      listScores.appendChild(liUserScore);
-      console.log(liUserScore);
+    let sortObjects = Object.entries(objects).map(object => ({ name: object[1].name, score: object[1].score })).sort((a,b) => b.score - a.score);
+    let sortPlayers = sortObjects.map(objects => objects.name);
+    let sortScores = sortObjects.map(objects => objects.score);
+
+    for(let i = 0; i < 3; i++) {
+      let playerScore = document.createElement('li');
+      playerScore.textContent = sortPlayers[i] + ": " + sortScores[i];
+      listScores.appendChild(playerScore); 
+    }
+
+    myPosition = sortScores.findIndex(score => score === myScore) + 1;
+
+    if (userName.classList.contains('clicked') === true) {
+        userName.innerHTML = '<br>Your position in the ranking: ' + myPosition + '<br><br><br>';
+    }
     
-    })
+    return myPosition;
   })};
 
   const makeListItem = userScore => {
@@ -379,6 +387,14 @@ function paintingBricks() {
       const cellWithinTruck = Array.from(cellsWeHavePainted).find(cell => cell.hasAttribute('data-id'))
       if (cellWithinTruck === undefined) {
         brickDestroySound.play();
+        score -= 40;
+          if(score < 0) {
+            gameOver = true;
+            showScorePopUp();
+            refreshScores();
+            gameOverSound.play();
+          }
+        showScore();
         makeNewBrick();
         return
       }
