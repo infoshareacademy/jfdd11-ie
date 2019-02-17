@@ -729,3 +729,6 @@ footer img{
     }
 }
 }
+.disabled{
+    opacity: 0.2;
+}
