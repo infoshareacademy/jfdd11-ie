@@ -105,7 +105,7 @@
         <div class="desktop-container">
           <h2>Zapisz się!</h2>
           <p>Po opublikowaniu aplikacji zostaniesz powiadomiony mailem.</p>
-          <form action="">
+          <form id="game-form" action="">
             <input
               type="text"
               name="name"
@@ -121,8 +121,8 @@
               class="email-input"
             />
             <div class="form-consent-box">
-              <input type="checkbox" required class="form-consent-checkbox" />
-              <label class="form-consent-text">
+              <input id="checkbox" type="checkbox" required class="form-consent-checkbox" />
+              <label for="checkbox" class="form-consent-text">
                 Akceptuję Regulamin usługi, oraz politykę prywatności, Politykę
                 antyspamową oraz wyrażam zgodę na przejęcie mojej duszy przez
                 firmę MoveIt. Wyrażam zgodę na otrzymywanie informacji
@@ -196,7 +196,7 @@
         /></a>
       </footer>
     </div>
-    <script src="/js/script.js"></script>
-    <script src="/js/menu.js"></script>
+    <script src="./js/script.js"></script>
+    <script src="./js/menu.js"></script>
   </body>
 </html>

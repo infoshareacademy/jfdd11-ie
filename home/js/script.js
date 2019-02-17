@@ -1,13 +1,29 @@
-let consent = document.querySelector(".form-consent-box");
-let checkbox = document.querySelector(".form-consent-checkbox");
+let nameInputNode = document.querySelector(".name-input");
+let emailInputNode = document.querySelector(".email-input");
+let formNode = document.querySelector("#game-form");
+let submitButtonNode = document.querySelector(".subscribe-button");
 
-consent.addEventListener("click", function(){
-    
-    if(checkbox.checked === false){
-        checkbox.checked = true;
-    }else{
-        checkbox.checked = false;
+formNode.addEventListener("submit", function (event) {
+    if (submitButtonNode.classList.contains("disabled")) {
+        event.preventDefault();
+        window.open("../game/index.html");
+    } else {
+        event.preventDefault();
+        let emailInputValue = event.target.email.value;
+        let nameInputValue = event.target.name.value;
+        sendForm(nameInputValue, emailInputValue);
+        submitButtonNode.classList.add("disabled");
+        window.open("../game/index.html");
     }
 });
 
+function sendForm(name, email) {
+    fetch("https://moveit-landing-page.firebaseio.com/users.json", {
+        method: "POST",
+        body: JSON.stringify({
+            name: name,
+            email: email
+        })
+    })
+}
 
