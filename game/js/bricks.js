@@ -7,15 +7,19 @@ const blockedTruckIds = {
   2: false,
   3: false
 }
-const availableTruckIds = Object.entries(blockedTruckIds).map(([truckId, isBlocked]) => ({ truckId, isBlocked })).filter(({ isBlocked }) => isBlocked === false).map(({ truckId }) => parseInt(truckId));
-
-const randomCanal = function getRandomCanal(){ 
-let min = Math.min(...availableTruckIds);
-let max = Math.max(...availableTruckIds);
-return Math.floor(Math.random() * (max - min + 1) + min);
-}
 function randomBrickStart() {
-  return Math.floor(Math.random() * randomCanal()*10);
+
+  const availableTruckIds = Object.entries(blockedTruckIds).map(([truckId, isBlocked]) => ({ truckId, isBlocked })).filter(({ isBlocked }) => isBlocked === false).map(({ truckId }) => parseInt(truckId));
+  const randomCanal = function getRandomCanal() {
+    let min = Math.min(...availableTruckIds);
+    let max = Math.max(...availableTruckIds);
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  }
+  let brickStartPoint = Math.floor(Math.random() * randomCanal() * 10);
+  if (randomCanal === 3 && brickStartPoint < 24) {
+    brickStartPoint = 24;
+  }
+  return brickStartPoint;
 }
 
 let score = 0;
@@ -28,18 +32,24 @@ const pausePopUpStatus = document.querySelector('.popup-body');
 const resumeButton = document.querySelector('.resume-game');
 const musicButton = document.querySelector(".music-button");
 const menuButtons = document.querySelectorAll(".add-button");
+const firstTruckTimer = document.querySelector(".first-truck-timer-position");
+const secondTruckTimer = document.querySelector(".second-truck-timer-position");
+const thirdTruckTimer = document.querySelector(".third-truck-timer-position");
+const timerBorderOne = document.querySelector(".one");
+const timerBorderTwo = document.querySelector(".two");
+const timerBorderThree = document.querySelector(".three");
 
-menuButtons.forEach(function(button){
-  button.addEventListener("mouseenter", function(){
+menuButtons.forEach(function (button) {
+  button.addEventListener("mouseenter", function () {
     menuButtonHover.play();
   });
-  button.addEventListener("click", function(){
+  button.addEventListener("click", function () {
     menuButtonClick.play();
   });
 });
 
 makeBoard(board, boardSize, 40);
-const bricks = document.querySelectorAll('.fruit');
+const bricks = document.querySelectorAll('.brick');
 let trucksNodes = document.querySelectorAll('.truck');
 let blockedBrickSound = new Audio("sounds/NFF-bump-wood.mp3");
 const brickRotateSound = new Audio("sounds/NFF-finger-snap.mp3");
@@ -51,6 +61,8 @@ const pauseSound = new Audio("sounds/NFF-suck.mp3");
 const noRotateSound = new Audio("sounds/NFF-no-go.mp3");
 let brickDestroySound = new Audio("sounds/NFF-robo-hit.mp3");
 const gameOverSound = new Audio("sounds/game-over.mp3");
+const errorSound = new Audio("sounds/error.mp3");
+const timerSound = new Audio("sounds/NFF-clock-ticking.mp3");
 
 
 const submitButton = document.querySelector('.form-score')
@@ -60,87 +72,113 @@ const allCells = cells.slice(0);
 let gameIsPaused = false;
 let y = 0;
 let x = randomBrickStart();
-let truckDeliveryTime = 10000;
+let truckDeliveryTime = 3000;
 let brickFallingSpeed = 200;
 let gameOver = false;
 let musicSwitchOn = true;
-function hearTheMusicPlay(){
-  if(musicSwitchOn === true){
+function hearTheMusicPlay() {
+  if (musicSwitchOn === true) {
     musicButton.classList.remove("off");
     gameMusic.play();
-  }else{
+  } else {
     musicButton.classList.add("off");
     gameMusic.pause();
   }
 }
-
+function hideAllTimers() {
+  timerBorderOne.classList.add("hidden");
+  timerBorderTwo.classList.add("hidden");
+  timerBorderThree.classList.add("hidden");
+  firstTruckTimer.classList.add("hidden");
+  secondTruckTimer.classList.add("hidden");
+  thirdTruckTimer.classList.add("hidden");
+}
+function showAllTimers() {
+  timerBorderOne.classList.remove("hidden");
+  timerBorderTwo.classList.remove("hidden");
+  timerBorderThree.classList.remove("hidden");
+  firstTruckTimer.classList.remove("hidden");
+  secondTruckTimer.classList.remove("hidden");
+  thirdTruckTimer.classList.remove("hidden");
+}
 function pauseMenuPopUp() {
   pausePopUpStatus.classList.toggle('hidden');
 }
 
-function showScorePopUp(){
+function showScorePopUp() {
   scorePopUp.classList.remove('hidden');
-    let showScoreGameOver = document.querySelector('.show-score');
-    showScoreGameOver.textContent = "Twój wynik to: " + score;
-    brickDestroySound = "";
-    blockedBrickSound = "";
-    musicSwitchOn = false;
-    hearTheMusicPlay();
+  let showScoreGameOver = document.querySelector('.show-score');
+  showScoreGameOver.textContent = "Twój wynik to: " + score;
+
+  musicSwitchOn = false;
+  hearTheMusicPlay();
 }
 
-function checkIfGameEnds(truck1, truck2, truck3){
-  if(truck1 === true && truck2 === true && truck3 === true){
+function checkIfGameEnds(truck1, truck2, truck3) {
+  if (truck1 === true && truck2 === true && truck3 === true) {
     gameOver = true;
     showScorePopUp();
+    refreshScores();
     gameOverSound.play();
+    hideAllTimers();
   }
 }
 
-submitButton.addEventListener('submit', event => { 
+submitButton.addEventListener('submit', event => {
   event.preventDefault();
   const inputValue = event.target.name.value;
   addNewScore(inputValue);
+  submitButton.classList.add('sent');
 })
 
 function addNewScore(name) {
   fetch('https://moveitgame.firebaseio.com/moveitgame.json', {
-    method: 'POST', 
-    body: JSON.stringify({ 
+    method: 'POST',
+    body: JSON.stringify({
       name: name,
       score: score
-    }) 
-    } )
+    })
+  })
     .then(() => refreshScores())
 }
 
 let listScores = document.querySelector('.last-scores');
+let resultScore = document.querySelector('.result-score');
+let firstScore = document.querySelector('.first-score');
+let secondScore = document.querySelector('.second-score');
+let thirdScore = document.querySelector('.third-score');
 
 function refreshScores() {
 
-  fetch("https://moveitgame.firebaseio.com/moveitgame.json").then(response => response.json()).then(scores => {
-    let objectScores = Object.entries(scores);
-    objectScores.map(objects => {
-    
-      userName = objects[1].name;
-      userScore = objects[1].score; 
-      let liUserScore = document.createElement('li');
-      liUserScore.textContent = userName + ": " + userScore;
-      listScores.appendChild(liUserScore);
-      console.log(liUserScore);
-    
-    })
-  })};
+  fetch("https://moveitgame.firebaseio.com/moveitgame.json").then(response => response.json()).then(objects => {
 
-  const makeListItem = userScore => {
-    const scoreNode = document.createElement("li");
-    const viewNode = document.createElement("div");
-    // Compose all of the above
-    scoreNode.textContent = userScore.name;
+    let sortObjects = Object.entries(objects).map(object => ({ name: object[1].name, score: object[1].score })).sort((a, b) => b.score - a.score);
+    let sortPlayers = sortObjects.map(object => object.name);
+    let sortScores = sortObjects.map(object => object.score);
 
-    scoreNode.appendChild(viewNode);
-    return scoreNode;
-  };
-musicButton.addEventListener("click", function(){
+    firstScore.textContent = sortPlayers[0] + ": " + sortScores[0];
+    secondScore.textContent = sortPlayers[1] + ": " + sortScores[1];
+    thirdScore.textContent = sortPlayers[2] + ": " + sortScores[2];
+
+    if (submitButton.classList.contains('sent')) {
+      let myPosition = sortScores.findIndex(scores => scores === score) + 1;
+      resultScore.textContent = "Twój rezultat jest na " + myPosition + " miejscu, wśród najlepszych wyników.";
+      document.querySelector('.form-score').style.display = "none";
+    }
+
+  })
+};
+
+const makeListItem = userScore => {
+  const scoreNode = document.createElement("li");
+  const viewNode = document.createElement("div");
+  // Compose all of the above
+  scoreNode.textContent = userScore.name;
+
+  scoreNode.appendChild(viewNode);
+  return scoreNode;
+};
+musicButton.addEventListener("click", function () {
   musicSwitchOn = !musicSwitchOn;
   hearTheMusicPlay();
 })
@@ -152,19 +190,21 @@ resumeButton.addEventListener('click', function (event) {
 });
 
 addEventListener("keydown", function (event) {
-  if(gameOver === false){
-  if (event.code === "Escape") {
-    gameIsPaused = !gameIsPaused
-    pauseMenuPopUp();
-    if(gameIsPaused){
-      musicSwitchOn = false;
-      hearTheMusicPlay();
-      pauseSound.play();
-    }else{
-      hearTheMusicPlay();
+  if (gameOver === false) {
+    if (event.code === "Escape") {
+      gameIsPaused = !gameIsPaused
+      pauseMenuPopUp();
+      if (gameIsPaused) {
+        musicSwitchOn = false;
+        hearTheMusicPlay();
+        pauseSound.play();
+      } else {
+        hearTheMusicPlay();
+      }
     }
+  }else{
+    return;
   }
-}
 });
 
 window.addEventListener("keydown", function (event) {
@@ -200,8 +240,11 @@ window.addEventListener("keydown", function (event) {
   }
 
   if (event.code === "KeyA") {
+    if(!gameOver){
     if (blockedTruckIds[1] === true) {
       console.log("nie pośmigasz")
+      board.classList.add("shake-animation");
+      errorSound.play();
     }
     else {
       let scoreTruckOneNodes = document.querySelectorAll('.truck-one.blocked')
@@ -210,22 +253,47 @@ window.addEventListener("keydown", function (event) {
       showScore();
       truckNodes.forEach((el, index) => {
         if (index % boardSize < 11 && index % boardSize > 0) {
-          el.classList.remove('fruit');
+          el.classList.remove('brick');
           el.classList.remove('blocked');
           el.style.backgroundColor = "";
-         setTimeout(function() {
-           unblockTruck("1");
-         }, truckDeliveryTime)
+          timerSound.play();
+          //timer
+          let count = truckDeliveryTime / 1000;
+          firstTruckTimer.textContent = count;
+          let truckTime = setInterval(function () {
+            if (!gameIsPaused) {
+              count = count - 1;
+              firstTruckTimer.textContent = count;
+              timerBorderOne.classList.remove("hidden");
+              firstTruckTimer.classList.remove("hidden");
+            }else{
+              timerBorderOne.classList.add("hidden");
+              firstTruckTimer.classList.add("hidden");
+            }
+            if(count <=0){
+              unblockTruck("1");
+              clearInterval(truckTime);
+              timerBorderOne.classList.add("hidden");
+              firstTruckTimer.classList.add("hidden");
+            }
+          }, 999);
+          timerBorderOne.classList.remove("hidden");
+          firstTruckTimer.classList.remove("hidden");
         }
       })
       truckDeliveryTime += 5000;
-      brickFallingSpeed -= 100;
     }
+  }else{
+    return;
   }
+}
 
   if (event.code === "KeyS") {
+    if(!gameOver){
     if (blockedTruckIds[2] === true) {
       console.log("nie pośmigasz")
+      board.classList.add("shake-animation");
+      errorSound.play();
     }
     else {
       let scoreTruckTwoNodes = document.querySelectorAll('.truck-two.blocked')
@@ -234,21 +302,46 @@ window.addEventListener("keydown", function (event) {
       showScore();
       truckNodes.forEach((el, index) => {
         if (index % boardSize < 22 && index % boardSize > 11) {
-          el.classList.remove('fruit');
+          el.classList.remove('brick');
           el.classList.remove('blocked');
           el.style.backgroundColor = "";
-          setTimeout(function() {
-           unblockTruck("2");
-         }, truckDeliveryTime)
+          timerSound.play();
+          //timer
+          let count = truckDeliveryTime / 1000;
+          secondTruckTimer.textContent = count;
+          let truckTime = setInterval(function () {
+            if (!gameIsPaused) {
+              count = count - 1;
+              secondTruckTimer.textContent = count;
+              timerBorderTwo.classList.remove("hidden");
+              secondTruckTimer.classList.remove("hidden");
+            }else{
+              timerBorderTwo.classList.add("hidden");
+              secondTruckTimer.classList.add("hidden");
+            }
+            if(count <=0){
+              unblockTruck("2");
+              clearInterval(truckTime);
+              timerBorderTwo.classList.add("hidden");
+              secondTruckTimer.classList.add("hidden");
+            }
+          }, 999);
+          timerBorderTwo.classList.remove("hidden");
+          secondTruckTimer.classList.remove("hidden");
         }
       })
       truckDeliveryTime += 5000;
-      brickFallingSpeed -= 100;
     }
+  }else{
+    return;
+  }
   }
   if (event.code === "KeyD") {
+    if(!gameOver){
     if (blockedTruckIds[3] === true) {
       console.log("nie pośmigasz")
+      board.classList.add("shake-animation");
+      errorSound.play();
     }
     else {
       let scoreTruckThreeNodes = document.querySelectorAll('.truck-three.blocked')
@@ -257,23 +350,50 @@ window.addEventListener("keydown", function (event) {
       showScore();
       truckNodes.forEach((el, index) => {
         if (index % boardSize > 22 && index % boardSize < 33) {
-          el.classList.remove('fruit');
+          el.classList.remove('brick');
           el.classList.remove('blocked');
           el.style.backgroundColor = "";
-          setTimeout(function() {
-           unblockTruck("3");
-         }, truckDeliveryTime)
+          timerSound.play();
+          //timer
+          let count = truckDeliveryTime / 1000;
+          thirdTruckTimer.textContent = count;
+          let truckTime = setInterval(function () {
+            if (!gameIsPaused) {
+              count = count - 1;
+              thirdTruckTimer.textContent = count;
+              timerBorderThree.classList.remove("hidden");
+              thirdTruckTimer.classList.remove("hidden");
+            }else{
+              timerBorderThree.classList.add("hidden");
+              thirdTruckTimer.classList.add("hidden");
+            }
+            if(count <=0){
+                unblockTruck("3");
+                clearInterval(truckTime);
+                timerBorderThree.classList.add("hidden");
+                thirdTruckTimer.classList.add("hidden");
+              }
+          }, 999);
+          timerBorderThree.classList.remove("hidden");
+          thirdTruckTimer.classList.remove("hidden");
+          
         }
       })
       truckDeliveryTime += 5000;
-      brickFallingSpeed -= 100;
     }
+  }else{
+    return;
+  }
   }
   paintingBricks();
 });
+
+board.addEventListener("animationend", () => {
+  board.classList.remove("shake-animation");
+});
+
 let currentBrickName = randomBrick();
 let currentBrickFrame = 0;
-
 
 gameMusic.play();
 
@@ -365,11 +485,9 @@ function unblockTruck(truckId) {
   }
 }
 
-
-
 function paintingBricks() {
   const cellsWeWantToPaint = getCellsWeWantToPaint();
-  const cellsWeHavePainted = document.querySelectorAll('.fruit:not(.blocked)');
+  const cellsWeHavePainted = document.querySelectorAll('.brick:not(.blocked)');
 
   if (!weCanGo()) {
 
@@ -379,10 +497,17 @@ function paintingBricks() {
       const cellWithinTruck = Array.from(cellsWeHavePainted).find(cell => cell.hasAttribute('data-id'))
       if (cellWithinTruck === undefined) {
         brickDestroySound.play();
+        score -= 40;
+        if (score < 0) {
+          gameOver = true;
+          showScorePopUp();
+          refreshScores();
+          gameOverSound.play();
+        }
+        showScore();
         makeNewBrick();
         return
       }
-
 
       const truckId = cellWithinTruck.getAttribute('data-id');
       blockTruck(truckId);
@@ -395,30 +520,27 @@ function paintingBricks() {
 
   // remove all existing cells
   cellsWeHavePainted.forEach(item => {
-    item.classList.remove('fruit')
+    item.classList.remove('brick')
     item.style.backgroundColor = ''
   }
   )
   // paint new cells
   cellsWeWantToPaint.forEach(item => {
-    item.classList.add('fruit')
+    item.classList.add('brick')
     item.style.backgroundColor = currentColor
-  }
-
-  )
-
+  })
 }
 
 let scoreDiv = document.querySelector('.score')
 
 //liczenie punktów
 function showScore() {
-scoreDiv.textContent = "WYNIK: " + score;
+  scoreDiv.textContent = "WYNIK: " + score;
 }
 
 // spadanie klocków
 setInterval(function () {
-  if (gameIsPaused) {
+  if (gameIsPaused || gameOver) {
     return;
   }
   y++;

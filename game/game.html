@@ -12,6 +12,7 @@
       href="https://fonts.googleapis.com/css?family=Catamaran:400,700,800,900&amp;subset=latin-ext"
       rel="stylesheet"
     />
+    <link href="https://fonts.googleapis.com/css?family=ZCOOL+QingKe+HuangYou" rel="stylesheet">
   </head>
 
   <body>
@@ -63,8 +64,11 @@
           <div id="board"></div>
           <div class="trucks">
             <div class="firstTruck truckPhantom"></div>
+            <div class="timer-border one hidden"><div class="first-truck-timer-position hidden"></div></div>
             <div class="secondTruck truckPhantom"></div>
+            <div class="timer-border two hidden"><div class="second-truck-timer-position hidden"></div></div>
             <div class="thirdTruck truckPhantom"></div>
+            <div class="timer-border three hidden"><div class="third-truck-timer-position hidden"></div></div>
           </div>
         </div>
       </div>
@@ -102,9 +106,13 @@
             <input class="input-button" type="text" placeholder="  Wpisz swoje imię..." name="name">
             <input class="submit-button" type="submit" value="Wyślij">
           </form>
-          <p class="last-scorse-header">Twój rezultat jest na X miejscu, wśród najlepszych wyników.</p>
-          <p class="last-scorse-header-2">Najlepsze wyniki w MoveIt Game:</p>
-          <ul class="last-scores"></ul>
+          <p class="last-scorse-header result-score"></p>
+          <p class="last-scorse-header-2">3 Najlepsze wyniki w MoveIt Game:</p>
+          <ul class="last-scores">
+            <li class="first-score"></li>
+            <li class="second-score"></li>
+            <li class="third-score"></li>
+          </ul>
           <div class="button-box-end">
               <a class="add-button upper-case " href="./index.html"
                 >koniec gry<i class="arrow right"></i
