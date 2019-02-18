@@ -1,0 +1,281 @@
+* {
+    box-sizing: border-box;
+}
+
+html{
+    font-family: 'Catamaran', sans-serif;
+}
+
+.logo {
+    background-color: #fff;
+    padding-bottom: 20px;
+}
+
+.main-page {
+    height: 100vh;
+    width: 100vw;
+    background: url('../img/backgroundgame.png') no-repeat  center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+} 
+
+.main-container {
+    margin: 0 auto;
+    padding: 0 7%;
+    width: 70vw;
+    height: 45vw;
+    background: #fff;
+    opacity: 0.8;
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+}
+
+.upper-case {
+    text-transform: uppercase;
+}
+
+.paragraph-about-game {
+    font-size: 28px;
+    color:  #323232;
+    text-align: center;
+    padding: 0 10px 10px 10px;
+    font-weight: bold;
+
+}
+
+h2{
+    font-weight: bold;
+    font-size: 22px;
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 10px;
+    color: #edb60d;
+    
+}
+ 
+span {
+    color:  #edb60d;
+    
+}
+p{
+    text-align: center;
+    font-size: 18px;
+}
+
+
+.start-game {
+    font-size: 20px;
+    background-color: #323232;
+    color: #fff;
+    font-weight: 900;
+    border: none;
+    padding: 20px 110px 20px 110px;
+    margin: 20px 20px;
+    cursor:pointer;
+    transition: all 0.5s;
+    text-decoration: none;
+    text-align: center;
+}
+
+.start-game-two {
+    font-size: 20px;
+    background-color: #323232;
+    color: #fff;
+    font-weight: 900;
+    border: none;
+    padding: 20px 30px 20px 30px;
+    margin: 20px 20px;
+    cursor:pointer;
+    transition: all 0.5s;
+    text-decoration: none;
+    text-align: center;
+}
+
+
+.box-for-buttons {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+}
+
+.start-game:hover {
+    background: #050505;
+    
+
+}
+
+i {
+  border: solid #fff;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 1%;
+}
+
+
+
+h3{
+    font-weight: bold;
+    font-size: 25px;
+    text-align: center;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    color: #050505;
+    
+}
+.upper-case:hover {
+    background: black;
+}
+
+@media (max-width: 1800px) {
+
+    .paragraph-about-game {
+        font-size: 25px;
+        padding: 0 8px 8px 8px;
+    }
+
+    h2{
+        font-size: 20px;
+        padding-top: 30px;
+        padding-bottom: 10px;
+        
+    }
+    p{
+
+        font-size: 17px;
+    }
+    
+    .main-container {
+        padding: 0 5%;
+        width: 75vw;
+        height: 50vw;
+        opacity: 0.8;
+       
+    }
+    .start-game {
+        font-size: 20px;
+        font-weight: 900;
+        padding: 20px 110px 20px 110px;
+        margin: 20px 20px;
+        
+    }
+    
+    .start-game-two {
+        font-size: 20px;
+        font-weight: 900;
+        padding: 20px 30px 20px 30px;
+        margin: 20px 20px;
+        
+    }
+    h3{
+        font-size: 22px;
+        
+    }
+
+}
+@media (max-width: 1560px) {
+    .main-container {
+        padding: 0 5%;
+        width: 80vw;
+        height: 60vw;
+        opacity: 0.8;
+       
+    }
+
+}
+
+
+@media (max-width: 1360px){
+        
+    .main-container {
+            height: 65vw;
+           
+        }
+        
+        .paragraph-about-game {
+            font-size: 22px;
+            padding: 0 5px 5px 5px;
+        }
+    
+        h2{
+            font-size: 17px;
+            padding-top: 17px;
+            padding-bottom: 7px;
+            
+        }
+        p{
+    
+            font-size: 14px;
+        }
+
+        h3{
+            font-size: 20px;
+            
+        }
+        
+        .start-game {
+            font-size: 15px;
+            font-weight: 900;
+            padding: 17px 107px 17px 107px;
+            margin: 17px 17px;
+            
+        }
+        
+        .start-game-two {
+            font-size: 15px;
+            font-weight: 900;
+            padding: 17px 27px 17px 27px;
+            margin: 17px 17px;
+            
+        }
+
+    }
+
+
+    @media (max-width: 1130px){
+        .start-game {
+            font-size: 15px;
+            font-weight: 900;
+            padding: 10px 100px 10px 100px;
+            margin: 17px 17px;
+            
+        }
+        
+        .start-game-two {
+            font-size: 15px;
+            font-weight: 900;
+            padding: 10px 30px 10px 30px;
+            margin: 17px 17px;
+            
+        }
+
+        .main-container {
+            padding: 0 3%;
+            width: 80vw;
+            height: 70vw;
+            
+           
+        }
+
+        .paragraph-about-game {
+            font-size: 20px;
+            padding: 0 5px 5px 5px;
+        }
+    
+        h2{
+            font-size: 15px;
+            padding-top: 15px;
+            padding-bottom: 5px;
+            
+        }
+        p{
+    
+            font-size: 12px;
+        }
+        
+
+
+
+    }

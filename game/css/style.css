@@ -69,7 +69,6 @@ html{
     border: none;
     padding: 20px 40px 20px 40px;
     margin: 20px 0;
-    width: 80%;
     cursor:pointer;
     transition: all 0.5s;
     text-decoration: none;
@@ -88,6 +87,9 @@ html{
     background: #050505;
 
 }
+
+
+
 
 i {
   border: solid #fff;
